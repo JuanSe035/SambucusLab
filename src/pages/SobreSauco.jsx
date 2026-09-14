@@ -2,283 +2,445 @@ import SectionTitle from "../components/SectionTitle";
 
 export default function SobreSauco() {
   return (
-    <main className="bg-white text-gray-800">
+    <main className="bg-[#faf8ff]">
 
-      {/* HERO */}
-      <section className="bg-gradient-to-r from-purple-950 via-purple-900 to-purple-700 text-white py-24 px-6">
-        <div className="max-w-6xl mx-auto">
+      {/* =====================================================
+          HERO
+      ===================================================== */}
 
-          <p className="uppercase tracking-[0.3em] text-purple-300 text-sm font-semibold">
-            Sambucus nigra
-          </p>
+      <section className="relative overflow-hidden bg-gradient-to-br from-purple-950 via-violet-900 to-purple-700 text-white">
 
-          <h1 className="text-5xl md:text-6xl font-bold mt-4">
-            Sobre el Saúco
-          </h1>
+        <div className="absolute -top-40 -right-40 w-[30rem] h-[30rem] rounded-full bg-purple-400/10 blur-3xl" />
 
-          <p className="mt-6 text-lg text-purple-200 max-w-3xl leading-8">
-            Conoce las características botánicas, nutricionales y gastronómicas
-            del saúco, el ingrediente principal de la investigación desarrollada
-            en SambucusLab.
-          </p>
+        <div className="absolute -bottom-40 -left-40 w-[30rem] h-[30rem] rounded-full bg-violet-400/10 blur-3xl" />
 
-        </div>
-      </section>
+        <div className="relative max-w-7xl mx-auto px-6 py-24 md:py-28">
 
-      {/* ¿QUÉ ES EL SAÚCO? */}
-      <section className="py-20 px-6">
-        <div className="max-w-6xl mx-auto">
+          <div className="max-w-4xl">
 
-          <SectionTitle
-            subtitle="Introducción"
-            title="¿Qué es el saúco?"
-            description="El saúco (Sambucus nigra) es una planta reconocida por sus frutos ricos en pigmentos naturales y compuestos antioxidantes. Su uso tradicional se ha extendido desde aplicaciones medicinales hasta preparaciones gastronómicas."
-          />
+            <span className="inline-flex items-center px-4 py-2 rounded-full bg-white/10 border border-white/15 text-xs uppercase tracking-[0.2em] font-semibold text-purple-200">
+              Especie de estudio
+            </span>
 
-          <div className="grid md:grid-cols-2 gap-10 items-center">
+            <h1 className="mt-7 text-5xl md:text-6xl font-extrabold leading-tight">
+              Sobre el
+              <span className="text-purple-300"> saúco</span>
+            </h1>
 
-            <div className="rounded-3xl overflow-hidden shadow-lg">
-              <img
-                src="https://images.unsplash.com/photo-1595231776515-ddffb1f4eb73?q=80&w=1200&auto=format&fit=crop"
-                alt="Frutos de saúco"
-                className="w-full h-full object-cover"
-              />
-            </div>
-
-            <div className="space-y-6 text-lg leading-8">
-
-              <p>
-                <strong>Sambucus nigra</strong> pertenece a la familia
-                Adoxaceae y es conocida por producir pequeñas bayas de color
-                púrpura oscuro o negro.
-              </p>
-
-              <p>
-                Estas bayas contienen una elevada concentración de
-                <strong> antocianinas</strong>, compuestos responsables de su
-                color intenso y de gran interés para la industria alimentaria.
-              </p>
-
-              <p>
-                En Colombia, el saúco ha sido utilizado en bebidas, almíbares,
-                mermeladas y preparaciones artesanales, aunque su potencial en
-                pastelería aún ha sido poco explorado.
-              </p>
-
-            </div>
-
-          </div>
-
-        </div>
-      </section>
-
-      {/* CLASIFICACIÓN */}
-      <section className="py-20 bg-purple-50 px-6">
-        <div className="max-w-6xl mx-auto">
-
-          <SectionTitle
-            subtitle="Botánica"
-            title="Clasificación científica"
-            description="Información taxonómica básica del fruto estudiado en la investigación."
-          />
-
-          <div className="grid md:grid-cols-2 gap-8">
-
-            {[
-              ["Reino", "Plantae"],
-              ["División", "Magnoliophyta"],
-              ["Clase", "Magnoliopsida"],
-              ["Orden", "Dipsacales"],
-              ["Familia", "Adoxaceae"],
-              ["Género", "Sambucus"],
-              ["Especie", "Sambucus nigra L."],
-              ["Nombre común", "Saúco"],
-            ].map(([title, value]) => (
-              <div
-                key={title}
-                className="bg-white p-6 rounded-2xl shadow border border-purple-100"
-              >
-                <h3 className="text-purple-700 font-semibold uppercase text-sm tracking-wider">
-                  {title}
-                </h3>
-
-                <p className="mt-3 text-xl font-bold text-gray-800">
-                  {value}
-                </p>
-              </div>
-            ))}
-
-          </div>
-
-        </div>
-      </section>
-
-      {/* PROPIEDADES */}
-      <section className="py-20 px-6">
-        <div className="max-w-6xl mx-auto">
-
-          <SectionTitle
-            subtitle="Composición"
-            title="Propiedades nutricionales y funcionales"
-            description="Las bayas del saúco poseen compuestos bioactivos de interés científico y gastronómico."
-          />
-
-          <div className="grid md:grid-cols-4 gap-6">
-
-            {[
-              {
-                title: "Antocianinas",
-                text: "Pigmentos naturales responsables del color púrpura intenso.",
-              },
-              {
-                title: "Polifenoles",
-                text: "Compuestos antioxidantes presentes en la pulpa y la cáscara.",
-              },
-              {
-                title: "Flavonoides",
-                text: "Sustancias bioactivas asociadas con propiedades antioxidantes.",
-              },
-              {
-                title: "Vitamina C",
-                text: "Nutriente presente en los frutos frescos del saúco.",
-              },
-            ].map((item) => (
-              <div
-                key={item.title}
-                className="bg-purple-900 text-white rounded-2xl p-6"
-              >
-                <h3 className="text-xl font-bold">
-                  {item.title}
-                </h3>
-
-                <p className="mt-4 text-purple-200 leading-7 text-sm">
-                  {item.text}
-                </p>
-              </div>
-            ))}
-
-          </div>
-
-        </div>
-      </section>
-
-      {/* BENEFICIOS */}
-      <section className="py-20 bg-white px-6">
-        <div className="max-w-6xl mx-auto">
-
-          <SectionTitle
-            subtitle="Aplicaciones"
-            title="¿Por qué el saúco es importante en alimentos?"
-            description="El interés del proyecto se centra en el uso del saúco como ingrediente innovador para productos de pastelería."
-          />
-
-          <div className="grid md:grid-cols-2 gap-10">
-
-            {[
-              {
-                title: "Colorante natural",
-                text: "Las antocianinas permiten aportar color sin utilizar colorantes artificiales.",
-              },
-              {
-                title: "Ingrediente funcional",
-                text: "Su composición química ha despertado interés en alimentos funcionales y saludables.",
-              },
-              {
-                title: "Aroma y sabor",
-                text: "Aporta notas frutales y florales que enriquecen preparaciones dulces.",
-              },
-              {
-                title: "Innovación gastronómica",
-                text: "Permite desarrollar nuevas recetas y productos con identidad local.",
-              },
-            ].map((card) => (
-              <div
-                key={card.title}
-                className="rounded-3xl bg-purple-50 p-8 border border-purple-100"
-              >
-                <h3 className="text-2xl font-bold text-purple-900">
-                  {card.title}
-                </h3>
-
-                <p className="mt-4 leading-8 text-gray-600">
-                  {card.text}
-                </p>
-              </div>
-            ))}
-
-          </div>
-
-        </div>
-      </section>
-
-      {/* GASTRONOMÍA */}
-      <section className="py-20 bg-purple-950 text-white px-6">
-        <div className="max-w-6xl mx-auto">
-
-          <SectionTitle
-            subtitle="Gastronomía"
-            title="Usos del saúco en cocina y pastelería"
-            description="El proyecto SambucusLab explora la incorporación del saúco en preparaciones tradicionales mediante diferentes concentraciones."
-          />
-
-          <div className="grid md:grid-cols-3 gap-8">
-
-            {[
-              {
-                title: "Pavlova",
-                text: "Merengue horneado enriquecido con zumo de saúco para evaluar color, sabor y textura.",
-              },
-              {
-                title: "Mousse",
-                text: "Preparación fría utilizada para estudiar la aceptación sensorial del fruto.",
-              },
-              {
-                title: "Almíbar de saúco",
-                text: "Preparación desarrollada en la primera fase del proyecto como base para aplicaciones gastronómicas.",
-              },
-            ].map((item) => (
-              <div
-                key={item.title}
-                className="bg-purple-900 rounded-3xl p-8 border border-purple-700"
-              >
-                <h3 className="text-2xl font-bold">
-                  {item.title}
-                </h3>
-
-                <p className="mt-5 text-purple-200 leading-8">
-                  {item.text}
-                </p>
-              </div>
-            ))}
-
-          </div>
-
-        </div>
-      </section>
-
-      {/* CIERRE */}
-      <section className="py-20 px-6 bg-white">
-        <div className="max-w-5xl mx-auto text-center">
-
-          <SectionTitle
-            subtitle="Conclusión"
-            title="El saúco como ingrediente de innovación gastronómica"
-            description="La investigación desarrollada en SambucusLab busca aportar evidencia experimental sobre el potencial del saúco en productos de pastelería mediante análisis sensorial y estadístico."
-          />
-
-          <div className="bg-purple-50 rounded-3xl p-10 mt-10 border border-purple-100">
-
-            <p className="text-lg leading-8 text-gray-700">
-              A partir del estudio de diferentes concentraciones de sólidos
-              solubles (°Brix), el proyecto analiza cómo el saúco modifica el
-              color, aroma, sabor, textura y aceptación de preparaciones como la
-              pavlova y el mousse, promoviendo el aprovechamiento de este fruto
-              dentro de la gastronomía colombiana.
+            <p className="mt-6 text-lg md:text-xl text-purple-100 leading-8 max-w-3xl">
+              Conoce las características del
+              <span className="italic"> Sambucus nigra</span> y su
+              potencial como ingrediente para la innovación gastronómica.
             </p>
 
           </div>
 
         </div>
+
+      </section>
+
+
+      {/* =====================================================
+          INTRODUCCIÓN
+      ===================================================== */}
+
+      <section className="py-24 px-6 bg-white">
+
+        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-14 items-center">
+
+          <div>
+
+            <SectionTitle
+              align="left"
+              subtitle="Sambucus nigra"
+              title="Una fruta con potencial gastronómico"
+              description="El saúco es un fruto que puede aportar características visuales y sensoriales diferenciadas a diversas preparaciones."
+            />
+
+            <div className="space-y-5 text-gray-600 leading-8">
+
+              <p>
+                El saúco pertenece al género
+                <span className="italic font-semibold text-purple-800">
+                  {" "}Sambucus
+                </span>
+                {" "}y presenta frutos pequeños agrupados en racimos.
+                En su estado maduro puede presentar una coloración púrpura
+                oscura característica.
+              </p>
+
+              <p>
+                En el contexto gastronómico, sus propiedades de color,
+                aroma y sabor permiten estudiar su incorporación en productos
+                de pastelería y desarrollar preparaciones con características
+                sensoriales diferenciadas.
+              </p>
+
+              <p>
+                SambucusLab estudia precisamente este potencial mediante
+                diferentes concentraciones aplicadas a productos tradicionales
+                de pastelería.
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <div className="relative group">
+
+            <div className="absolute inset-0 bg-purple-300/20 blur-3xl rounded-full transition-all duration-500 group-hover:bg-purple-400/30" />
+
+            <div className="
+              relative
+              overflow-hidden
+              rounded-[2rem]
+              shadow-2xl
+              border
+              border-purple-100
+              transition-all
+              duration-500
+              group-hover:scale-[1.02]
+              group-hover:shadow-purple-900/20
+            ">
+
+              <img
+                src="https://images.unsplash.com/photo-1595231776515-ddffb1f4eb73?auto=format&fit=crop&w=1000&q=85"
+                alt="Frutos de saúco"
+                className="
+                  w-full
+                  h-[420px]
+                  object-cover
+                  transition-transform
+                  duration-700
+                  group-hover:scale-105
+                "
+              />
+
+              <div className="absolute inset-0 bg-gradient-to-t from-purple-950/40 via-transparent to-transparent" />
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      {/* =====================================================
+          CLASIFICACIÓN
+      ===================================================== */}
+
+      <section className="py-24 px-6 bg-gradient-to-br from-purple-50 via-white to-violet-50">
+
+        <div className="max-w-7xl mx-auto">
+
+          <SectionTitle
+            subtitle="Identificación"
+            title="Características generales"
+            description="Algunos elementos permiten reconocer y contextualizar la especie utilizada en la investigación."
+          />
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+            {[
+              {
+                number: "01",
+                title: "Género",
+                text: "Sambucus",
+              },
+              {
+                number: "02",
+                title: "Especie",
+                text: "Sambucus nigra",
+              },
+              {
+                number: "03",
+                title: "Fruto",
+                text: "Baya pequeña de tonalidad oscura",
+              },
+              {
+                number: "04",
+                title: "Color",
+                text: "Púrpura intenso en estado maduro",
+              },
+            ].map((item) => (
+
+              <article
+                key={item.number}
+                className="
+                  group
+                  bg-white
+                  rounded-3xl
+                  p-7
+                  border border-purple-100
+                  soft-shadow
+                  hover:-translate-y-2
+                  hover:scale-[1.02]
+                  hover:bg-violet-50
+                  hover:border-purple-200
+                  hover:shadow-xl
+                  hover:shadow-purple-900/10
+                  transition-all
+                  duration-300
+                "
+              >
+
+                <span className="
+                  text-sm
+                  font-bold
+                  text-purple-500
+                  transition-colors
+                  duration-300
+                  group-hover:text-purple-700
+                ">
+                  {item.number}
+                </span>
+
+                <h3 className="
+                  mt-5
+                  text-xl
+                  font-bold
+                  text-purple-950
+                  transition-transform
+                  duration-300
+                  group-hover:translate-x-1
+                ">
+                  {item.title}
+                </h3>
+
+                <p className="mt-3 text-gray-600 leading-7">
+                  {item.text}
+                </p>
+
+              </article>
+
+            ))}
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      {/* =====================================================
+          PROPIEDADES
+      ===================================================== */}
+
+      <section className="py-24 px-6 bg-white">
+
+        <div className="max-w-7xl mx-auto">
+
+          <SectionTitle
+            subtitle="Composición"
+            title="Propiedades de interés"
+            description="El interés gastronómico del saúco también se relaciona con la presencia de diferentes compuestos bioactivos."
+          />
+
+          <div className="grid md:grid-cols-2 gap-6">
+
+            {[
+              {
+                title: "Antocianinas",
+                text: "Pigmentos responsables de tonalidades rojizas, violetas y púrpuras presentes en diferentes frutos.",
+              },
+              {
+                title: "Polifenoles",
+                text: "Grupo de compuestos fenólicos de interés estudiados por su presencia en diferentes especies vegetales.",
+              },
+              {
+                title: "Flavonoides",
+                text: "Compuestos presentes de manera natural en plantas y asociados con diferentes características bioactivas.",
+              },
+              {
+                title: "Vitamina C",
+                text: "Nutriente presente en el fruto que complementa el interés nutricional de esta especie.",
+              },
+            ].map((item, index) => (
+
+              <article
+                key={item.title}
+                className="
+                  group
+                  relative
+                  overflow-hidden
+                  rounded-3xl
+                  p-8
+                  bg-gradient-to-br
+                  from-purple-50
+                  to-violet-50
+                  border
+                  border-purple-100
+                  hover:-translate-y-2
+                  hover:scale-[1.01]
+                  hover:from-violet-100
+                  hover:to-purple-50
+                  hover:border-purple-200
+                  hover:shadow-xl
+                  hover:shadow-purple-900/10
+                  transition-all
+                  duration-300
+                "
+              >
+
+                <span className="
+                  absolute
+                  right-7
+                  top-6
+                  text-5xl
+                  font-black
+                  text-purple-100
+                  transition-all
+                  duration-300
+                  group-hover:text-purple-200
+                  group-hover:scale-110
+                ">
+                  0{index + 1}
+                </span>
+
+                <div className="relative">
+
+                  <div className="
+                    w-10
+                    h-1
+                    rounded-full
+                    bg-gradient-to-r
+                    from-purple-700
+                    to-violet-400
+                    mb-6
+                    transition-all
+                    duration-300
+                    group-hover:w-16
+                  " />
+
+                  <h3 className="text-2xl font-bold text-purple-950">
+                    {item.title}
+                  </h3>
+
+                  <p className="mt-4 text-gray-600 leading-7 max-w-xl">
+                    {item.text}
+                  </p>
+
+                </div>
+
+              </article>
+
+            ))}
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      {/* =====================================================
+          GASTRONOMÍA
+      ===================================================== */}
+
+      <section className="py-24 px-6 bg-gradient-to-br from-purple-950 via-violet-900 to-purple-800 text-white">
+
+        <div className="max-w-6xl mx-auto text-center">
+
+          <span className="text-xs uppercase tracking-[0.25em] text-purple-300 font-bold">
+            Aplicación gastronómica
+          </span>
+
+          <h2 className="mt-5 text-4xl md:text-5xl font-extrabold">
+            Del fruto a la pastelería
+          </h2>
+
+          <p className="mt-6 max-w-3xl mx-auto text-purple-100 leading-8 text-lg">
+            La investigación busca estudiar cómo el saúco puede incorporarse
+            a preparaciones tradicionales y cómo diferentes concentraciones
+            modifican sus características sensoriales.
+          </p>
+
+          <div className="mt-12 grid md:grid-cols-3 gap-6 text-left">
+
+            {[
+              [
+                "01",
+                "Preparación",
+                "Obtención y preparación del fruto para su incorporación.",
+              ],
+              [
+                "02",
+                "Concentración",
+                "Evaluación de diferentes niveles de sólidos solubles.",
+              ],
+              [
+                "03",
+                "Evaluación",
+                "Análisis de atributos sensoriales y aceptación.",
+              ],
+            ].map(([number, title, text]) => (
+
+              <div
+                key={number}
+                className="
+                  group
+                  glass-purple
+                  rounded-3xl
+                  p-7
+                  transition-all
+                  duration-300
+                  hover:-translate-y-2
+                  hover:bg-white/15
+                  hover:scale-[1.02]
+                "
+              >
+
+                <span className="text-purple-300 text-sm font-bold">
+                  {number}
+                </span>
+
+                <h3 className="mt-4 text-xl font-bold">
+                  {title}
+                </h3>
+
+                <p className="mt-3 text-purple-100 leading-7 text-sm">
+                  {text}
+                </p>
+
+              </div>
+
+            ))}
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      {/* =====================================================
+          CONCLUSIÓN
+      ===================================================== */}
+
+      <section className="py-24 px-6 bg-white">
+
+        <div className="max-w-4xl mx-auto text-center">
+
+          <span className="text-xs uppercase tracking-[0.25em] text-purple-600 font-bold">
+            Perspectiva
+          </span>
+
+          <h2 className="mt-5 text-4xl font-extrabold text-purple-950">
+            Un ingrediente con posibilidades de innovación
+          </h2>
+
+          <p className="mt-6 text-gray-600 text-lg leading-8">
+            El estudio del saúco permite relacionar la investigación
+            gastronómica con el análisis sensorial y estadístico, generando
+            una base experimental para explorar su utilización en productos
+            de pastelería.
+          </p>
+
+        </div>
+
       </section>
 
     </main>

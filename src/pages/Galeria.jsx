@@ -2,278 +2,291 @@ import SectionTitle from "../components/SectionTitle";
 
 const imagenes = [
   {
-    titulo: "Frutos de saúco",
+    titulo: "Fruto de saúco",
     categoria: "Materia prima",
-    descripcion:
-      "El fruto de Sambucus nigra constituye la materia prima utilizada durante el desarrollo experimental.",
-    imagen:
-      "https://images.unsplash.com/photo-1595231776515-ddffb1f4eb73?auto=format&fit=crop&w=1200&q=80",
+    url: "https://images.unsplash.com/photo-1595231776515-ddffb1f4eb73?auto=format&fit=crop&w=1000&q=85",
   },
   {
-    titulo: "Preparación del saúco",
+    titulo: "Preparación gastronómica",
     categoria: "Proceso",
-    descripcion:
-      "El fruto es seleccionado y preparado antes de obtener las diferentes concentraciones utilizadas en la investigación.",
-    imagen:
-      "https://images.unsplash.com/photo-1490474418585-ba9bad8fd0ea?auto=format&fit=crop&w=1200&q=80",
+    url: "https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=1000&q=85",
   },
   {
-    titulo: "Concentración",
-    categoria: "Experimentación",
-    descripcion:
-      "Las diferentes relaciones entre fruto y agua permiten obtener los niveles experimentales de sólidos solubles.",
-    imagen:
-      "https://images.unsplash.com/photo-1558642452-9d2a7deb7f62?auto=format&fit=crop&w=1200&q=80",
+    titulo: "Pastelería",
+    categoria: "Aplicación",
+    url: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=1000&q=85",
   },
   {
-    titulo: "Pavlova",
-    categoria: "Producto final",
-    descripcion:
-      "Preparación de pastelería utilizada para evaluar la incorporación del saúco.",
-    imagen:
-      "https://images.unsplash.com/photo-1565958011703-44f9829ba187?auto=format&fit=crop&w=1200&q=80",
-  },
-  {
-    titulo: "Mousse",
-    categoria: "Producto final",
-    descripcion:
-      "Producto de textura cremosa empleado en la evaluación sensorial.",
-    imagen:
-      "https://images.unsplash.com/photo-1579954115545-a95591f28bfc?auto=format&fit=crop&w=1200&q=80",
-  },
-  {
-    titulo: "Presentación gastronómica",
-    categoria: "Gastronomía",
-    descripcion:
-      "Aplicación del saúco en productos tradicionales de pastelería.",
-    imagen:
-      "https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=1200&q=80",
+    titulo: "Presentación",
+    categoria: "Producto",
+    url: "https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=1000&q=85",
   },
 ];
 
 export default function Galeria() {
   return (
-    <main>
-      {/* HERO */}
-      <section className="bg-gradient-to-br from-purple-950 via-purple-900 to-purple-700 text-white py-24 px-6">
-        <div className="max-w-6xl mx-auto text-center">
-          <p className="uppercase tracking-[0.3em] text-purple-300 text-sm font-semibold">
-            Registro visual
-          </p>
+    <main className="bg-[#faf8ff]">
 
-          <h1 className="text-5xl md:text-6xl font-black mt-4">
+      {/* HERO */}
+
+      <section className="relative overflow-hidden bg-gradient-to-br from-purple-950 via-violet-900 to-purple-700 text-white">
+
+        <div className="absolute -top-40 -right-40 w-[30rem] h-[30rem] rounded-full bg-purple-400/10 blur-3xl" />
+
+        <div className="relative max-w-7xl mx-auto px-6 py-24 md:py-28">
+
+          <span className="inline-flex px-4 py-2 rounded-full bg-white/10 border border-white/15 text-xs uppercase tracking-[0.2em] text-purple-200 font-semibold">
+            Registro visual
+          </span>
+
+          <h1 className="mt-7 text-5xl md:text-6xl font-extrabold">
             Galería
           </h1>
 
-          <p className="max-w-3xl mx-auto mt-6 text-lg text-purple-100 leading-8">
-            Un recorrido visual por la materia prima, el proceso experimental
-            y las aplicaciones gastronómicas desarrolladas durante
-            SambucusLab.
+          <p className="mt-6 max-w-3xl text-lg text-purple-100 leading-8">
+            Una recopilación visual del ingrediente, las preparaciones y
+            el contexto gastronómico del proyecto.
           </p>
+
         </div>
+
       </section>
 
-      {/* INTRODUCCIÓN */}
-      <section className="py-24 px-6 bg-white">
-        <div className="max-w-5xl mx-auto">
-          <SectionTitle
-            subtitle="Registro del proyecto"
-            title="Del fruto al producto"
-            description="La galería permite visualizar las diferentes etapas relacionadas con la aplicación del saúco en productos tradicionales de pastelería."
-          />
-
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-purple-50 rounded-3xl p-8 text-center">
-              <div className="text-4xl font-black text-purple-800">
-                01
-              </div>
-
-              <h3 className="mt-4 text-xl font-bold text-purple-950">
-                Materia prima
-              </h3>
-
-              <p className="mt-3 text-gray-600 leading-7">
-                Selección y preparación de los frutos de saúco.
-              </p>
-            </div>
-
-            <div className="bg-purple-50 rounded-3xl p-8 text-center">
-              <div className="text-4xl font-black text-purple-800">
-                02
-              </div>
-
-              <h3 className="mt-4 text-xl font-bold text-purple-950">
-                Experimentación
-              </h3>
-
-              <p className="mt-3 text-gray-600 leading-7">
-                Elaboración de las diferentes concentraciones y preparaciones.
-              </p>
-            </div>
-
-            <div className="bg-purple-50 rounded-3xl p-8 text-center">
-              <div className="text-4xl font-black text-purple-800">
-                03
-              </div>
-
-              <h3 className="mt-4 text-xl font-bold text-purple-950">
-                Resultado
-              </h3>
-
-              <p className="mt-3 text-gray-600 leading-7">
-                Presentación de los productos desarrollados durante el estudio.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* GALERÍA */}
-      <section className="py-24 px-6 bg-purple-50">
+
+      <section className="py-24 px-6 bg-white">
+
         <div className="max-w-7xl mx-auto">
+
           <SectionTitle
-            subtitle="Fotografías"
-            title="Proceso experimental"
-            description="Registro visual de las diferentes etapas del desarrollo gastronómico."
+            subtitle="SambucusLab"
+            title="Exploración visual"
+            description="Estas imágenes sirven como referencia visual mientras se incorporan posteriormente los recursos gráficos propios del proyecto."
           />
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {imagenes.map((item) => (
+          <div className="grid md:grid-cols-2 gap-7">
+
+            {imagenes.map((imagen, index) => (
+
               <article
-                key={item.titulo}
-                className="group bg-white rounded-3xl overflow-hidden shadow-md hover:shadow-xl transition duration-300"
+                key={imagen.titulo}
+                className="
+                  group
+                  relative
+                  overflow-hidden
+                  rounded-[2rem]
+                  bg-purple-950
+                  shadow-lg
+                  transition-all
+                  duration-500
+                  hover:-translate-y-2
+                  hover:shadow-2xl
+                  hover:shadow-purple-900/20
+                "
               >
-                <div className="relative h-72 overflow-hidden">
-                  <img
-                    src={item.imagen}
-                    alt={item.titulo}
-                    className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
-                  />
 
-                  <div className="absolute inset-0 bg-gradient-to-t from-purple-950/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition duration-300" />
+                <img
+                  src={imagen.url}
+                  alt={imagen.titulo}
+                  className="
+                    w-full
+                    h-[360px]
+                    object-cover
+                    transition-transform
+                    duration-700
+                    group-hover:scale-110
+                  "
+                />
 
-                  <span className="absolute top-4 left-4 bg-purple-900 text-white px-3 py-1 rounded-full text-xs font-semibold">
-                    {item.categoria}
+                <div className="
+                  absolute
+                  inset-0
+                  bg-gradient-to-t
+                  from-purple-950
+                  via-purple-950/20
+                  to-transparent
+                  transition-opacity
+                  duration-300
+                  group-hover:via-purple-950/30
+                " />
+
+                <div className="absolute bottom-0 left-0 right-0 p-7 text-white">
+
+                  <span className="
+                    text-xs
+                    uppercase
+                    tracking-[0.2em]
+                    text-purple-300
+                    font-bold
+                  ">
+                    {imagen.categoria}
                   </span>
-                </div>
 
-                <div className="p-6">
-                  <h3 className="text-2xl font-bold text-purple-950">
-                    {item.titulo}
+                  <h3 className="
+                    mt-2
+                    text-2xl
+                    font-bold
+                    transition-transform
+                    duration-300
+                    group-hover:translate-x-1
+                  ">
+                    {imagen.titulo}
                   </h3>
 
-                  <p className="mt-3 text-gray-600 leading-7">
-                    {item.descripcion}
-                  </p>
+                  <div className="
+                    mt-3
+                    w-8
+                    h-1
+                    rounded-full
+                    bg-purple-300
+                    transition-all
+                    duration-300
+                    group-hover:w-14
+                  " />
+
                 </div>
+
+                <span className="
+                  absolute
+                  top-5
+                  right-5
+                  w-9
+                  h-9
+                  rounded-full
+                  bg-white/10
+                  border
+                  border-white/15
+                  flex
+                  items-center
+                  justify-center
+                  text-sm
+                  text-white
+                  transition-all
+                  duration-300
+                  group-hover:bg-white/20
+                  group-hover:scale-110
+                ">
+                  0{index + 1}
+                </span>
+
               </article>
+
             ))}
+
           </div>
+
         </div>
+
       </section>
+
 
       {/* PROCESO */}
-      <section className="py-24 px-6 bg-white">
-        <div className="max-w-6xl mx-auto">
+
+      <section className="py-24 px-6 bg-gradient-to-br from-purple-50 via-white to-violet-50">
+
+        <div className="max-w-7xl mx-auto">
+
           <SectionTitle
-            subtitle="Metodología visual"
-            title="Etapas del desarrollo"
-            description="El proceso gastronómico se relacionó directamente con las etapas experimentales de la investigación."
+            subtitle="Proceso"
+            title="Del ingrediente al producto"
+            description="La investigación conecta diferentes etapas del trabajo gastronómico."
           />
 
-          <div className="space-y-6">
-            <div className="flex flex-col md:flex-row gap-6 items-start bg-purple-50 rounded-3xl p-8">
-              <div className="flex-shrink-0 w-14 h-14 rounded-2xl bg-purple-900 text-white flex items-center justify-center text-xl font-bold">
-                01
-              </div>
+          <div className="grid md:grid-cols-3 gap-7">
 
-              <div>
-                <h3 className="text-2xl font-bold text-purple-950">
-                  Selección del fruto
+            {[
+              {
+                number: "01",
+                title: "Materia prima",
+                text: "Selección y preparación del fruto de saúco para el desarrollo experimental.",
+              },
+              {
+                number: "02",
+                title: "Transformación",
+                text: "Incorporación del ingrediente en preparaciones y diferentes niveles de concentración.",
+              },
+              {
+                number: "03",
+                title: "Evaluación",
+                text: "Observación y valoración de las características sensoriales de los productos.",
+              },
+            ].map((item) => (
+
+              <article
+                key={item.number}
+                className="
+                  group
+                  rounded-3xl
+                  bg-white
+                  border border-purple-100
+                  p-8
+                  soft-shadow
+                  transition-all
+                  duration-300
+                  hover:-translate-y-2
+                  hover:scale-[1.02]
+                  hover:bg-violet-50
+                  hover:border-purple-200
+                  hover:shadow-xl
+                  hover:shadow-purple-900/10
+                "
+              >
+
+                <span className="
+                  text-4xl
+                  font-extrabold
+                  text-purple-200
+                  transition-colors
+                  duration-300
+                  group-hover:text-purple-300
+                ">
+                  {item.number}
+                </span>
+
+                <h3 className="mt-5 text-2xl font-bold text-purple-950">
+                  {item.title}
                 </h3>
 
-                <p className="mt-3 text-gray-600 leading-7">
-                  Se seleccionaron frutos maduros de saúco con una coloración
-                  púrpura intensa y características apropiadas para el
-                  procesamiento.
+                <p className="mt-4 text-gray-600 leading-7">
+                  {item.text}
                 </p>
-              </div>
-            </div>
 
-            <div className="flex flex-col md:flex-row gap-6 items-start bg-purple-50 rounded-3xl p-8">
-              <div className="flex-shrink-0 w-14 h-14 rounded-2xl bg-purple-900 text-white flex items-center justify-center text-xl font-bold">
-                02
-              </div>
+              </article>
 
-              <div>
-                <h3 className="text-2xl font-bold text-purple-950">
-                  Obtención del zumo
-                </h3>
+            ))}
 
-                <p className="mt-3 text-gray-600 leading-7">
-                  El fruto fue procesado utilizando diferentes relaciones entre
-                  cantidad de saúco y cantidad de agua para obtener las
-                  concentraciones experimentales.
-                </p>
-              </div>
-            </div>
-
-            <div className="flex flex-col md:flex-row gap-6 items-start bg-purple-50 rounded-3xl p-8">
-              <div className="flex-shrink-0 w-14 h-14 rounded-2xl bg-purple-900 text-white flex items-center justify-center text-xl font-bold">
-                03
-              </div>
-
-              <div>
-                <h3 className="text-2xl font-bold text-purple-950">
-                  Elaboración
-                </h3>
-
-                <p className="mt-3 text-gray-600 leading-7">
-                  Las diferentes concentraciones fueron incorporadas en
-                  preparaciones tradicionales de pastelería como pavlova y
-                  mousse.
-                </p>
-              </div>
-            </div>
-
-            <div className="flex flex-col md:flex-row gap-6 items-start bg-purple-50 rounded-3xl p-8">
-              <div className="flex-shrink-0 w-14 h-14 rounded-2xl bg-purple-900 text-white flex items-center justify-center text-xl font-bold">
-                04
-              </div>
-
-              <div>
-                <h3 className="text-2xl font-bold text-purple-950">
-                  Evaluación sensorial
-                </h3>
-
-                <p className="mt-3 text-gray-600 leading-7">
-                  Los productos fueron evaluados considerando atributos como
-                  color, aroma, sabor, textura, dulzor y aceptación general.
-                </p>
-              </div>
-            </div>
           </div>
+
         </div>
+
       </section>
 
-      {/* CIERRE */}
-      <section className="py-24 px-6 bg-purple-950 text-white">
-        <div className="max-w-4xl mx-auto text-center">
-          <p className="uppercase tracking-[0.3em] text-purple-300 text-sm font-semibold">
-            SambucusLab
-          </p>
 
-          <h2 className="text-4xl md:text-5xl font-black mt-4">
-            Investigación, gastronomía y experimentación
+      {/* FUTUROS ASSETS */}
+
+      <section className="py-24 px-6 bg-purple-950 text-white">
+
+        <div className="max-w-4xl mx-auto text-center">
+
+          <span className="text-xs uppercase tracking-[0.25em] text-purple-300 font-bold">
+            Próxima etapa
+          </span>
+
+          <h2 className="mt-5 text-4xl font-extrabold">
+            Recursos visuales propios
           </h2>
 
-          <p className="mt-6 text-purple-200 text-lg leading-8">
-            Cada preparación representa una etapa del proceso de investigación
-            y una oportunidad para explorar el potencial gastronómico del
-            saúco.
+          <p className="mt-6 text-purple-100 leading-8 text-lg">
+            Posteriormente, esta galería puede incorporar fotografías propias
+            del fruto, preparación de las concentraciones, elaboración de
+            pavlova y mousse, y presentación final de los productos.
           </p>
+
         </div>
+
       </section>
+
     </main>
   );
 }

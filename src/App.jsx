@@ -4,14 +4,16 @@ import AppRouter from "./router/AppRouter";
 
 function App() {
   return (
-    <div className="bg-white min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col bg-[#faf8ff]">
+
       <Navbar />
 
-      <div className="pt-20 flex-grow">
+      <main className="pt-20 flex-grow">
         <AppRouter />
-      </div>
+      </main>
 
       <Footer />
+
     </div>
   );
 }

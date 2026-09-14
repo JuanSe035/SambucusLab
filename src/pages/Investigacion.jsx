@@ -2,469 +2,734 @@ import SectionTitle from "../components/SectionTitle";
 
 export default function Investigacion() {
   return (
-    <main className="bg-white text-gray-800">
+    <main className="bg-[#faf8ff]">
 
-      {/* HERO */}
-      <section className="bg-gradient-to-r from-purple-950 via-purple-900 to-purple-700 text-white py-24 px-6">
-        <div className="max-w-6xl mx-auto">
+      {/* =====================================================
+          HERO
+      ===================================================== */}
 
-          <p className="uppercase tracking-[0.3em] text-purple-300 text-sm font-semibold">
-            Proyecto de Investigación
-          </p>
+      <section className="relative overflow-hidden bg-gradient-to-br from-purple-950 via-violet-900 to-purple-700 text-white">
 
-          <h1 className="text-5xl md:text-6xl font-bold mt-4">
-            Investigación
+        <div className="absolute -top-40 -right-40 w-[30rem] h-[30rem] bg-purple-400/10 rounded-full blur-3xl" />
+
+        <div className="relative max-w-7xl mx-auto px-6 py-24 md:py-28">
+
+          <span className="inline-flex px-4 py-2 rounded-full bg-white/10 border border-white/15 text-xs uppercase tracking-[0.2em] text-purple-200 font-semibold">
+            Metodología
+          </span>
+
+          <h1 className="mt-7 max-w-5xl text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight">
+            Investigación sobre la aplicación del saúco en pastelería
           </h1>
 
-          <p className="mt-6 text-lg text-purple-200 max-w-3xl leading-8">
-            Análisis estadístico multivariante con diferentes niveles de
-            concentración de saúco (Sambucus nigra) aplicado en productos
-            tradicionales de pastelería.
+          <p className="mt-6 max-w-3xl text-lg text-purple-100 leading-8">
+            Diseño experimental orientado a estudiar el comportamiento de
+            diferentes concentraciones de saúco en productos tradicionales
+            de pastelería.
           </p>
 
         </div>
+
       </section>
 
-      {/* INTRODUCCIÓN */}
-      <section className="py-20 px-6">
-        <div className="max-w-6xl mx-auto">
+
+      {/* =====================================================
+          CONTEXTO
+      ===================================================== */}
+
+      <section className="py-24 px-6 bg-white">
+
+        <div className="max-w-7xl mx-auto">
 
           <SectionTitle
             subtitle="Contexto"
-            title="¿En qué consiste esta investigación?"
-            description="SambucusLab desarrolla una investigación experimental para evaluar el comportamiento del saúco en preparaciones tradicionales de pastelería mediante diferentes concentraciones de sólidos solubles (°Brix)."
+            title="Planteamiento de la investigación"
+            description="El proyecto parte del interés por ampliar el uso gastronómico del saúco y evaluar experimentalmente su incorporación en productos de pastelería."
           />
 
-          <div className="grid md:grid-cols-2 gap-12 items-center">
+          <div className="grid lg:grid-cols-2 gap-8">
 
-            <div className="space-y-6 text-lg leading-8">
-              <p>
-                El estudio analiza cómo diferentes concentraciones de zumo de
-                saúco modifican atributos sensoriales como el color, aroma,
-                sabor, textura y aceptación general en productos de pastelería.
-              </p>
+            <article
+              className="
+                group
+                rounded-3xl
+                bg-gradient-to-br
+                from-purple-50
+                to-white
+                border border-purple-100
+                p-9
+                transition-all
+                duration-300
+                hover:-translate-y-2
+                hover:scale-[1.015]
+                hover:bg-violet-50
+                hover:border-purple-200
+                hover:shadow-xl
+                hover:shadow-purple-900/10
+              "
+            >
 
-              <p>
-                Para ello se elaboraron diferentes formulaciones utilizando el
-                fruto <strong>Sambucus nigra</strong>, evaluando posteriormente
-                la percepción de los consumidores mediante un panel sensorial.
-              </p>
+              <span className="text-xs uppercase tracking-[0.2em] font-bold text-purple-600">
+                Problema
+              </span>
 
-              <p>
-                Los resultados fueron analizados utilizando herramientas de
-                estadística descriptiva y análisis multivariante para identificar
-                diferencias significativas entre las concentraciones evaluadas.
-              </p>
-            </div>
-
-            <div className="bg-purple-50 rounded-3xl p-10 border border-purple-100 shadow">
-              <h3 className="text-2xl font-bold text-purple-900 mb-6">
-                Datos generales del proyecto
+              <h3 className="
+                mt-4
+                text-2xl
+                font-bold
+                text-purple-950
+                group-hover:text-purple-900
+              ">
+                Uso limitado del saúco
               </h3>
 
-              <ul className="space-y-4 text-gray-700">
-                <li><strong>Fruto estudiado:</strong> Sambucus nigra.</li>
-                <li><strong>Área:</strong> Gastronomía experimental.</li>
-                <li><strong>Enfoque:</strong> Investigación cuantitativa experimental.</li>
-                <li><strong>Productos:</strong> Pavlova y mousse.</li>
-                <li><strong>Variable principal:</strong> Concentración de sólidos solubles (°Brix).</li>
-              </ul>
-            </div>
+              <p className="mt-5 text-gray-600 leading-8">
+                A pesar de sus características, el saúco presenta un uso
+                limitado en determinados productos de la gastronomía
+                colombiana. Esto plantea la posibilidad de estudiar nuevas
+                aplicaciones mediante procedimientos controlados.
+              </p>
+
+            </article>
+
+
+            <article
+              className="
+                group
+                rounded-3xl
+                bg-gradient-to-br
+                from-violet-50
+                to-purple-50
+                border border-violet-100
+                p-9
+                transition-all
+                duration-300
+                hover:-translate-y-2
+                hover:scale-[1.015]
+                hover:bg-violet-100/70
+                hover:border-violet-200
+                hover:shadow-xl
+                hover:shadow-violet-900/10
+              "
+            >
+
+              <span className="text-xs uppercase tracking-[0.2em] font-bold text-violet-600">
+                Pregunta de interés
+              </span>
+
+              <h3 className="
+                mt-4
+                text-2xl
+                font-bold
+                text-purple-950
+                group-hover:text-purple-900
+              ">
+                ¿Cómo influye la concentración?
+              </h3>
+
+              <p className="mt-5 text-gray-600 leading-8">
+                El estudio busca analizar cómo diferentes niveles de
+                concentración pueden modificar las características sensoriales
+                y la aceptación de productos elaborados con saúco.
+              </p>
+
+            </article>
 
           </div>
+
         </div>
+
       </section>
 
-      {/* PROBLEMA */}
-      <section className="py-20 bg-purple-50 px-6">
-        <div className="max-w-6xl mx-auto">
+
+      {/* =====================================================
+          OBJETIVOS
+      ===================================================== */}
+
+      <section className="py-24 px-6 bg-gradient-to-br from-purple-50 via-white to-violet-50">
+
+        <div className="max-w-7xl mx-auto">
 
           <SectionTitle
-            subtitle="Planteamiento"
-            title="Problema de investigación"
+            subtitle="Propósito"
+            title="Objetivos del proyecto"
+            description="La investigación integra preparación gastronómica, evaluación sensorial y análisis estadístico."
           />
 
-          <div className="bg-white rounded-3xl p-10 shadow border border-purple-100">
-            <p className="text-lg leading-8 text-gray-700">
-              Aunque el saúco posee un alto potencial gastronómico gracias a sus
-              pigmentos naturales y compuestos bioactivos, existe poca evidencia
-              experimental sobre cómo diferentes niveles de concentración afectan
-              las características sensoriales de productos tradicionales de
-              pastelería.
-            </p>
+          <div className="grid lg:grid-cols-2 gap-8">
 
-            <p className="mt-6 text-lg leading-8 text-gray-700">
-              Esta investigación busca determinar si la variación en la
-              concentración del saúco produce diferencias significativas en la
-              aceptación de preparaciones como la pavlova y el mousse.
-            </p>
-          </div>
-        </div>
-      </section>
+            <article
+              className="
+                group
+                bg-gradient-to-br
+                from-purple-950
+                to-violet-800
+                text-white
+                rounded-[2rem]
+                p-10
+                shadow-xl
+                transition-all
+                duration-300
+                hover:-translate-y-2
+                hover:scale-[1.015]
+                hover:shadow-2xl
+                hover:shadow-purple-900/20
+              "
+            >
 
-      {/* OBJETIVOS */}
-      <section className="py-20 px-6 bg-white">
-        <div className="max-w-6xl mx-auto">
-
-          <SectionTitle
-            subtitle="Objetivos"
-            title="Objetivo general y objetivos específicos"
-          />
-
-          <div className="grid md:grid-cols-2 gap-8">
-
-            <div className="bg-purple-900 text-white rounded-3xl p-8">
-              <h3 className="text-2xl font-bold mb-5">
+              <span className="text-purple-300 text-sm uppercase tracking-[0.2em] font-bold">
                 Objetivo general
+              </span>
+
+              <h3 className="mt-5 text-3xl font-bold">
+                Analizar el efecto de diferentes concentraciones de saúco
               </h3>
 
-              <p className="leading-8 text-purple-100">
-                Analizar el efecto de diferentes niveles de concentración de
-                saúco (Sambucus nigra) sobre las características sensoriales de
-                productos tradicionales de pastelería mediante herramientas de
-                análisis estadístico multivariante.
+              <p className="mt-6 text-purple-100 leading-8">
+                Estudiar la aplicación de diferentes niveles de concentración
+                de saúco en productos tradicionales de pastelería, considerando
+                sus características sensoriales y su aceptación.
               </p>
-            </div>
 
-            <div className="bg-purple-50 rounded-3xl p-8 border border-purple-100">
-              <h3 className="text-2xl font-bold text-purple-900 mb-5">
-                Objetivos específicos
-              </h3>
+            </article>
 
-              <ul className="space-y-4 text-gray-700 leading-7 list-disc list-inside">
-                <li>Preparar diferentes concentraciones de zumo de saúco.</li>
-                <li>Aplicar las concentraciones en pavlova y mousse.</li>
-                <li>Evaluar atributos sensoriales mediante un panel de consumidores.</li>
-                <li>Comparar estadísticamente los resultados obtenidos.</li>
-                <li>Identificar la concentración con mejor aceptación.</li>
-              </ul>
-            </div>
+
+            <article
+              className="
+                group
+                bg-white
+                rounded-[2rem]
+                border border-purple-100
+                p-10
+                soft-shadow
+                transition-all
+                duration-300
+                hover:-translate-y-2
+                hover:scale-[1.015]
+                hover:bg-violet-50/60
+                hover:border-purple-200
+                hover:shadow-xl
+                hover:shadow-purple-900/10
+              "
+            >
+
+              <span className="text-purple-600 text-sm uppercase tracking-[0.2em] font-bold">
+                Enfoques específicos
+              </span>
+
+              <div className="mt-6 space-y-6">
+
+                {[
+                  "Preparar diferentes concentraciones de saúco.",
+                  "Aplicarlas en productos tradicionales de pastelería.",
+                  "Evaluar características sensoriales mediante una escala de 0 a 100.",
+                  "Analizar la información obtenida mediante herramientas estadísticas.",
+                ].map((text, index) => (
+
+                  <div
+                    key={text}
+                    className="flex gap-4 group/item"
+                  >
+
+                    <span className="
+                      flex-shrink-0
+                      w-8
+                      h-8
+                      rounded-full
+                      bg-purple-100
+                      text-purple-700
+                      flex
+                      items-center
+                      justify-center
+                      text-sm
+                      font-bold
+                      transition-all
+                      duration-300
+                      group-hover/item:bg-purple-200
+                      group-hover/item:scale-110
+                    ">
+                      {index + 1}
+                    </span>
+
+                    <p className="text-gray-600 leading-7">
+                      {text}
+                    </p>
+
+                  </div>
+
+                ))}
+
+              </div>
+
+            </article>
 
           </div>
+
         </div>
+
       </section>
 
-      {/* METODOLOGÍA */}
-      <section className="py-20 bg-purple-950 text-white px-6">
-        <div className="max-w-6xl mx-auto">
+
+      {/* =====================================================
+          METODOLOGÍA
+      ===================================================== */}
+
+      <section className="py-24 px-6 bg-white">
+
+        <div className="max-w-7xl mx-auto">
 
           <SectionTitle
-            subtitle="Metodología"
-            title="Diseño experimental"
-            description="El estudio se desarrolló mediante un proceso experimental dividido en varias etapas de preparación y evaluación."
+            subtitle="Procedimiento"
+            title="Metodología experimental"
+            description="El proceso combina preparación del ingrediente, desarrollo de productos y evaluación sensorial."
           />
 
-          <div className="grid md:grid-cols-4 gap-6 mt-10">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
 
             {[
               {
-                step: "01",
-                title: "Preparación del fruto",
-                text: "Selección y procesamiento del saúco para obtener el zumo.",
+                number: "01",
+                title: "Obtención",
+                text: "Selección de frutos maduros de saúco para el desarrollo experimental.",
               },
               {
-                step: "02",
-                title: "Medición °Brix",
-                text: "Determinación de sólidos solubles mediante refractómetro.",
+                number: "02",
+                title: "Preparación",
+                text: "Lavado, transporte y conservación del fruto antes de su procesamiento.",
               },
               {
-                step: "03",
-                title: "Elaboración de productos",
-                text: "Preparación de pavlova y mousse con cada concentración.",
+                number: "03",
+                title: "Formulación",
+                text: "Preparación de concentraciones de 4°, 7° y 10° Brix.",
               },
               {
-                step: "04",
-                title: "Evaluación sensorial",
-                text: "Análisis de percepción de los consumidores mediante atributos sensoriales.",
+                number: "04",
+                title: "Evaluación",
+                text: "Valoración sensorial de los productos mediante Google Forms.",
               },
             ].map((item) => (
-              <div
-                key={item.step}
-                className="bg-purple-900 rounded-3xl p-6 border border-purple-700"
+
+              <article
+                key={item.number}
+                className="
+                  group
+                  rounded-3xl
+                  border border-purple-100
+                  bg-purple-50/60
+                  p-7
+                  transition-all
+                  duration-300
+                  hover:-translate-y-2
+                  hover:scale-[1.02]
+                  hover:bg-violet-100/70
+                  hover:border-purple-200
+                  hover:shadow-xl
+                  hover:shadow-purple-900/10
+                "
               >
-                <span className="text-purple-300 text-4xl font-black">
-                  {item.step}
+
+                <span className="
+                  text-4xl
+                  font-extrabold
+                  text-purple-200
+                  transition-colors
+                  duration-300
+                  group-hover:text-purple-300
+                ">
+                  {item.number}
                 </span>
 
-                <h3 className="mt-5 text-xl font-bold">
+                <h3 className="mt-5 text-xl font-bold text-purple-950">
                   {item.title}
                 </h3>
 
-                <p className="mt-4 text-purple-200 text-sm leading-7">
+                <p className="mt-3 text-gray-600 leading-7 text-sm">
                   {item.text}
                 </p>
-              </div>
+
+              </article>
+
             ))}
 
           </div>
+
         </div>
+
       </section>
 
-      {/* CONCENTRACIONES */}
-      <section className="py-20 bg-white px-6">
+
+      {/* =====================================================
+          CONCENTRACIONES
+      ===================================================== */}
+
+      <section className="py-24 px-6 bg-gradient-to-br from-purple-950 via-violet-900 to-purple-800 text-white">
+
         <div className="max-w-6xl mx-auto">
 
-          <SectionTitle
-            subtitle="Variable independiente"
-            title="Concentraciones evaluadas (°Brix)"
-            description="Las formulaciones se prepararon utilizando diferentes relaciones entre fruto y agua para obtener tres niveles de concentración."
-          />
+          <div className="text-center mb-14">
 
-          <div className="grid md:grid-cols-3 gap-8">
+            <span className="text-xs uppercase tracking-[0.25em] text-purple-300 font-bold">
+              Diseño experimental
+            </span>
+
+            <h2 className="mt-5 text-4xl md:text-5xl font-extrabold">
+              Niveles de concentración
+            </h2>
+
+          </div>
+
+
+          <div className="grid md:grid-cols-3 gap-6">
 
             {[
               {
-                brix: "4° Brix",
-                title: "Concentración baja",
-                relation: "150 g de fruto + 300 ml de agua",
-                color: "bg-purple-50",
+                brix: "4°",
+                fruit: "150 g",
+                water: "300 ml",
+                label: "Concentración baja",
               },
               {
-                brix: "7° Brix",
-                title: "Concentración media",
-                relation: "150 g de fruto + 150 ml de agua",
-                color: "bg-purple-100",
+                brix: "7°",
+                fruit: "150 g",
+                water: "150 ml",
+                label: "Concentración media",
               },
               {
-                brix: "10° Brix",
-                title: "Concentración alta",
-                relation: "250 g de fruto + 150 ml de agua",
-                color: "bg-purple-200",
+                brix: "10°",
+                fruit: "250 g",
+                water: "150 ml",
+                label: "Concentración alta",
               },
             ].map((item) => (
-              <div
+
+              <article
                 key={item.brix}
-                className={`${item.color} rounded-3xl p-8 border border-purple-100 shadow-md`}
+                className="
+                  group
+                  rounded-3xl
+                  bg-white/10
+                  border border-white/10
+                  backdrop-blur-sm
+                  p-8
+                  transition-all
+                  duration-300
+                  hover:-translate-y-2
+                  hover:scale-[1.02]
+                  hover:bg-white/15
+                  hover:border-white/20
+                "
               >
-                <h3 className="text-5xl font-bold text-purple-800">
+
+                <p className="text-purple-300 text-sm uppercase tracking-[0.2em] font-bold">
+                  {item.label}
+                </p>
+
+                <p className="
+                  mt-5
+                  text-5xl
+                  font-extrabold
+                  transition-transform
+                  duration-300
+                  group-hover:scale-105
+                  origin-left
+                ">
                   {item.brix}
-                </h3>
-
-                <p className="mt-5 text-xl font-semibold text-purple-900">
-                  {item.title}
                 </p>
 
-                <p className="mt-6 leading-7 text-gray-700">
-                  {item.relation}
+                <p className="text-purple-200 mt-1">
+                  grados Brix
                 </p>
-              </div>
+
+                <div className="mt-7 pt-6 border-t border-white/10 space-y-3 text-sm">
+
+                  <div className="flex justify-between">
+                    <span className="text-purple-200">Fruto</span>
+                    <span className="font-semibold">
+                      {item.fruit}
+                    </span>
+                  </div>
+
+                  <div className="flex justify-between">
+                    <span className="text-purple-200">Agua</span>
+                    <span className="font-semibold">
+                      {item.water}
+                    </span>
+                  </div>
+
+                </div>
+
+              </article>
+
             ))}
 
           </div>
+
         </div>
+
       </section>
 
-      {/* PRODUCTOS */}
-      <section className="py-20 bg-purple-50 px-6">
-        <div className="max-w-6xl mx-auto">
 
-          <SectionTitle
-            subtitle="Productos de estudio"
-            title="Aplicación del saúco en preparaciones de pastelería"
-            description="Cada concentración fue incorporada en dos productos tradicionales para comparar su comportamiento sensorial."
-          />
+      {/* =====================================================
+          PRODUCTOS Y VARIABLES
+      ===================================================== */}
 
-          <div className="grid md:grid-cols-2 gap-10">
+      <section className="py-24 px-6 bg-white">
 
-            <div className="bg-white rounded-3xl shadow-lg p-8 border border-purple-100">
-              <h3 className="text-3xl font-bold text-purple-900">
-                Pavlova
-              </h3>
-
-              <p className="mt-6 leading-8 text-gray-700">
-                Se elaboró una pavlova utilizando las diferentes concentraciones
-                de saúco para evaluar cambios en color, dulzor, aroma y textura
-                del merengue horneado.
-              </p>
-
-              <ul className="mt-6 space-y-3 text-gray-600 list-disc list-inside">
-                <li>Color superficial.</li>
-                <li>Textura del merengue.</li>
-                <li>Sabor característico del saúco.</li>
-                <li>Aceptación general.</li>
-              </ul>
-            </div>
-
-            <div className="bg-white rounded-3xl shadow-lg p-8 border border-purple-100">
-              <h3 className="text-3xl font-bold text-purple-900">
-                Mousse
-              </h3>
-
-              <p className="mt-6 leading-8 text-gray-700">
-                El mousse permitió analizar el comportamiento del saúco en una
-                preparación fría, comparando la intensidad de sabor y la
-                percepción sensorial entre las formulaciones.
-              </p>
-
-              <ul className="mt-6 space-y-3 text-gray-600 list-disc list-inside">
-                <li>Color del producto.</li>
-                <li>Aroma frutal.</li>
-                <li>Dulzor percibido.</li>
-                <li>Textura cremosa.</li>
-              </ul>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-      {/* VARIABLES */}
-      <section className="py-20 bg-white px-6">
-        <div className="max-w-6xl mx-auto">
-
-          <SectionTitle
-            subtitle="Variables"
-            title="Diseño de la investigación"
-          />
-
-          <div className="grid md:grid-cols-3 gap-8">
-
-            {[
-              {
-                title: "Variable independiente",
-                text: "Concentración del zumo de saúco medida en grados Brix.",
-              },
-              {
-                title: "Variables dependientes",
-                text: "Color, aroma, sabor, textura y aceptación general de los productos.",
-              },
-              {
-                title: "Instrumento de medición",
-                text: "Escala hedónica aplicada durante la evaluación sensorial de consumidores.",
-              },
-            ].map((item) => (
-              <div
-                key={item.title}
-                className="bg-purple-50 rounded-3xl p-8 border border-purple-100"
-              >
-                <h3 className="text-xl font-bold text-purple-900">
-                  {item.title}
-                </h3>
-
-                <p className="mt-5 text-gray-700 leading-7">
-                  {item.text}
-                </p>
-              </div>
-            ))}
-
-          </div>
-        </div>
-      </section>
-
-      {/* EVALUACIÓN SENSORIAL */}
-      <section className="py-20 bg-purple-50 px-6">
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-7xl mx-auto">
 
           <SectionTitle
             subtitle="Evaluación"
-            title="Atributos sensoriales analizados"
-            description="Cada participante evaluó diferentes características de los productos preparados con saúco."
+            title="Productos y variables analizadas"
+            description="Las preparaciones se evaluaron considerando diferentes atributos sensoriales."
           />
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid lg:grid-cols-2 gap-8">
 
-            {[
-              "Color",
-              "Aroma",
-              "Sabor",
-              "Textura",
-              "Dulzor",
-              "Aceptación general",
-            ].map((item) => (
-              <div
-                key={item}
-                className="bg-white rounded-2xl p-8 text-center shadow border border-purple-100"
-              >
-                <div className="w-16 h-16 rounded-full bg-purple-700 text-white flex items-center justify-center mx-auto text-2xl font-bold">
-                  {item.charAt(0)}
-                </div>
+            <article
+              className="
+                group
+                rounded-[2rem]
+                bg-gradient-to-br
+                from-purple-50
+                to-violet-50
+                border border-purple-100
+                p-9
+                transition-all
+                duration-300
+                hover:-translate-y-2
+                hover:scale-[1.015]
+                hover:shadow-xl
+                hover:shadow-purple-900/10
+              "
+            >
 
-                <h3 className="mt-6 text-xl font-bold text-purple-900">
-                  {item}
-                </h3>
+              <h3 className="text-3xl font-bold text-purple-950">
+                Productos
+              </h3>
+
+              <div className="mt-7 space-y-4">
+
+                {["Pavlova", "Mousse"].map((product) => (
+
+                  <div
+                    key={product}
+                    className="
+                      group/item
+                      flex
+                      items-center
+                      gap-4
+                      bg-white
+                      rounded-2xl
+                      p-5
+                      border border-purple-100
+                      transition-all
+                      duration-300
+                      hover:bg-violet-50
+                      hover:border-purple-200
+                      hover:translate-x-1
+                    "
+                  >
+
+                    <div className="
+                      w-10
+                      h-10
+                      rounded-xl
+                      bg-purple-900
+                      text-white
+                      flex
+                      items-center
+                      justify-center
+                      font-bold
+                      transition-transform
+                      duration-300
+                      group-hover/item:scale-110
+                    ">
+                      ✓
+                    </div>
+
+                    <span className="font-semibold text-purple-950">
+                      {product}
+                    </span>
+
+                  </div>
+
+                ))}
+
               </div>
-            ))}
+
+            </article>
+
+
+            <article
+              className="
+                group
+                rounded-[2rem]
+                bg-white
+                border border-purple-100
+                p-9
+                shadow-sm
+                transition-all
+                duration-300
+                hover:-translate-y-2
+                hover:scale-[1.015]
+                hover:bg-violet-50/50
+                hover:border-purple-200
+                hover:shadow-xl
+                hover:shadow-purple-900/10
+              "
+            >
+
+              <h3 className="text-3xl font-bold text-purple-950">
+                Atributos sensoriales
+              </h3>
+
+              <div className="mt-7 flex flex-wrap gap-3">
+
+                {[
+                  "Sabor",
+                  "Aroma",
+                  "Apariencia",
+                  "Textura",
+                  "Color",
+                  "Aceptación general",
+                ].map((attribute) => (
+
+                  <span
+                    key={attribute}
+                    className="
+                      px-4
+                      py-2.5
+                      rounded-full
+                      bg-purple-50
+                      border border-purple-100
+                      text-purple-800
+                      text-sm
+                      font-medium
+                      transition-all
+                      duration-300
+                      hover:bg-violet-100
+                      hover:border-purple-200
+                      hover:-translate-y-1
+                      hover:shadow-sm
+                    "
+                  >
+                    {attribute}
+                  </span>
+
+                ))}
+
+              </div>
+
+              <p className="mt-7 text-gray-600 leading-7">
+                La valoración se realizó utilizando una escala de 0 a 100,
+                donde los valores permitieron expresar la percepción de los
+                participantes frente a las características evaluadas.
+              </p>
+
+            </article>
 
           </div>
+
         </div>
+
       </section>
 
-      {/* ANÁLISIS ESTADÍSTICO */}
-      <section className="py-20 bg-purple-950 text-white px-6">
-        <div className="max-w-6xl mx-auto">
+
+      {/* =====================================================
+          MÉTODOS ESTADÍSTICOS
+      ===================================================== */}
+
+      <section className="py-24 px-6 bg-gradient-to-br from-purple-50 to-violet-50">
+
+        <div className="max-w-7xl mx-auto">
 
           <SectionTitle
-            subtitle="Análisis estadístico"
-            title="Herramientas utilizadas en la investigación"
-            description="Los datos obtenidos fueron procesados utilizando diferentes métodos estadísticos para identificar patrones y diferencias significativas."
+            subtitle="Análisis de datos"
+            title="Herramientas estadísticas"
+            description="La investigación contempla diferentes técnicas para estudiar los resultados obtenidos."
           />
 
-          <div className="grid md:grid-cols-2 gap-8 mt-12">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
 
             {[
-              {
-                title: "Estadística descriptiva",
-                text: "Resumen de medias, frecuencias y comportamiento general de los datos obtenidos.",
-              },
-              {
-                title: "ANOVA",
-                text: "Comparación entre las concentraciones para identificar diferencias estadísticamente significativas.",
-              },
-              {
-                title: "Prueba de Tukey",
-                text: "Comparación múltiple entre tratamientos después del ANOVA.",
-              },
-              {
-                title: "Chi-cuadrado",
-                text: "Análisis de asociación entre variables categóricas del estudio sensorial.",
-              },
-              {
-                title: "PCA",
-                text: "Análisis de Componentes Principales para reducir dimensionalidad y visualizar patrones.",
-              },
-              {
-                title: "Clustering y MCA",
-                text: "Agrupamiento de observaciones y análisis de correspondencias múltiples para interpretar relaciones entre variables.",
-              },
-            ].map((card) => (
-              <div
-                key={card.title}
-                className="bg-purple-900 rounded-3xl p-8 border border-purple-700"
+              ["ANOVA", "Comparación de medias entre grupos."],
+              ["Tukey", "Análisis posterior para identificar diferencias entre grupos."],
+              ["Chi-cuadrado", "Análisis de asociación entre variables categóricas."],
+              ["Modelo multinomial", "Análisis de respuestas categóricas con múltiples alternativas."],
+              ["PCA", "Análisis de componentes principales para explorar relaciones multivariantes."],
+              ["Clustering / MCA", "Exploración de agrupaciones y relaciones entre variables categóricas."],
+            ].map(([title, text]) => (
+
+              <article
+                key={title}
+                className="
+                  group
+                  bg-white
+                  rounded-3xl
+                  border border-purple-100
+                  p-7
+                  soft-shadow
+                  transition-all
+                  duration-300
+                  hover:-translate-y-2
+                  hover:scale-[1.02]
+                  hover:bg-violet-50
+                  hover:border-purple-200
+                  hover:shadow-xl
+                  hover:shadow-purple-900/10
+                "
               >
-                <h3 className="text-xl font-bold text-purple-100">
-                  {card.title}
+
+                <h3 className="
+                  text-xl
+                  font-bold
+                  text-purple-900
+                  transition-transform
+                  duration-300
+                  group-hover:translate-x-1
+                ">
+                  {title}
                 </h3>
 
-                <p className="mt-5 text-purple-300 leading-8 text-sm">
-                  {card.text}
+                <p className="mt-3 text-gray-600 leading-7 text-sm">
+                  {text}
                 </p>
-              </div>
+
+              </article>
+
             ))}
 
           </div>
+
         </div>
+
       </section>
 
-      {/* CONCLUSIÓN */}
-      <section className="py-20 bg-white px-6">
-        <div className="max-w-5xl mx-auto text-center">
 
-          <SectionTitle
-            subtitle="Conclusión metodológica"
-            title="Una investigación basada en evidencia experimental"
-            description="SambucusLab integra gastronomía, evaluación sensorial y análisis estadístico para estudiar el potencial del saúco como ingrediente innovador en productos de pastelería."
-          />
+      {/* =====================================================
+          CIERRE
+      ===================================================== */}
 
-          <div className="bg-purple-50 rounded-3xl p-10 border border-purple-100 mt-10">
-            <p className="text-lg leading-8 text-gray-700">
-              El diseño experimental permite comparar objetivamente diferentes
-              niveles de concentración de saúco y determinar cuáles generan una
-              mejor percepción sensorial en los consumidores, proporcionando una
-              base científica para futuras aplicaciones gastronómicas.
-            </p>
-          </div>
+      <section className="py-24 px-6 bg-white">
+
+        <div className="max-w-4xl mx-auto text-center">
+
+          <span className="text-xs uppercase tracking-[0.25em] text-purple-600 font-bold">
+            Síntesis metodológica
+          </span>
+
+          <h2 className="mt-5 text-4xl md:text-5xl font-extrabold text-purple-950">
+            Gastronomía + datos + investigación
+          </h2>
+
+          <p className="mt-6 text-gray-600 text-lg leading-8">
+            El proyecto integra procedimientos gastronómicos con evaluación
+            sensorial y herramientas estadísticas para estudiar el potencial
+            del saúco en productos tradicionales de pastelería.
+          </p>
 
         </div>
+
       </section>
 
     </main>

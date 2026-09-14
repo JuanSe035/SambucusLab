@@ -1,1 +1,171 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@600;700;800&display=swap");
+
 @import "tailwindcss";
+
+/* =========================================================
+   CONFIGURACIÓN GLOBAL
+   ========================================================= */
+
+:root {
+  font-family: "Inter", sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  color: #1f1733;
+  background: #faf8ff;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  font-family: "Inter", sans-serif;
+  background: #faf8ff;
+  color: #1f1733;
+}
+
+/* =========================================================
+   ELEMENTOS GENERALES
+   ========================================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+button,
+input,
+textarea,
+select {
+  font-family: "Inter", sans-serif;
+}
+
+button {
+  cursor: pointer;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* =========================================================
+   TIPOGRAFÍA
+   ========================================================= */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Inter", sans-serif;
+  margin-top: 0;
+  letter-spacing: -0.025em;
+}
+
+p,
+span,
+a,
+button,
+label,
+input,
+textarea,
+select {
+  font-family: "Inter", sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* =========================================================
+   SELECCIÓN DE TEXTO
+   ========================================================= */
+
+::selection {
+  background: #7e22ce;
+  color: white;
+}
+
+/* =========================================================
+   BARRA DE DESPLAZAMIENTO
+   ========================================================= */
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f3effb;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    180deg,
+    #7e22ce,
+    #4c1d95
+  );
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(
+    180deg,
+    #6b21a8,
+    #3b0764
+  );
+}
+
+/* =========================================================
+   CLASES VISUALES DEL PROYECTO
+   ========================================================= */
+
+.sambucus-gradient {
+  background: linear-gradient(
+    135deg,
+    #2e1065 0%,
+    #4c1d95 35%,
+    #7e22ce 70%,
+    #a855f7 100%
+  );
+}
+
+.sambucus-gradient-soft {
+  background: linear-gradient(
+    135deg,
+    #faf5ff 0%,
+    #f3e8ff 45%,
+    #ede9fe 100%
+  );
+}
+
+.sambucus-gradient-dark {
+  background: linear-gradient(
+    135deg,
+    #1e0a3c 0%,
+    #2e1065 45%,
+    #4c1d95 100%
+  );
+}
+
+.glass-purple {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.soft-shadow {
+  box-shadow:
+    0 10px 30px rgba(76, 29, 149, 0.08),
+    0 2px 8px rgba(76, 29, 149, 0.05);
+}
+
+.purple-shadow {
+  box-shadow:
+    0 20px 50px rgba(76, 29, 149, 0.16),
+    0 8px 20px rgba(76, 29, 149, 0.08);
+}
