@@ -1,582 +1,1617 @@
-import Hero from "../components/Hero";
-import SectionTitle from "../components/SectionTitle";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { FaArrowRight, FaFlask, FaLeaf, FaChartLine } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
+import Hero from "../components/Hero";
+import SectionTitle from "../components/SectionTitle";
+import Reveal from "../components/Reveal";
+import FloatingBerry from "../components/FloatingBerry";
+import GlowButton from "../components/GlowButton";
+
 export default function Home() {
+  const { scrollYProgress } = useScroll();
+
+  const backgroundY = useTransform(
+    scrollYProgress,
+    [0, 1],
+    [0, -250]
+  );
+
   return (
-    <main>
+    <main className="overflow-hidden bg-[#faf8ff]">
+
+      {/* =====================================================
+          HERO
+      ===================================================== */}
 
       <Hero />
 
-
       {/* =====================================================
-          SOBRE EL SAÚCO
+          BARRA DE PROGRESO
       ===================================================== */}
 
-      <section className="py-24 px-6 bg-white">
+      <motion.div
+        className="
+          fixed
+          top-0
+          left-0
+          right-0
+          h-1
+          bg-gradient-to-r
+          from-fuchsia-500
+          via-purple-500
+          to-violet-300
+          origin-left
+          z-[9999]
+        "
+        style={{
+          scaleX: scrollYProgress,
+        }}
+      />
 
-        <div className="max-w-7xl mx-auto">
+      {/* =====================================================
+          INTRODUCCIÓN
+      ===================================================== */}
 
-          <SectionTitle
-            subtitle="Sambucus nigra"
-            title="Conociendo el saúco"
-            description="El saúco es el ingrediente central de esta investigación y representa una alternativa de interés para la innovación gastronómica."
-          />
+      <section className="relative py-24 md:py-32 px-6 bg-white overflow-hidden">
 
+        <FloatingBerry
+          size={15}
+          top="15%"
+          left="5%"
+          delay={0}
+          duration={7}
+          opacity={0.45}
+        />
 
-          <div className="grid lg:grid-cols-2 gap-14 items-center">
+        <FloatingBerry
+          size={22}
+          top="70%"
+          left="92%"
+          delay={1}
+          duration={8}
+          opacity={0.35}
+        />
 
-            {/* INFORMACIÓN */}
+        <motion.div
+          style={{
+            y: backgroundY,
+          }}
+          className="
+            absolute
+            -top-40
+            right-[-10rem]
+            w-[35rem]
+            h-[35rem]
+            rounded-full
+            bg-purple-100/60
+            blur-[100px]
+            pointer-events-none
+          "
+        />
 
-            <div>
+        <div className="relative max-w-7xl mx-auto">
 
-              <div className="space-y-5 text-gray-600 leading-8">
+          <Reveal direction="up">
+            <SectionTitle
+              subtitle="Sambucus nigra"
+              title="Conociendo el saúco"
+              description="El ingrediente central de nuestra investigación."
+            />
+          </Reveal>
+
+          <div className="grid lg:grid-cols-2 gap-14 lg:gap-20 items-center">
+
+            {/* TEXTO */}
+
+            <Reveal direction="left">
+
+              <div
+                className="
+                  space-y-6
+                  leading-8
+                "
+                style={{
+                  color: "#374151",
+                }}
+              >
 
                 <p>
-                  El saúco pertenece al género
-                  <span className="italic font-semibold text-purple-800">
-                    {" "}Sambucus
-                  </span>
-                  {" "}y presenta frutos pequeños agrupados en racimos.
+                  El saúco pertenece al género{" "}
+                  <span
+                    className="italic font-semibold"
+                    style={{ color: "#581c87" }}
+                  >
+                    Sambucus
+                  </span>{" "}
+                  y presenta frutos pequeños agrupados en racimos.
                   En su estado maduro puede presentar una coloración
                   púrpura oscura característica.
                 </p>
 
                 <p>
-                  En el contexto gastronómico, sus propiedades de color,
-                  aroma y sabor permiten estudiar su incorporación en
-                  productos de pastelería y desarrollar preparaciones
-                  con características sensoriales diferenciadas.
+                  En el contexto gastronómico, sus características de
+                  color, aroma y sabor permiten estudiar su incorporación
+                  en productos de pastelería y analizar su comportamiento
+                  dentro de diferentes formulaciones.
                 </p>
 
                 <p>
                   SambucusLab estudia este potencial mediante diferentes
                   concentraciones aplicadas a productos tradicionales
-                  de pastelería.
+                  de pastelería, relacionando la formulación con la
+                  percepción sensorial.
                 </p>
 
               </div>
 
-
               {/* DATOS */}
 
-              <div className="mt-9 grid sm:grid-cols-2 gap-4">
+              <div className="mt-10 grid sm:grid-cols-2 gap-4">
 
                 {[
                   ["Género", "Sambucus"],
                   ["Especie", "Sambucus nigra"],
                   ["Fruto", "Baya pequeña de tonalidad oscura"],
                   ["Color", "Púrpura intenso en estado maduro"],
-                ].map(([title, text]) => (
+                ].map(([title, text], index) => (
 
-                  <div
+                  <motion.div
                     key={title}
                     className="
+                      group
+                      relative
+                      overflow-hidden
                       rounded-2xl
                       bg-purple-50
-                      border border-purple-100
+                      border
+                      border-purple-100
                       p-5
-                      hover:bg-violet-50
-                      hover:border-purple-200
-                      hover:-translate-y-1
-                      hover:shadow-lg
-                      transition-all duration-300
+                      cursor-default
                     "
+                    initial={{
+                      opacity: 0,
+                      y: 25,
+                    }}
+                    whileInView={{
+                      opacity: 1,
+                      y: 0,
+                    }}
+                    viewport={{
+                      once: true,
+                      amount: 0.2,
+                    }}
+                    transition={{
+                      delay: index * 0.08,
+                      duration: 0.6,
+                    }}
+                    whileHover={{
+                      y: -7,
+                      scale: 1.02,
+                    }}
                   >
 
-                    <p className="text-xs uppercase tracking-[0.15em] text-purple-600 font-bold">
+                    <div
+                      className="
+                        absolute
+                        -right-8
+                        -top-8
+                        w-24
+                        h-24
+                        rounded-full
+                        bg-purple-200/30
+                        blur-2xl
+                        opacity-0
+                        group-hover:opacity-100
+                        transition-opacity
+                        duration-300
+                      "
+                    />
+
+                    <p
+                      className="
+                        relative
+                        text-xs
+                        uppercase
+                        tracking-[0.15em]
+                        font-bold
+                      "
+                      style={{ color: "#7e22ce" }}
+                    >
                       {title}
                     </p>
 
-                    <p className="mt-2 text-purple-950 font-semibold">
+                    <p
+                      className="
+                        relative
+                        mt-2
+                        font-semibold
+                      "
+                      style={{ color: "#2e1065" }}
+                    >
                       {text}
                     </p>
 
-                  </div>
+                  </motion.div>
 
                 ))}
 
               </div>
 
-            </div>
-
+            </Reveal>
 
             {/* IMAGEN */}
 
-            <div className="relative">
+            <Reveal direction="right">
 
-              <div className="absolute inset-0 bg-purple-300/20 blur-3xl rounded-full" />
+              <motion.div
+                className="
+                  relative
+                  mx-auto
+                  max-w-xl
+                  w-full
+                "
+                whileHover={{
+                  scale: 1.02,
+                }}
+                transition={{
+                  duration: 0.5,
+                }}
+              >
 
-              <div className="relative overflow-hidden rounded-[2rem] shadow-2xl border border-purple-100">
-
-                <img
-                  src="https://images.unsplash.com/photo-1595231776515-ddffb1f4eb73?auto=format&fit=crop&w=1000&q=85"
-                  alt="Frutos de saúco"
+                <div
                   className="
-                    w-full
-                    h-[420px]
-                    object-cover
-                    hover:scale-105
-                    transition-transform duration-700
+                    absolute
+                    inset-[-30px]
+                    rounded-full
+                    bg-purple-300/20
+                    blur-[60px]
                   "
                 />
 
-                <div className="absolute inset-0 bg-gradient-to-t from-purple-950/40 via-transparent to-transparent" />
+                <motion.div
+                  className="
+                    relative
+                    overflow-hidden
+                    rounded-[2.5rem]
+                    border
+                    border-purple-100
+                    shadow-[0_30px_70px_rgba(76,29,149,0.18)]
+                  "
+                  whileHover={{
+                    rotateX: 2,
+                    rotateY: -2,
+                  }}
+                  style={{
+                    perspective: 1000,
+                  }}
+                >
 
-              </div>
+                  <img
+                    src="https://images.unsplash.com/photo-1595231776515-ddffb1f4eb73?auto=format&fit=crop&w=1000&q=90"
+                    alt="Frutos de saúco"
+                    className="
+                      w-full
+                      h-[420px]
+                      object-cover
+                      transition-transform
+                      duration-700
+                      hover:scale-110
+                    "
+                  />
 
-            </div>
+                  <div
+                    className="
+                      absolute
+                      inset-0
+                      bg-gradient-to-t
+                      from-purple-950/60
+                      via-transparent
+                      to-transparent
+                    "
+                  />
+
+                  <div
+                    className="
+                      absolute
+                      bottom-0
+                      left-0
+                      right-0
+                      p-8
+                    "
+                    style={{
+                      color: "#ffffff",
+                      textShadow: "0 2px 8px rgba(0,0,0,0.4)",
+                    }}
+                  >
+
+                    <div className="flex items-center gap-3">
+
+                      <div
+                        className="
+                          w-10
+                          h-10
+                          rounded-xl
+                          bg-white/10
+                          border
+                          border-white/15
+                          backdrop-blur-md
+                          flex
+                          items-center
+                          justify-center
+                        "
+                      >
+                        <FaLeaf className="text-purple-200" />
+                      </div>
+
+                      <div>
+
+                        <p
+                          className="
+                            text-xs
+                            uppercase
+                            tracking-[0.2em]
+                            font-bold
+                          "
+                          style={{ color: "#e9d5ff" }}
+                        >
+                          Ingrediente central
+                        </p>
+
+                        <p
+                          className="text-lg font-bold"
+                          style={{ color: "#ffffff" }}
+                        >
+                          Sambucus nigra
+                        </p>
+
+                      </div>
+
+                    </div>
+
+                  </div>
+
+                </motion.div>
+
+              </motion.div>
+
+            </Reveal>
 
           </div>
-
         </div>
-
       </section>
 
-
       {/* =====================================================
-          PROPIEDADES DEL SAÚCO
+          PROPIEDADES
       ===================================================== */}
 
-      <section className="py-24 px-6 bg-gradient-to-br from-purple-50 via-white to-violet-50">
+      <section
+        className="
+          relative
+          py-24
+          md:py-32
+          px-6
+          bg-gradient-to-br
+          from-purple-50
+          via-white
+          to-violet-50
+          overflow-hidden
+        "
+      >
 
-        <div className="max-w-7xl mx-auto">
+        <FloatingBerry
+          size={18}
+          top="20%"
+          left="94%"
+          delay={1}
+          duration={7}
+          opacity={0.4}
+        />
 
-          <SectionTitle
-            subtitle="Composición"
-            title="Propiedades de interés"
-            description="El interés gastronómico del saúco también se relaciona con la presencia de diferentes compuestos bioactivos."
-          />
+        <FloatingBerry
+          size={12}
+          top="80%"
+          left="7%"
+          delay={2}
+          duration={6}
+          opacity={0.5}
+        />
+
+        <div className="
+          absolute
+          -left-40
+          top-20
+          w-96
+          h-96
+          rounded-full
+          bg-fuchsia-200/30
+          blur-[100px]
+        " />
+
+        <div className="relative max-w-7xl mx-auto">
+
+          <Reveal>
+
+            <SectionTitle
+              subtitle="Composición"
+              title="Propiedades de interés"
+              description="El saúco presenta diferentes componentes de interés para el estudio gastronómico y alimentario."
+            />
+
+          </Reveal>
 
           <div className="grid md:grid-cols-2 gap-6">
 
             {[
               {
+                number: "01",
+                icon: "A",
                 title: "Antocianinas",
-                text: "Pigmentos responsables de tonalidades rojizas, violetas y púrpuras presentes en diferentes frutos.",
+                text:
+                  "Pigmentos responsables de tonalidades rojizas, violetas y púrpuras presentes en diferentes frutos.",
               },
               {
+                number: "02",
+                icon: "P",
                 title: "Polifenoles",
-                text: "Grupo de compuestos fenólicos de interés estudiados por su presencia en diferentes especies vegetales.",
+                text:
+                  "Grupo de compuestos fenólicos de interés estudiados por su presencia en diferentes especies vegetales.",
               },
               {
+                number: "03",
+                icon: "F",
                 title: "Flavonoides",
-                text: "Compuestos presentes de manera natural en plantas y asociados con diferentes características bioactivas.",
+                text:
+                  "Compuestos presentes de manera natural en plantas y asociados con diferentes características bioactivas.",
               },
               {
+                number: "04",
+                icon: "C",
                 title: "Vitamina C",
-                text: "Nutriente presente en el fruto que complementa el interés nutricional de esta especie.",
+                text:
+                  "Nutriente presente en el fruto que complementa el interés nutricional de esta especie.",
               },
             ].map((item, index) => (
 
-              <article
+              <Reveal
                 key={item.title}
-                className="
-                  group
-                  relative
-                  overflow-hidden
-                  rounded-3xl
-                  p-8
-                  bg-white
-                  border border-purple-100
-                  hover:bg-purple-50
-                  hover:border-purple-200
-                  hover:-translate-y-1
-                  hover:shadow-xl
-                  transition-all duration-300
-                "
+                direction={index % 2 === 0 ? "left" : "right"}
+                delay={index * 0.08}
               >
 
-                <span className="
-                  absolute
-                  right-7
-                  top-6
-                  text-5xl
-                  font-black
-                  text-purple-100
-                  group-hover:text-purple-200
-                  transition-colors
-                ">
-                  0{index + 1}
-                </span>
+                <motion.article
+                  className="
+                    group
+                    relative
+                    overflow-hidden
+                    rounded-[2rem]
+                    bg-white
+                    border
+                    border-purple-100
+                    p-8
+                    shadow-sm
+                    cursor-default
+                  "
+                  whileHover={{
+                    y: -8,
+                    scale: 1.015,
+                  }}
+                  transition={{
+                    type: "spring",
+                    stiffness: 260,
+                    damping: 20,
+                  }}
+                >
 
-                <div className="relative">
+                  {/* Glow */}
 
-                  <div className="w-10 h-1 rounded-full bg-gradient-to-r from-purple-700 to-violet-400 mb-6" />
+                  <div
+                    className="
+                      absolute
+                      -right-20
+                      -top-20
+                      w-52
+                      h-52
+                      rounded-full
+                      bg-purple-200/40
+                      blur-3xl
+                      opacity-0
+                      group-hover:opacity-100
+                      transition-opacity
+                      duration-500
+                    "
+                  />
 
-                  <h3 className="text-2xl font-bold text-purple-950">
-                    {item.title}
-                  </h3>
+                  <div className="relative">
 
-                  <p className="mt-4 text-gray-600 leading-7 max-w-xl">
-                    {item.text}
-                  </p>
+                    <div className="flex items-start justify-between">
 
-                </div>
+                      <div
+                        className="
+                          w-14
+                          h-14
+                          rounded-2xl
+                          bg-gradient-to-br
+                          from-purple-700
+                          to-violet-500
+                          text-white
+                          flex
+                          items-center
+                          justify-center
+                          text-xl
+                          font-extrabold
+                          shadow-lg
+                          group-hover:rotate-6
+                          group-hover:scale-110
+                          transition-all
+                          duration-300
+                        "
+                      >
+                        {item.icon}
+                      </div>
 
-              </article>
+                      <span
+                        className="
+                          text-5xl
+                          font-black
+                          group-hover:text-purple-200
+                          transition-colors
+                        "
+                        style={{ color: "#ede9fe" }}
+                      >
+                        {item.number}
+                      </span>
+
+                    </div>
+
+                    <h3
+                      className="
+                        mt-7
+                        text-2xl
+                        font-bold
+                      "
+                      style={{ color: "#2e1065" }}
+                    >
+                      {item.title}
+                    </h3>
+
+                    <p
+                      className="
+                        mt-4
+                        leading-7
+                      "
+                      style={{ color: "#374151" }}
+                    >
+                      {item.text}
+                    </p>
+
+                    <div
+                      className="
+                        mt-7
+                        h-1
+                        w-12
+                        rounded-full
+                        bg-gradient-to-r
+                        from-purple-700
+                        to-fuchsia-400
+                        group-hover:w-24
+                        transition-all
+                        duration-500
+                      "
+                    />
+
+                  </div>
+
+                </motion.article>
+
+              </Reveal>
 
             ))}
 
           </div>
-
         </div>
-
       </section>
 
-
       {/* =====================================================
-          APLICACIÓN GASTRONÓMICA
+          PROCESO
       ===================================================== */}
 
-      <section className="py-24 px-6 bg-white">
+      <section className="relative py-24 md:py-32 px-6 bg-white overflow-hidden">
 
-        <div className="max-w-7xl mx-auto">
-
-          <SectionTitle
-            subtitle="Aplicación gastronómica"
-            title="Del fruto a la pastelería"
-            description="La investigación estudia cómo el saúco puede incorporarse a preparaciones tradicionales y cómo diferentes concentraciones modifican sus características sensoriales."
-          />
-
-          <div className="grid md:grid-cols-3 gap-6">
-
-            {[
-              [
-                "01",
-                "Preparación",
-                "Obtención y preparación del fruto para su incorporación en las formulaciones.",
-              ],
-              [
-                "02",
-                "Concentración",
-                "Evaluación de diferentes niveles de sólidos solubles expresados en grados Brix.",
-              ],
-              [
-                "03",
-                "Evaluación",
-                "Análisis de atributos sensoriales y aceptación de los productos desarrollados.",
-              ],
-            ].map(([number, title, text]) => (
-
-              <article
-                key={number}
-                className="
-                  rounded-3xl
-                  bg-gradient-to-br from-purple-50 to-violet-50
-                  border border-purple-100
-                  p-8
-                  hover:bg-purple-100/60
-                  hover:-translate-y-1
-                  hover:shadow-xl
-                  transition-all duration-300
-                "
-              >
-
-                <span className="text-4xl font-extrabold text-purple-200">
-                  {number}
-                </span>
-
-                <h3 className="mt-5 text-xl font-bold text-purple-950">
-                  {title}
-                </h3>
-
-                <p className="mt-3 text-gray-600 leading-7">
-                  {text}
-                </p>
-
-              </article>
-
-            ))}
-
-          </div>
-
-        </div>
-
-      </section>
-
-
-      {/* =====================================================
-          CONCENTRACIONES
-      ===================================================== */}
-
-      <section className="relative overflow-hidden py-24 px-6 bg-gradient-to-br from-purple-50 via-white to-violet-50">
-
-        <div className="absolute -top-32 -right-32 w-96 h-96 rounded-full bg-purple-200/30 blur-3xl" />
+        <div
+          className="
+            absolute
+            left-1/2
+            top-0
+            bottom-0
+            w-px
+            bg-gradient-to-b
+            from-transparent
+            via-purple-200
+            to-transparent
+            hidden
+            lg:block
+          "
+        />
 
         <div className="relative max-w-7xl mx-auto">
 
-          <SectionTitle
-            subtitle="Diseño experimental"
-            title="Tres concentraciones de estudio"
-            description="La investigación analiza diferentes niveles de sólidos solubles expresados en grados Brix."
-          />
+          <Reveal>
 
-          <div className="grid md:grid-cols-3 gap-7">
+            <SectionTitle
+              subtitle="Aplicación gastronómica"
+              title="Del fruto a la pastelería"
+              description="La investigación conecta el ingrediente, la formulación y la evaluación sensorial."
+            />
+
+          </Reveal>
+
+          <div className="grid md:grid-cols-3 gap-8">
+
+            {[
+              {
+                number: "01",
+                title: "Preparación",
+                icon: FaLeaf,
+                text:
+                  "Obtención y preparación del fruto para su incorporación en las formulaciones experimentales.",
+              },
+              {
+                number: "02",
+                title: "Concentración",
+                icon: FaFlask,
+                text:
+                  "Evaluación de diferentes niveles de sólidos solubles expresados en grados Brix.",
+              },
+              {
+                number: "03",
+                title: "Evaluación",
+                icon: FaChartLine,
+                text:
+                  "Análisis de atributos sensoriales y aceptación de los productos desarrollados.",
+              },
+            ].map((item, index) => {
+
+              const Icon = item.icon;
+
+              return (
+                <Reveal
+                  key={item.number}
+                  direction="up"
+                  delay={index * 0.15}
+                >
+
+                  <motion.article
+                    className="
+                      group
+                      relative
+                      rounded-[2rem]
+                      bg-gradient-to-br
+                      from-purple-50
+                      to-violet-50
+                      border
+                      border-purple-100
+                      p-8
+                      text-center
+                      overflow-hidden
+                    "
+                    whileHover={{
+                      y: -10,
+                      scale: 1.025,
+                    }}
+                    transition={{
+                      type: "spring",
+                      stiffness: 250,
+                    }}
+                  >
+
+                    <div
+                      className="
+                        absolute
+                        inset-0
+                        bg-gradient-to-br
+                        from-purple-500/0
+                        via-purple-500/0
+                        to-fuchsia-500/10
+                        opacity-0
+                        group-hover:opacity-100
+                        transition-opacity
+                        duration-500
+                      "
+                    />
+
+                    <div className="relative">
+
+                      <div
+                        className="
+                          mx-auto
+                          w-16
+                          h-16
+                          rounded-2xl
+                          bg-purple-900
+                          text-white
+                          flex
+                          items-center
+                          justify-center
+                          shadow-lg
+                          group-hover:rotate-6
+                          group-hover:scale-110
+                          transition-all
+                          duration-300
+                        "
+                      >
+                        <Icon className="text-xl" />
+                      </div>
+
+                      <span
+                        className="
+                          block
+                          mt-6
+                          text-sm
+                          font-extrabold
+                          tracking-[0.2em]
+                        "
+                        style={{ color: "#7e22ce" }}
+                      >
+                        {item.number}
+                      </span>
+
+                      <h3
+                        className="
+                          mt-3
+                          text-2xl
+                          font-bold
+                        "
+                        style={{ color: "#2e1065" }}
+                      >
+                        {item.title}
+                      </h3>
+
+                      <p
+                        className="
+                          mt-4
+                          leading-7
+                        "
+                        style={{ color: "#374151" }}
+                      >
+                        {item.text}
+                      </p>
+
+                    </div>
+
+                  </motion.article>
+
+                </Reveal>
+              );
+            })}
+
+          </div>
+        </div>
+      </section>
+
+      {/* =====================================================
+          CONCENTRACIONES BRIX
+      ===================================================== */}
+
+      <section
+        className="
+          relative
+          overflow-hidden
+          py-24
+          md:py-32
+          px-6
+          bg-gradient-to-br
+          from-purple-950
+          via-violet-900
+          to-purple-800
+          text-white
+        "
+      >
+
+        <div
+          className="
+            absolute
+            -top-40
+            -right-40
+            w-[35rem]
+            h-[35rem]
+            rounded-full
+            bg-fuchsia-500/10
+            blur-[100px]
+          "
+        />
+
+        <div
+          className="
+            absolute
+            -bottom-40
+            -left-40
+            w-[35rem]
+            h-[35rem]
+            rounded-full
+            bg-purple-400/10
+            blur-[100px]
+          "
+        />
+
+        <FloatingBerry
+          size={16}
+          top="17%"
+          left="8%"
+          delay={0}
+          duration={7}
+          opacity={0.5}
+        />
+
+        <FloatingBerry
+          size={24}
+          top="78%"
+          left="90%"
+          delay={1}
+          duration={9}
+          opacity={0.4}
+        />
+
+        <div className="relative max-w-7xl mx-auto">
+
+          <Reveal>
+
+            <div className="max-w-3xl mx-auto text-center">
+
+              <span
+                className="
+                  inline-flex
+                  px-4
+                  py-2
+                  rounded-full
+                  bg-white/10
+                  border
+                  border-white/10
+                  text-xs
+                  uppercase
+                  tracking-[0.25em]
+                  font-bold
+                "
+                style={{ color: "#e9d5ff" }}
+              >
+                Diseño experimental
+              </span>
+
+              <h2
+                className="
+                  mt-6
+                  text-4xl
+                  md:text-5xl
+                  font-extrabold
+                  leading-tight
+                "
+                style={{
+                  color: "#ffffff",
+                  textShadow: "0 3px 12px rgba(0,0,0,0.35)",
+                }}
+              >
+                Tres concentraciones
+                <span
+                  className="block"
+                  style={{ color: "#d8b4fe" }}
+                >
+                  para estudiar
+                </span>
+              </h2>
+
+              <p
+                className="
+                  mt-6
+                  text-lg
+                  leading-8
+                "
+                style={{ color: "#f3e8ff" }}
+              >
+                La investigación analiza diferentes
+                niveles de sólidos solubles expresados
+                en grados Brix.
+              </p>
+
+            </div>
+
+          </Reveal>
+
+          <div className="
+            mt-14
+            grid
+            md:grid-cols-3
+            gap-6
+          ">
 
             {[
               {
                 brix: "4°",
                 label: "Nivel bajo",
-                description:
-                  "Concentración de menor intensidad, orientada a explorar perfiles sensoriales más suaves.",
+                text:
+                  "Concentración de menor intensidad para explorar perfiles sensoriales más suaves.",
               },
               {
                 brix: "7°",
                 label: "Nivel medio",
-                description:
+                text:
                   "Concentración intermedia utilizada para comparar intensidad y aceptación sensorial.",
               },
               {
                 brix: "10°",
                 label: "Nivel alto",
-                description:
-                  "Mayor concentración utilizada para estudiar una expresión sensorial más intensa del saúco.",
+                text:
+                  "Mayor concentración utilizada para estudiar una expresión sensorial más intensa.",
               },
             ].map((item, index) => (
 
-              <article
+              <Reveal
                 key={item.brix}
-                className={`
-                  relative
-                  overflow-hidden
-                  rounded-3xl
-                  p-8
-                  border
-                  hover:-translate-y-2
-                  hover:shadow-xl
-                  transition-all duration-300
-                  ${
-                    index === 1
-                      ? "bg-gradient-to-br from-purple-900 to-violet-700 text-white border-purple-800"
-                      : "bg-white border-purple-100"
-                  }
-                `}
+                direction="up"
+                delay={index * 0.12}
               >
 
-                <p
-                  className={
-                    index === 1
-                      ? "text-sm uppercase tracking-[0.2em] text-purple-200 font-bold"
-                      : "text-sm uppercase tracking-[0.2em] text-purple-500 font-bold"
-                  }
+                <motion.article
+                  className="
+                    group
+                    relative
+                    overflow-hidden
+                    rounded-[2rem]
+                    p-8
+                    border
+                    border-white/10
+                    bg-white/10
+                    backdrop-blur-md
+                    cursor-default
+                  "
+                  whileHover={{
+                    y: -12,
+                    scale: 1.035,
+                    rotateX: 3,
+                    rotateY: index === 1 ? 0 : index === 0 ? -2 : 2,
+                  }}
+                  transition={{
+                    type: "spring",
+                    stiffness: 220,
+                    damping: 18,
+                  }}
+                  style={{
+                    perspective: 1000,
+                  }}
                 >
-                  {item.label}
-                </p>
 
-                <p
-                  className={
-                    index === 1
-                      ? "mt-5 text-5xl font-extrabold"
-                      : "mt-5 text-5xl font-extrabold text-purple-900"
-                  }
-                >
-                  {item.brix}
-                </p>
+                  <div
+                    className="
+                      absolute
+                      top-0
+                      left-0
+                      right-0
+                      h-1
+                      bg-gradient-to-r
+                      from-purple-300
+                      via-fuchsia-300
+                      to-violet-300
+                      opacity-70
+                    "
+                  />
 
-                <p
-                  className={
-                    index === 1
-                      ? "text-lg font-semibold text-purple-200 mt-1"
-                      : "text-lg font-semibold text-purple-700 mt-1"
-                  }
-                >
-                  Brix
-                </p>
+                  <span
+                    className="
+                      text-xs
+                      uppercase
+                      tracking-[0.2em]
+                      font-bold
+                    "
+                    style={{ color: "#d8b4fe" }}
+                  >
+                    {item.label}
+                  </span>
 
-                <p
-                  className={
-                    index === 1
-                      ? "mt-5 text-purple-100 leading-7"
-                      : "mt-5 text-gray-600 leading-7"
-                  }
-                >
-                  {item.description}
-                </p>
+                  <p
+                    className="
+                      mt-6
+                      text-6xl
+                      font-black
+                    "
+                    style={{
+                      color: "#ffffff",
+                      textShadow: "0 3px 10px rgba(0,0,0,0.3)",
+                    }}
+                  >
+                    {item.brix}
+                  </p>
 
-              </article>
+                  <p
+                    className="
+                      text-lg
+                      font-semibold
+                    "
+                    style={{ color: "#d8b4fe" }}
+                  >
+                    grados Brix
+                  </p>
+
+                  <p
+                    className="
+                      mt-6
+                      leading-7
+                    "
+                    style={{ color: "#f3e8ff" }}
+                  >
+                    {item.text}
+                  </p>
+
+                  <div className="
+                    mt-7
+                    pt-5
+                    border-t
+                    border-white/10
+                    flex
+                    items-center
+                    justify-between
+                  ">
+
+                    <span
+                      className="
+                        text-xs
+                        uppercase
+                        tracking-wider
+                      "
+                      style={{ color: "#d8b4fe" }}
+                    >
+                      Concentración
+                    </span>
+
+                    <motion.span
+                      className="
+                        text-xl
+                      "
+                      style={{ color: "#e9d5ff" }}
+                      animate={{
+                        x: [0, 5, 0],
+                      }}
+                      transition={{
+                        duration: 2,
+                        repeat: Infinity,
+                      }}
+                    >
+                      →
+                    </motion.span>
+
+                  </div>
+
+                </motion.article>
+
+              </Reveal>
 
             ))}
 
           </div>
-
         </div>
-
       </section>
-
 
       {/* =====================================================
           PRODUCTOS
       ===================================================== */}
 
-      <section className="py-24 px-6 bg-white">
+      <section className="relative py-24 md:py-32 px-6 bg-white overflow-hidden">
 
-        <div className="max-w-7xl mx-auto">
+        <FloatingBerry
+          size={14}
+          top="18%"
+          left="96%"
+          delay={1}
+          duration={6}
+          opacity={0.35}
+        />
 
-          <SectionTitle
-            subtitle="Aplicaciones gastronómicas"
-            title="Productos desarrollados"
-            description="Las concentraciones estudiadas fueron incorporadas en preparaciones tradicionales de pastelería."
-          />
+        <div className="relative max-w-7xl mx-auto">
+
+          <Reveal>
+
+            <SectionTitle
+              subtitle="Aplicaciones gastronómicas"
+              title="Productos desarrollados"
+              description="Las concentraciones estudiadas fueron incorporadas en preparaciones tradicionales de pastelería."
+            />
+
+          </Reveal>
 
           <div className="grid lg:grid-cols-2 gap-8">
 
             {/* PAVLOVA */}
 
-            <article
-              className="
-                rounded-[2rem]
-                bg-gradient-to-br
-                from-purple-950
-                via-purple-900
-                to-violet-800
-                text-white
-                p-10
-                shadow-xl
-                hover:-translate-y-2
-                hover:shadow-2xl
-                transition-all duration-300
-              "
-            >
+            <Reveal direction="left">
 
-              <span className="text-xs uppercase tracking-[0.2em] text-purple-300 font-bold">
-                Producto 01
-              </span>
-
-              <h3 className="mt-5 text-4xl font-extrabold">
-                Pavlova
-              </h3>
-
-              <p className="mt-5 text-purple-100 leading-8">
-                Preparación basada en merengue horneado, utilizada para
-                analizar el efecto de las diferentes concentraciones de
-                saúco sobre atributos como color, textura, aroma y sabor.
-              </p>
-
-              <Link
-                to="/recetas"
+              <motion.article
                 className="
-                  inline-flex
-                  mt-8
-                  px-5
-                  py-3
-                  rounded-xl
-                  bg-white
-                  text-purple-900
-                  font-semibold
-                  hover:bg-purple-50
-                  transition
+                  group
+                  relative
+                  overflow-hidden
+                  rounded-[2.5rem]
+                  bg-gradient-to-br
+                  from-purple-950
+                  via-purple-900
+                  to-violet-800
+                  text-white
+                  p-10
+                  md:p-12
+                  shadow-[0_25px_60px_rgba(76,29,149,0.2)]
                 "
+                whileHover={{
+                  y: -10,
+                  scale: 1.015,
+                }}
+                transition={{
+                  type: "spring",
+                  stiffness: 220,
+                }}
               >
-                Ver preparación
-              </Link>
 
-            </article>
+                <div
+                  className="
+                    absolute
+                    -right-24
+                    -top-24
+                    w-72
+                    h-72
+                    rounded-full
+                    bg-fuchsia-500/10
+                    blur-3xl
+                    group-hover:scale-125
+                    transition-transform
+                    duration-700
+                  "
+                />
 
+                <div className="relative">
+
+                  <span
+                    className="
+                      text-xs
+                      uppercase
+                      tracking-[0.2em]
+                      font-bold
+                    "
+                    style={{ color: "#d8b4fe" }}
+                  >
+                    Producto 01
+                  </span>
+
+                  <h3
+                    className="
+                      mt-5
+                      text-4xl
+                      md:text-5xl
+                      font-extrabold
+                    "
+                    style={{
+                      color: "#ffffff",
+                      textShadow: "0 3px 10px rgba(0,0,0,0.3)",
+                    }}
+                  >
+                    Pavlova
+                  </h3>
+
+                  <p
+                    className="
+                      mt-5
+                      leading-8
+                      max-w-xl
+                    "
+                    style={{ color: "#f3e8ff" }}
+                  >
+                    Preparación basada en merengue horneado,
+                    utilizada para analizar el efecto de las
+                    diferentes concentraciones de saúco sobre
+                    atributos como color, textura, aroma y sabor.
+                  </p>
+
+                  <Link
+                    to="/recetas"
+                    className="
+                      group/button
+                      inline-flex
+                      items-center
+                      gap-3
+                      mt-8
+                      rounded-2xl
+                      bg-white
+                      text-purple-900
+                      px-6
+                      py-3.5
+                      font-bold
+                      shadow-lg
+                      hover:bg-purple-50
+                      hover:shadow-2xl
+                      transition-all
+                      duration-300
+                    "
+                  >
+                    Ver preparación
+
+                    <FaArrowRight
+                      className="
+                        transition-transform
+                        duration-300
+                        group-hover/button:translate-x-2
+                      "
+                    />
+                  </Link>
+
+                </div>
+
+              </motion.article>
+
+            </Reveal>
 
             {/* MOUSSE */}
 
-            <article
-              className="
-                rounded-[2rem]
-                bg-gradient-to-br
-                from-purple-50
-                to-violet-100
-                border border-purple-100
-                p-10
-                shadow-lg
-                hover:-translate-y-2
-                hover:bg-violet-50
-                hover:shadow-xl
-                transition-all duration-300
-              "
-            >
+            <Reveal direction="right">
 
-              <span className="text-xs uppercase tracking-[0.2em] text-purple-600 font-bold">
-                Producto 02
-              </span>
-
-              <h3 className="mt-5 text-4xl font-extrabold text-purple-950">
-                Mousse
-              </h3>
-
-              <p className="mt-5 text-gray-600 leading-8">
-                Preparación de textura aireada empleada para estudiar la
-                influencia del saúco en el perfil sensorial y en la
-                aceptación general del producto.
-              </p>
-
-              <Link
-                to="/recetas"
+              <motion.article
                 className="
-                  inline-flex
-                  mt-8
-                  px-5
-                  py-3
-                  rounded-xl
-                  bg-purple-900
-                  text-white
-                  font-semibold
-                  hover:bg-purple-800
-                  transition
+                  group
+                  relative
+                  overflow-hidden
+                  rounded-[2.5rem]
+                  bg-gradient-to-br
+                  from-purple-50
+                  to-violet-100
+                  border
+                  border-purple-100
+                  p-10
+                  md:p-12
+                  shadow-lg
                 "
+                whileHover={{
+                  y: -10,
+                  scale: 1.015,
+                }}
+                transition={{
+                  type: "spring",
+                  stiffness: 220,
+                }}
               >
-                Ver preparación
-              </Link>
 
-            </article>
+                <div
+                  className="
+                    absolute
+                    -left-24
+                    -bottom-24
+                    w-72
+                    h-72
+                    rounded-full
+                    bg-purple-300/20
+                    blur-3xl
+                    group-hover:scale-125
+                    transition-transform
+                    duration-700
+                  "
+                />
+
+                <div className="relative">
+
+                  <span
+                    className="
+                      text-xs
+                      uppercase
+                      tracking-[0.2em]
+                      font-bold
+                    "
+                    style={{ color: "#7e22ce" }}
+                  >
+                    Producto 02
+                  </span>
+
+                  <h3
+                    className="
+                      mt-5
+                      text-4xl
+                      md:text-5xl
+                      font-extrabold
+                    "
+                    style={{ color: "#2e1065" }}
+                  >
+                    Mousse
+                  </h3>
+
+                  <p
+                    className="
+                      mt-5
+                      leading-8
+                      max-w-xl
+                    "
+                    style={{ color: "#374151" }}
+                  >
+                    Preparación de textura aireada empleada
+                    para estudiar la influencia del saúco
+                    en el perfil sensorial y en la aceptación
+                    general del producto.
+                  </p>
+
+                  <Link
+                    to="/recetas"
+                    className="
+                      group/button
+                      inline-flex
+                      items-center
+                      gap-3
+                      mt-8
+                      rounded-2xl
+                      bg-purple-900
+                      text-white
+                      px-6
+                      py-3.5
+                      font-bold
+                      shadow-lg
+                      hover:bg-purple-800
+                      hover:shadow-xl
+                      transition-all
+                      duration-300
+                    "
+                  >
+                    Ver preparación
+
+                    <FaArrowRight
+                      className="
+                        transition-transform
+                        duration-300
+                        group-hover/button:translate-x-2
+                      "
+                    />
+                  </Link>
+
+                </div>
+
+              </motion.article>
+
+            </Reveal>
 
           </div>
-
         </div>
-
       </section>
 
-
       {/* =====================================================
-          RESULTADOS
+          LLAMADO A RESULTADOS
       ===================================================== */}
 
-      <section className="relative overflow-hidden py-24 px-6 bg-gradient-to-br from-purple-950 via-violet-950 to-purple-900 text-white">
+      <section
+        className="
+          relative
+          overflow-hidden
+          py-24
+          md:py-32
+          px-6
+          bg-gradient-to-br
+          from-purple-950
+          via-violet-950
+          to-purple-900
+          text-white
+        "
+      >
 
-        <div className="absolute top-0 right-0 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl" />
+        <motion.div
+          className="
+            absolute
+            left-1/2
+            top-1/2
+            -translate-x-1/2
+            -translate-y-1/2
+            w-[40rem]
+            h-[40rem]
+            rounded-full
+            bg-purple-500/10
+            blur-[120px]
+          "
+          animate={{
+            scale: [1, 1.2, 1],
+            opacity: [0.3, 0.55, 0.3],
+          }}
+          transition={{
+            duration: 8,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+
+        <FloatingBerry
+          size={18}
+          top="18%"
+          left="10%"
+          delay={1}
+          duration={8}
+          opacity={0.4}
+        />
+
+        <FloatingBerry
+          size={12}
+          top="72%"
+          left="88%"
+          delay={2}
+          duration={7}
+          opacity={0.5}
+        />
 
         <div className="relative max-w-4xl mx-auto text-center">
 
-          <span className="inline-block text-xs uppercase tracking-[0.25em] text-purple-300 font-bold">
-            Resultados del estudio
-          </span>
+          <Reveal direction="zoom">
 
-          <h2 className="mt-5 text-4xl md:text-5xl font-extrabold leading-tight">
-            ¿Cómo influyó la concentración de saúco?
-          </h2>
+            <span
+              className="
+                inline-flex
+                items-center
+                gap-2
+                px-4
+                py-2
+                rounded-full
+                bg-white/10
+                border
+                border-white/10
+                text-xs
+                uppercase
+                tracking-[0.25em]
+                font-bold
+              "
+              style={{ color: "#d8b4fe" }}
+            >
+              <span className="
+                w-2
+                h-2
+                rounded-full
+                bg-purple-300
+                animate-pulse
+              " />
+              Resultados del estudio
+            </span>
 
-          <p className="mt-6 text-purple-100 text-lg leading-8 max-w-2xl mx-auto">
-            Explora los principales hallazgos del análisis sensorial y
-            conoce cómo la concentración modificó las características
-            percibidas en los productos desarrollados.
-          </p>
+            <h2
+              className="
+                mt-7
+                text-4xl
+                md:text-6xl
+                font-extrabold
+                leading-tight
+              "
+              style={{
+                color: "#ffffff",
+                textShadow: "0 3px 12px rgba(0,0,0,0.4)",
+              }}
+            >
+              ¿Cómo influyó la concentración
+              <span
+                className="block"
+                style={{ color: "#d8b4fe" }}
+              >
+                de saúco?
+              </span>
+            </h2>
 
-          <Link
-            to="/resultados"
-            className="
-              inline-flex
-              mt-9
-              items-center
-              px-7
-              py-4
-              rounded-xl
-              bg-white
-              text-purple-900
-              font-bold
-              shadow-lg
-              hover:bg-purple-50
-              hover:-translate-y-0.5
-              transition-all duration-300
-            "
-          >
-            Explorar resultados
-          </Link>
+            <p
+              className="
+                mt-7
+                text-lg
+                leading-8
+                max-w-2xl
+                mx-auto
+              "
+              style={{ color: "#f3e8ff" }}
+            >
+              Explora los principales hallazgos del
+              análisis sensorial y conoce cómo las
+              concentraciones modificaron las
+              características percibidas en los
+              productos desarrollados.
+            </p>
+
+            <div className="mt-10">
+
+              <GlowButton
+                to="/resultados"
+                variant="light"
+              >
+                Explorar resultados
+              </GlowButton>
+
+            </div>
+
+          </Reveal>
+
+        </div>
+      </section>
+
+      {/* =====================================================
+          CIERRE
+      ===================================================== */}
+
+      <section className="py-20 px-6 bg-[#faf8ff]">
+
+        <div className="max-w-5xl mx-auto">
+
+          <Reveal direction="up">
+
+            <div
+              className="
+                relative
+                overflow-hidden
+                rounded-[2.5rem]
+                border
+                border-purple-100
+                bg-white
+                p-10
+                md:p-14
+                text-center
+                shadow-[0_20px_60px_rgba(76,29,149,0.08)]
+              "
+            >
+
+              <div
+                className="
+                  absolute
+                  -top-24
+                  left-1/2
+                  -translate-x-1/2
+                  w-64
+                  h-64
+                  rounded-full
+                  bg-purple-100
+                  blur-3xl
+                "
+              />
+
+              <div className="relative">
+
+                <FaFlask
+                  className="
+                    mx-auto
+                    text-3xl
+                    text-purple-700
+                  "
+                />
+
+                <h2
+                  className="
+                    mt-5
+                    text-3xl
+                    md:text-4xl
+                    font-extrabold
+                  "
+                  style={{ color: "#2e1065" }}
+                >
+                  Investigación + gastronomía
+                </h2>
+
+                <p
+                  className="
+                    mt-5
+                    max-w-2xl
+                    mx-auto
+                    leading-8
+                  "
+                  style={{ color: "#374151" }}
+                >
+                  SambucusLab conecta el análisis
+                  experimental con la aplicación
+                  gastronómica para estudiar el
+                  comportamiento del saúco en
+                  productos tradicionales de pastelería.
+                </p>
+
+                <div className="mt-8">
+
+                  <GlowButton
+                    to="/investigacion"
+                    variant="primary"
+                  >
+                    Conocer el proyecto
+                  </GlowButton>
+
+                </div>
+
+              </div>
+
+            </div>
+
+          </Reveal>
 
         </div>
 

@@ -1,17 +1,56 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@600;700;800&display=swap");
+/* =========================================================
+   SAMBUCUSLAB V3.0
+   SISTEMA VISUAL GLOBAL
+   Tailwind CSS v4
+========================================================= */
 
 @import "tailwindcss";
 
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&display=swap");
+
 /* =========================================================
-   CONFIGURACIÓN GLOBAL
-   ========================================================= */
+   VARIABLES
+========================================================= */
 
 :root {
-  font-family: "Inter", sans-serif;
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  color: #1f1733;
-  background: #faf8ff;
+  --primary: #6d28d9;
+  --primary-dark: #3b0764;
+  --secondary: #9333ea;
+  --accent: #c084fc;
+
+  --bg: #faf8ff;
+  --surface: #ffffff;
+
+  --text: #24113a;
+  --text-light: #66567d;
+
+  --gradient-main: linear-gradient(
+    135deg,
+    #2e1065 0%,
+    #4c1d95 35%,
+    #6d28d9 70%,
+    #8b5cf6 100%
+  );
+
+  --gradient-card: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.97),
+    rgba(250, 245, 255, 0.94)
+  );
+
+  --shadow-purple:
+    0 20px 50px rgba(109, 40, 217, 0.2);
+
+  --shadow-glow:
+    0 0 30px rgba(168, 85, 247, 0.35);
+}
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+  box-sizing: border-box;
 }
 
 html {
@@ -22,38 +61,119 @@ body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
-  font-family: "Inter", sans-serif;
+
+  font-family: "Plus Jakarta Sans", sans-serif;
+
   background: #faf8ff;
-  color: #1f1733;
+  color: var(--text);
+
+  overflow-x: hidden;
+
+  line-height: 1.65;
+
+  position: relative;
 }
 
 /* =========================================================
-   ELEMENTOS GENERALES
-   ========================================================= */
+   FONDO GLOBAL
+========================================================= */
 
-* {
-  box-sizing: border-box;
+body::before {
+  content: "";
+
+  position: fixed;
+  inset: 0;
+
+  z-index: -3;
+
+  background:
+    radial-gradient(
+      circle at 20% 20%,
+      rgba(168, 85, 247, 0.18),
+      transparent 35%
+    ),
+    radial-gradient(
+      circle at 80% 10%,
+      rgba(147, 51, 234, 0.18),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 90% 70%,
+      rgba(192, 132, 252, 0.16),
+      transparent 35%
+    ),
+    radial-gradient(
+      circle at 15% 85%,
+      rgba(124, 58, 237, 0.16),
+      transparent 35%
+    );
+
+  animation: backgroundMove 18s ease infinite alternate;
+
+  pointer-events: none;
 }
 
-button,
-input,
-textarea,
-select {
-  font-family: "Inter", sans-serif;
+/* =========================================================
+   CUADRÍCULA DECORATIVA
+========================================================= */
+
+body::after {
+  content: "";
+
+  position: fixed;
+  inset: 0;
+
+  z-index: -2;
+
+  pointer-events: none;
+
+  background-image:
+    linear-gradient(
+      rgba(109, 40, 217, 0.025) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(109, 40, 217, 0.025) 1px,
+      transparent 1px
+    );
+
+  background-size: 45px 45px;
+
+  opacity: 0.6;
 }
 
-button {
-  cursor: pointer;
-}
+/* =========================================================
+   ELEMENTOS BÁSICOS
+========================================================= */
 
 img {
   max-width: 100%;
   display: block;
 }
 
+button,
+input,
+textarea,
+select {
+  font-family: "Plus Jakarta Sans", sans-serif;
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+}
+
+p {
+  color: #5b5470;
+}
+
 /* =========================================================
-   TIPOGRAFÍA
-   ========================================================= */
+   TITULOS
+========================================================= */
 
 h1,
 h2,
@@ -61,29 +181,30 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Inter", sans-serif;
-  margin-top: 0;
+  font-family: "Plus Jakarta Sans", sans-serif;
+
+  color: #2e1065;
+
+  font-weight: 800;
+
   letter-spacing: -0.025em;
 }
 
-p,
-span,
-a,
-button,
-label,
-input,
-textarea,
-select {
-  font-family: "Inter", sans-serif;
+h1 {
+  line-height: 1.05;
 }
 
-a {
-  text-decoration: none;
+h2 {
+  line-height: 1.1;
+}
+
+h3 {
+  line-height: 1.2;
 }
 
 /* =========================================================
-   SELECCIÓN DE TEXTO
-   ========================================================= */
+   SELECCIÓN
+========================================================= */
 
 ::selection {
   background: #7e22ce;
@@ -91,11 +212,11 @@ a {
 }
 
 /* =========================================================
-   BARRA DE DESPLAZAMIENTO
-   ========================================================= */
+   SCROLLBAR
+========================================================= */
 
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 11px;
 }
 
 ::-webkit-scrollbar-track {
@@ -105,23 +226,28 @@ a {
 ::-webkit-scrollbar-thumb {
   background: linear-gradient(
     180deg,
-    #7e22ce,
+    #a855f7,
+    #6d28d9,
     #4c1d95
   );
+
   border-radius: 999px;
+
+  border: 2px solid #f3effb;
 }
 
 ::-webkit-scrollbar-thumb:hover {
   background: linear-gradient(
     180deg,
-    #6b21a8,
+    #c084fc,
+    #7e22ce,
     #3b0764
   );
 }
 
 /* =========================================================
-   CLASES VISUALES DEL PROYECTO
-   ========================================================= */
+   GRADIENTES
+========================================================= */
 
 .sambucus-gradient {
   background: linear-gradient(
@@ -151,12 +277,255 @@ a {
   );
 }
 
-.glass-purple {
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+.hero-gradient {
+  background:
+    radial-gradient(
+      circle at top left,
+      rgba(192, 132, 252, 0.25),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at bottom right,
+      rgba(147, 51, 234, 0.18),
+      transparent 35%
+    ),
+    linear-gradient(
+      135deg,
+      #2e1065,
+      #4c1d95,
+      #6d28d9,
+      #8b5cf6
+    );
 }
+
+/* =========================================================
+   GLASSMORPHISM
+========================================================= */
+
+.glass {
+  background: rgba(255, 255, 255, 0.08);
+
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.glass-light {
+  background: rgba(255, 255, 255, 0.65);
+
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+/* =========================================================
+   TARJETAS
+========================================================= */
+
+.card-purple {
+  background: var(--gradient-card);
+
+  border: 1px solid rgba(139, 92, 246, 0.15);
+
+  border-radius: 28px;
+
+  box-shadow:
+    0 10px 35px rgba(109, 40, 217, 0.08);
+
+  transition:
+    transform 0.45s ease,
+    box-shadow 0.45s ease,
+    border-color 0.45s ease;
+
+  overflow: hidden;
+}
+
+.card-purple:hover {
+  transform: translateY(-10px) scale(1.02);
+
+  border-color: rgba(139, 92, 246, 0.3);
+
+  box-shadow:
+    0 20px 50px rgba(109, 40, 217, 0.18),
+    0 0 30px rgba(168, 85, 247, 0.12);
+}
+
+/* =========================================================
+   TARJETAS 3D
+========================================================= */
+
+.card-3d {
+  transform-style: preserve-3d;
+
+  perspective: 1000px;
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.card-3d:hover {
+  transform:
+    rotateX(6deg)
+    rotateY(-6deg)
+    translateY(-8px)
+    scale(1.03);
+
+  box-shadow:
+    0 20px 50px rgba(109, 40, 217, 0.2),
+    0 0 35px rgba(168, 85, 247, 0.15);
+}
+
+/* =========================================================
+   BOTONES GLOW
+========================================================= */
+
+.glow-btn {
+  position: relative;
+
+  overflow: hidden;
+
+  border: none;
+
+  cursor: pointer;
+
+  color: white;
+
+  font-weight: 700;
+
+  border-radius: 16px;
+
+  padding: 15px 28px;
+
+  background: var(--gradient-main);
+
+  box-shadow:
+    0 10px 30px rgba(109, 40, 217, 0.3);
+
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.glow-btn:hover {
+  transform:
+    translateY(-3px)
+    scale(1.05);
+
+  box-shadow:
+    0 20px 40px rgba(109, 40, 217, 0.45),
+    0 0 35px rgba(192, 132, 252, 0.35);
+}
+
+.glow-btn:active {
+  transform: scale(0.97);
+}
+
+.glow-btn::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: -120%;
+
+  width: 60%;
+  height: 100%;
+
+  transform: skewX(-25deg);
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.75),
+    transparent
+  );
+}
+
+.glow-btn:hover::before {
+  animation: shine 1s forwards;
+}
+
+.glow-outline {
+  background: transparent;
+
+  color: white;
+
+  border: 2px solid rgba(255, 255, 255, 0.35);
+
+  backdrop-filter: blur(12px);
+}
+
+.glow-outline:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+/* =========================================================
+   TEXTO CON GLOW
+========================================================= */
+
+.text-glow {
+  text-shadow:
+    0 0 12px rgba(196, 181, 253, 0.45),
+    0 0 25px rgba(167, 139, 250, 0.25);
+}
+
+.gradient-text {
+  background: linear-gradient(
+    90deg,
+    #6d28d9,
+    #a855f7,
+    #c084fc
+  );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  -webkit-text-fill-color: transparent;
+}
+
+/* =========================================================
+   IMÁGENES
+========================================================= */
+
+.image-hover {
+  overflow: hidden;
+
+  border-radius: 24px;
+}
+
+.image-hover img {
+  transition:
+    transform 0.8s ease;
+}
+
+.image-hover:hover img {
+  transform: scale(1.08);
+}
+
+/* =========================================================
+   HOVER
+========================================================= */
+
+.hover-lift {
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-8px);
+}
+
+.hover-purple:hover {
+  background: #f3e8ff;
+}
+
+/* =========================================================
+   SOMBRAS
+========================================================= */
 
 .soft-shadow {
   box-shadow:
@@ -168,4 +537,318 @@ a {
   box-shadow:
     0 20px 50px rgba(76, 29, 149, 0.16),
     0 8px 20px rgba(76, 29, 149, 0.08);
+}
+
+.glow-shadow {
+  box-shadow:
+    0 0 30px rgba(168, 85, 247, 0.35);
+}
+
+/* =========================================================
+   BADGES
+========================================================= */
+
+.badge-purple {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  padding: 8px 16px;
+
+  border-radius: 999px;
+
+  background: rgba(109, 40, 217, 0.08);
+
+  color: #6d28d9;
+
+  font-size: 0.75rem;
+
+  font-weight: 700;
+
+  letter-spacing: 0.18em;
+
+  text-transform: uppercase;
+}
+
+/* =========================================================
+   ANIMACIONES DE ENTRADA
+========================================================= */
+
+.reveal-up {
+  animation:
+    fadeUp 0.8s ease forwards;
+}
+
+.reveal-left {
+  animation:
+    fadeLeft 0.9s ease forwards;
+}
+
+.reveal-right {
+  animation:
+    fadeRight 0.9s ease forwards;
+}
+
+.fade-in {
+  animation:
+    fade 0.8s ease forwards;
+}
+
+/* =========================================================
+   ANIMACIONES GENERALES
+========================================================= */
+
+.float {
+  animation:
+    float 5s ease-in-out infinite;
+}
+
+.float-slow {
+  animation:
+    float 9s ease-in-out infinite;
+}
+
+.rotate-slow {
+  animation:
+    rotateSlow 18s linear infinite;
+}
+
+.glow-animation {
+  animation:
+    pulseGlow 3s infinite;
+}
+
+/* =========================================================
+   PARTÍCULAS
+========================================================= */
+
+@keyframes particleFloat {
+  0% {
+    transform:
+      translate3d(0, 0, 0)
+      scale(1);
+
+    opacity: 0.15;
+  }
+
+  25% {
+    transform:
+      translate3d(
+        var(--drift),
+        -25px,
+        0
+      )
+      scale(1.15);
+  }
+
+  50% {
+    transform:
+      translate3d(
+        calc(var(--drift) * -0.5),
+        -55px,
+        0
+      )
+      scale(0.9);
+
+    opacity: 0.8;
+  }
+
+  75% {
+    transform:
+      translate3d(
+        calc(var(--drift) * 0.7),
+        -90px,
+        0
+      )
+      scale(1.1);
+  }
+
+  100% {
+    transform:
+      translate3d(
+        0,
+        -130px,
+        0
+      )
+      scale(0.7);
+
+    opacity: 0;
+  }
+}
+
+/* =========================================================
+   KEYFRAMES
+========================================================= */
+
+@keyframes shine {
+  from {
+    left: -120%;
+  }
+
+  to {
+    left: 130%;
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(60px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0);
+  }
+}
+
+@keyframes fadeLeft {
+  from {
+    opacity: 0;
+
+    transform:
+      translateX(-60px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateX(0);
+  }
+}
+
+@keyframes fadeRight {
+  from {
+    opacity: 0;
+
+    transform:
+      translateX(60px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateX(0);
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes float {
+  0% {
+    transform:
+      translateY(0);
+  }
+
+  50% {
+    transform:
+      translateY(-18px);
+  }
+
+  100% {
+    transform:
+      translateY(0);
+  }
+}
+
+@keyframes pulseGlow {
+  0% {
+    box-shadow:
+      0 0 10px rgba(192, 132, 252, 0.2);
+  }
+
+  50% {
+    box-shadow:
+      0 0 35px rgba(192, 132, 252, 0.45);
+  }
+
+  100% {
+    box-shadow:
+      0 0 10px rgba(192, 132, 252, 0.2);
+  }
+}
+
+@keyframes backgroundMove {
+  from {
+    transform:
+      translateY(-30px)
+      translateX(-20px)
+      scale(1);
+  }
+
+  to {
+    transform:
+      translateY(20px)
+      translateX(30px)
+      scale(1.08);
+  }
+}
+
+@keyframes rotateSlow {
+  from {
+    transform:
+      rotate(0deg);
+  }
+
+  to {
+    transform:
+      rotate(360deg);
+  }
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2.6rem !important;
+  }
+
+  h2 {
+    font-size: 2rem !important;
+  }
+
+  .card-purple {
+    border-radius: 22px;
+  }
+
+  .glow-btn {
+    width: 100%;
+
+    justify-content: center;
+  }
+}
+
+/* =========================================================
+   ACCESIBILIDAD
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+
+    transition-duration: 0.01ms !important;
+  }
 }

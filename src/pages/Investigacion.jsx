@@ -1,735 +1,1119 @@
+import { motion } from "framer-motion";
+import {
+  FaBookOpen,
+  FaFlask,
+  FaChartBar,
+  FaUsers,
+  FaMapMarkerAlt,
+  FaClipboardCheck,
+} from "react-icons/fa";
+import { Link } from "react-router-dom";
+
 import SectionTitle from "../components/SectionTitle";
+import Reveal from "../components/Reveal";
+import FloatingBerry from "../components/FloatingBerry";
+import GlowButton from "../components/GlowButton";
+
+const etapas = [
+  {
+    numero: "01",
+    icono: FaBookOpen,
+    titulo: "Investigación",
+    texto:
+      "Revisión del potencial gastronómico del saúco y de sus características de interés para su aplicación en productos de pastelería.",
+  },
+  {
+    numero: "02",
+    icono: FaFlask,
+    titulo: "Experimentación",
+    texto:
+      "Desarrollo de preparaciones utilizando diferentes niveles de concentración expresados en grados Brix.",
+  },
+  {
+    numero: "03",
+    icono: FaUsers,
+    titulo: "Evaluación sensorial",
+    texto:
+      "Valoración de características como sabor, aroma, apariencia, textura, color y aceptación general.",
+  },
+  {
+    numero: "04",
+    icono: FaChartBar,
+    titulo: "Análisis estadístico",
+    texto:
+      "Aplicación de herramientas estadísticas para estudiar las relaciones entre concentración, atributos sensoriales y aceptación.",
+  },
+];
+
+const concentraciones = [
+  {
+    brix: "4°",
+    fruta: "150 g",
+    agua: "300 ml",
+    nivel: "Concentración baja",
+  },
+  {
+    brix: "7°",
+    fruta: "150 g",
+    agua: "150 ml",
+    nivel: "Concentración media",
+  },
+  {
+    brix: "10°",
+    fruta: "250 g",
+    agua: "150 ml",
+    nivel: "Concentración alta",
+  },
+];
+
+const metodos = [
+  "ANOVA",
+  "Tukey",
+  "Chi-cuadrado",
+  "Modelo multinomial",
+  "PCA",
+  "Clustering",
+  "MCA",
+];
 
 export default function Investigacion() {
   return (
-    <main className="bg-[#faf8ff]">
+    <main className="overflow-hidden bg-[#faf8ff]">
 
       {/* =====================================================
           HERO
       ===================================================== */}
 
-      <section className="relative overflow-hidden bg-gradient-to-br from-purple-950 via-violet-900 to-purple-700 text-white">
+      <section
+        className="
+          relative
+          overflow-hidden
+          bg-gradient-to-br
+          from-purple-950
+          via-violet-900
+          to-purple-700
+          text-white
+        "
+      >
+        <div
+          className="
+            absolute
+            -top-40
+            -right-40
+            w-[35rem]
+            h-[35rem]
+            rounded-full
+            bg-fuchsia-500/10
+            blur-[110px]
+          "
+        />
 
-        <div className="absolute -top-40 -right-40 w-[30rem] h-[30rem] bg-purple-400/10 rounded-full blur-3xl" />
+        <div
+          className="
+            absolute
+            -bottom-40
+            -left-40
+            w-[35rem]
+            h-[35rem]
+            rounded-full
+            bg-purple-400/10
+            blur-[110px]
+          "
+        />
+
+        <FloatingBerry
+          size={16}
+          top="25%"
+          left="8%"
+          delay={0}
+          duration={7}
+          opacity={0.5}
+        />
+
+        <FloatingBerry
+          size={20}
+          top="65%"
+          left="90%"
+          delay={1}
+          duration={8}
+          opacity={0.4}
+        />
 
         <div className="relative max-w-7xl mx-auto px-6 py-24 md:py-28">
 
-          <span className="inline-flex px-4 py-2 rounded-full bg-white/10 border border-white/15 text-xs uppercase tracking-[0.2em] text-purple-200 font-semibold">
-            Metodología
-          </span>
+          <Reveal direction="up">
 
-          <h1 className="mt-7 max-w-5xl text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight">
-            Investigación sobre la aplicación del saúco en pastelería
-          </h1>
-
-          <p className="mt-6 max-w-3xl text-lg text-purple-100 leading-8">
-            Diseño experimental orientado a estudiar el comportamiento de
-            diferentes concentraciones de saúco en productos tradicionales
-            de pastelería.
-          </p>
-
-        </div>
-
-      </section>
-
-
-      {/* =====================================================
-          CONTEXTO
-      ===================================================== */}
-
-      <section className="py-24 px-6 bg-white">
-
-        <div className="max-w-7xl mx-auto">
-
-          <SectionTitle
-            subtitle="Contexto"
-            title="Planteamiento de la investigación"
-            description="El proyecto parte del interés por ampliar el uso gastronómico del saúco y evaluar experimentalmente su incorporación en productos de pastelería."
-          />
-
-          <div className="grid lg:grid-cols-2 gap-8">
-
-            <article
+            <span
               className="
-                group
-                rounded-3xl
-                bg-gradient-to-br
-                from-purple-50
-                to-white
-                border border-purple-100
-                p-9
-                transition-all
-                duration-300
-                hover:-translate-y-2
-                hover:scale-[1.015]
-                hover:bg-violet-50
-                hover:border-purple-200
-                hover:shadow-xl
-                hover:shadow-purple-900/10
-              "
-            >
-
-              <span className="text-xs uppercase tracking-[0.2em] font-bold text-purple-600">
-                Problema
-              </span>
-
-              <h3 className="
-                mt-4
-                text-2xl
+                inline-flex
+                px-4
+                py-2
+                rounded-full
+                bg-white/10
+                border
+                border-white/10
+                backdrop-blur-md
+                text-xs
+                uppercase
+                tracking-[0.22em]
                 font-bold
-                text-purple-950
-                group-hover:text-purple-900
-              ">
-                Uso limitado del saúco
-              </h3>
-
-              <p className="mt-5 text-gray-600 leading-8">
-                A pesar de sus características, el saúco presenta un uso
-                limitado en determinados productos de la gastronomía
-                colombiana. Esto plantea la posibilidad de estudiar nuevas
-                aplicaciones mediante procedimientos controlados.
-              </p>
-
-            </article>
-
-
-            <article
-              className="
-                group
-                rounded-3xl
-                bg-gradient-to-br
-                from-violet-50
-                to-purple-50
-                border border-violet-100
-                p-9
-                transition-all
-                duration-300
-                hover:-translate-y-2
-                hover:scale-[1.015]
-                hover:bg-violet-100/70
-                hover:border-violet-200
-                hover:shadow-xl
-                hover:shadow-violet-900/10
               "
+              style={{
+                color: "#ffffff",
+                textShadow:
+                  "0 2px 7px rgba(0,0,0,0.35)",
+              }}
             >
+              Metodología científica
+            </span>
 
-              <span className="text-xs uppercase tracking-[0.2em] font-bold text-violet-600">
-                Pregunta de interés
-              </span>
+            <h1
+              className="
+                mt-7
+                max-w-5xl
+                text-5xl
+                md:text-6xl
+                font-extrabold
+                leading-[1.05]
+              "
+              style={{
+                color: "#ffffff",
+                textShadow:
+                  "0 4px 15px rgba(0,0,0,0.45)",
+              }}
+            >
+              Investigación
+            </h1>
 
-              <h3 className="
-                mt-4
-                text-2xl
-                font-bold
-                text-purple-950
-                group-hover:text-purple-900
-              ">
-                ¿Cómo influye la concentración?
-              </h3>
+            <p
+              className="
+                mt-6
+                max-w-3xl
+                text-lg
+                md:text-xl
+                leading-8
+              "
+              style={{
+                color: "#f3e8ff",
+                textShadow:
+                  "0 2px 8px rgba(0,0,0,0.4)",
+              }}
+            >
+              Análisis del comportamiento del saúco
+              en productos tradicionales de pastelería
+              mediante experimentación, evaluación
+              sensorial y herramientas estadísticas.
+            </p>
 
-              <p className="mt-5 text-gray-600 leading-8">
-                El estudio busca analizar cómo diferentes niveles de
-                concentración pueden modificar las características sensoriales
-                y la aceptación de productos elaborados con saúco.
-              </p>
-
-            </article>
-
-          </div>
+          </Reveal>
 
         </div>
-
       </section>
 
-
       {/* =====================================================
-          OBJETIVOS
+          PLANTEAMIENTO
       ===================================================== */}
 
-      <section className="py-24 px-6 bg-gradient-to-br from-purple-50 via-white to-violet-50">
+      <section className="relative py-24 md:py-32 px-6 bg-white">
+
+        <FloatingBerry
+          size={14}
+          top="20%"
+          left="94%"
+          delay={1}
+          duration={6}
+          opacity={0.35}
+        />
 
         <div className="max-w-7xl mx-auto">
 
-          <SectionTitle
-            subtitle="Propósito"
-            title="Objetivos del proyecto"
-            description="La investigación integra preparación gastronómica, evaluación sensorial y análisis estadístico."
-          />
+          <Reveal>
 
-          <div className="grid lg:grid-cols-2 gap-8">
+            <SectionTitle
+              subtitle="Contexto"
+              title="¿Qué estudia SambucusLab?"
+              description="La investigación aborda la aplicación gastronómica del saúco y su comportamiento en productos tradicionales de pastelería."
+            />
 
-            <article
-              className="
-                group
-                bg-gradient-to-br
-                from-purple-950
-                to-violet-800
-                text-white
-                rounded-[2rem]
-                p-10
-                shadow-xl
-                transition-all
-                duration-300
-                hover:-translate-y-2
-                hover:scale-[1.015]
-                hover:shadow-2xl
-                hover:shadow-purple-900/20
-              "
-            >
+          </Reveal>
 
-              <span className="text-purple-300 text-sm uppercase tracking-[0.2em] font-bold">
-                Objetivo general
-              </span>
+          <div className="grid lg:grid-cols-2 gap-10">
 
-              <h3 className="mt-5 text-3xl font-bold">
-                Analizar el efecto de diferentes concentraciones de saúco
-              </h3>
-
-              <p className="mt-6 text-purple-100 leading-8">
-                Estudiar la aplicación de diferentes niveles de concentración
-                de saúco en productos tradicionales de pastelería, considerando
-                sus características sensoriales y su aceptación.
-              </p>
-
-            </article>
-
-
-            <article
-              className="
-                group
-                bg-white
-                rounded-[2rem]
-                border border-purple-100
-                p-10
-                soft-shadow
-                transition-all
-                duration-300
-                hover:-translate-y-2
-                hover:scale-[1.015]
-                hover:bg-violet-50/60
-                hover:border-purple-200
-                hover:shadow-xl
-                hover:shadow-purple-900/10
-              "
-            >
-
-              <span className="text-purple-600 text-sm uppercase tracking-[0.2em] font-bold">
-                Enfoques específicos
-              </span>
-
-              <div className="mt-6 space-y-6">
-
-                {[
-                  "Preparar diferentes concentraciones de saúco.",
-                  "Aplicarlas en productos tradicionales de pastelería.",
-                  "Evaluar características sensoriales mediante una escala de 0 a 100.",
-                  "Analizar la información obtenida mediante herramientas estadísticas.",
-                ].map((text, index) => (
-
-                  <div
-                    key={text}
-                    className="flex gap-4 group/item"
-                  >
-
-                    <span className="
-                      flex-shrink-0
-                      w-8
-                      h-8
-                      rounded-full
-                      bg-purple-100
-                      text-purple-700
-                      flex
-                      items-center
-                      justify-center
-                      text-sm
-                      font-bold
-                      transition-all
-                      duration-300
-                      group-hover/item:bg-purple-200
-                      group-hover/item:scale-110
-                    ">
-                      {index + 1}
-                    </span>
-
-                    <p className="text-gray-600 leading-7">
-                      {text}
-                    </p>
-
-                  </div>
-
-                ))}
-
-              </div>
-
-            </article>
-
-          </div>
-
-        </div>
-
-      </section>
-
-
-      {/* =====================================================
-          METODOLOGÍA
-      ===================================================== */}
-
-      <section className="py-24 px-6 bg-white">
-
-        <div className="max-w-7xl mx-auto">
-
-          <SectionTitle
-            subtitle="Procedimiento"
-            title="Metodología experimental"
-            description="El proceso combina preparación del ingrediente, desarrollo de productos y evaluación sensorial."
-          />
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-
-            {[
-              {
-                number: "01",
-                title: "Obtención",
-                text: "Selección de frutos maduros de saúco para el desarrollo experimental.",
-              },
-              {
-                number: "02",
-                title: "Preparación",
-                text: "Lavado, transporte y conservación del fruto antes de su procesamiento.",
-              },
-              {
-                number: "03",
-                title: "Formulación",
-                text: "Preparación de concentraciones de 4°, 7° y 10° Brix.",
-              },
-              {
-                number: "04",
-                title: "Evaluación",
-                text: "Valoración sensorial de los productos mediante Google Forms.",
-              },
-            ].map((item) => (
+            <Reveal direction="left">
 
               <article
-                key={item.number}
                 className="
-                  group
-                  rounded-3xl
-                  border border-purple-100
-                  bg-purple-50/60
-                  p-7
-                  transition-all
-                  duration-300
-                  hover:-translate-y-2
-                  hover:scale-[1.02]
-                  hover:bg-violet-100/70
-                  hover:border-purple-200
-                  hover:shadow-xl
-                  hover:shadow-purple-900/10
+                  rounded-[2rem]
+                  border
+                  border-purple-100
+                  bg-gradient-to-br
+                  from-purple-50
+                  to-violet-50
+                  p-8
+                  md:p-10
+                  h-full
                 "
               >
 
-                <span className="
-                  text-4xl
-                  font-extrabold
-                  text-purple-200
-                  transition-colors
-                  duration-300
-                  group-hover:text-purple-300
-                ">
-                  {item.number}
+                <span
+                  className="
+                    text-xs
+                    uppercase
+                    tracking-[0.2em]
+                    font-bold
+                  "
+                  style={{ color: "#7e22ce" }}
+                >
+                  Problema de investigación
                 </span>
 
-                <h3 className="mt-5 text-xl font-bold text-purple-950">
-                  {item.title}
-                </h3>
+                <h2
+                  className="
+                    mt-5
+                    text-3xl
+                    font-extrabold
+                  "
+                  style={{ color: "#2e1065" }}
+                >
+                  Uso limitado del saúco
+                </h2>
 
-                <p className="mt-3 text-gray-600 leading-7 text-sm">
-                  {item.text}
+                <p
+                  className="
+                    mt-6
+                    leading-8
+                  "
+                  style={{ color: "#374151" }}
+                >
+                  El proyecto parte del interés por estudiar
+                  el bajo uso del saúco dentro de la gastronomía
+                  colombiana, particularmente en productos de
+                  pastelería.
+                </p>
+
+                <p
+                  className="
+                    mt-5
+                    leading-8
+                  "
+                  style={{ color: "#374151" }}
+                >
+                  A partir de esta situación se plantea analizar
+                  cómo diferentes niveles de concentración pueden
+                  modificar las características sensoriales de
+                  productos desarrollados con este fruto.
                 </p>
 
               </article>
 
-            ))}
+            </Reveal>
 
-          </div>
-
-        </div>
-
-      </section>
-
-
-      {/* =====================================================
-          CONCENTRACIONES
-      ===================================================== */}
-
-      <section className="py-24 px-6 bg-gradient-to-br from-purple-950 via-violet-900 to-purple-800 text-white">
-
-        <div className="max-w-6xl mx-auto">
-
-          <div className="text-center mb-14">
-
-            <span className="text-xs uppercase tracking-[0.25em] text-purple-300 font-bold">
-              Diseño experimental
-            </span>
-
-            <h2 className="mt-5 text-4xl md:text-5xl font-extrabold">
-              Niveles de concentración
-            </h2>
-
-          </div>
-
-
-          <div className="grid md:grid-cols-3 gap-6">
-
-            {[
-              {
-                brix: "4°",
-                fruit: "150 g",
-                water: "300 ml",
-                label: "Concentración baja",
-              },
-              {
-                brix: "7°",
-                fruit: "150 g",
-                water: "150 ml",
-                label: "Concentración media",
-              },
-              {
-                brix: "10°",
-                fruit: "250 g",
-                water: "150 ml",
-                label: "Concentración alta",
-              },
-            ].map((item) => (
+            <Reveal direction="right">
 
               <article
-                key={item.brix}
                 className="
-                  group
-                  rounded-3xl
-                  bg-white/10
-                  border border-white/10
-                  backdrop-blur-sm
+                  rounded-[2rem]
+                  bg-purple-950
                   p-8
-                  transition-all
-                  duration-300
-                  hover:-translate-y-2
-                  hover:scale-[1.02]
-                  hover:bg-white/15
-                  hover:border-white/20
+                  md:p-10
+                  h-full
+                  relative
+                  overflow-hidden
                 "
               >
 
-                <p className="text-purple-300 text-sm uppercase tracking-[0.2em] font-bold">
-                  {item.label}
-                </p>
+                <div
+                  className="
+                    absolute
+                    -right-24
+                    -top-24
+                    w-72
+                    h-72
+                    rounded-full
+                    bg-purple-500/20
+                    blur-3xl
+                  "
+                />
 
-                <p className="
-                  mt-5
-                  text-5xl
-                  font-extrabold
-                  transition-transform
-                  duration-300
-                  group-hover:scale-105
-                  origin-left
-                ">
-                  {item.brix}
-                </p>
+                <div className="relative">
 
-                <p className="text-purple-200 mt-1">
-                  grados Brix
-                </p>
+                  <span
+                    className="
+                      text-xs
+                      uppercase
+                      tracking-[0.2em]
+                      font-bold
+                    "
+                    style={{
+                      color: "#d8b4fe",
+                      textShadow:
+                        "0 2px 6px rgba(0,0,0,0.35)",
+                    }}
+                  >
+                    Propósito
+                  </span>
 
-                <div className="mt-7 pt-6 border-t border-white/10 space-y-3 text-sm">
+                  <h2
+                    className="
+                      mt-5
+                      text-3xl
+                      font-extrabold
+                    "
+                    style={{
+                      color: "#ffffff",
+                      textShadow:
+                        "0 3px 10px rgba(0,0,0,0.4)",
+                    }}
+                  >
+                    Experimentar y comparar
+                  </h2>
 
-                  <div className="flex justify-between">
-                    <span className="text-purple-200">Fruto</span>
-                    <span className="font-semibold">
-                      {item.fruit}
-                    </span>
-                  </div>
+                  <p
+                    className="
+                      mt-6
+                      leading-8
+                    "
+                    style={{
+                      color: "#f3e8ff",
+                      textShadow:
+                        "0 2px 7px rgba(0,0,0,0.35)",
+                    }}
+                  >
+                    El estudio busca relacionar las
+                    concentraciones de saúco con las
+                    características sensoriales percibidas
+                    en preparaciones de pastelería.
+                  </p>
 
-                  <div className="flex justify-between">
-                    <span className="text-purple-200">Agua</span>
-                    <span className="font-semibold">
-                      {item.water}
-                    </span>
+                  <div className="mt-8 grid grid-cols-2 gap-4">
+
+                    <div
+                      className="
+                        rounded-2xl
+                        bg-white/10
+                        border
+                        border-white/10
+                        p-5
+                      "
+                    >
+                      <p
+                        className="text-3xl font-extrabold"
+                        style={{
+                          color: "#ffffff",
+                          textShadow:
+                            "0 2px 7px rgba(0,0,0,0.4)",
+                        }}
+                      >
+                        3
+                      </p>
+
+                      <p
+                        className="
+                          mt-1
+                          text-xs
+                          uppercase
+                        "
+                        style={{ color: "#d8b4fe" }}
+                      >
+                        concentraciones
+                      </p>
+                    </div>
+
+                    <div
+                      className="
+                        rounded-2xl
+                        bg-white/10
+                        border
+                        border-white/10
+                        p-5
+                      "
+                    >
+                      <p
+                        className="text-3xl font-extrabold"
+                        style={{
+                          color: "#ffffff",
+                          textShadow:
+                            "0 2px 7px rgba(0,0,0,0.4)",
+                        }}
+                      >
+                        2
+                      </p>
+
+                      <p
+                        className="
+                          mt-1
+                          text-xs
+                          uppercase
+                        "
+                        style={{ color: "#d8b4fe" }}
+                      >
+                        productos
+                      </p>
+                    </div>
+
                   </div>
 
                 </div>
 
               </article>
 
-            ))}
+            </Reveal>
 
           </div>
-
         </div>
-
       </section>
 
-
       {/* =====================================================
-          PRODUCTOS Y VARIABLES
+          ETAPAS
       ===================================================== */}
 
-      <section className="py-24 px-6 bg-white">
+      <section
+        className="
+          relative
+          py-24
+          md:py-32
+          px-6
+          bg-gradient-to-br
+          from-purple-50
+          via-white
+          to-violet-50
+        "
+      >
 
         <div className="max-w-7xl mx-auto">
 
-          <SectionTitle
-            subtitle="Evaluación"
-            title="Productos y variables analizadas"
-            description="Las preparaciones se evaluaron considerando diferentes atributos sensoriales."
-          />
+          <Reveal>
 
-          <div className="grid lg:grid-cols-2 gap-8">
+            <SectionTitle
+              subtitle="Metodología"
+              title="De la investigación al análisis"
+              description="El proyecto integra diferentes etapas para conectar la experimentación gastronómica con la evaluación estadística."
+            />
 
-            <article
-              className="
-                group
-                rounded-[2rem]
-                bg-gradient-to-br
-                from-purple-50
-                to-violet-50
-                border border-purple-100
-                p-9
-                transition-all
-                duration-300
-                hover:-translate-y-2
-                hover:scale-[1.015]
-                hover:shadow-xl
-                hover:shadow-purple-900/10
-              "
-            >
+          </Reveal>
 
-              <h3 className="text-3xl font-bold text-purple-950">
-                Productos
-              </h3>
+          <div className="grid md:grid-cols-2 gap-6">
 
-              <div className="mt-7 space-y-4">
+            {etapas.map((etapa, index) => {
 
-                {["Pavlova", "Mousse"].map((product) => (
+              const Icon = etapa.icono;
 
-                  <div
-                    key={product}
+              return (
+                <Reveal
+                  key={etapa.numero}
+                  direction={index % 2 === 0 ? "left" : "right"}
+                  delay={index * 0.1}
+                >
+
+                  <motion.article
                     className="
-                      group/item
-                      flex
-                      items-center
-                      gap-4
+                      group
+                      relative
+                      overflow-hidden
+                      rounded-[2rem]
                       bg-white
-                      rounded-2xl
-                      p-5
-                      border border-purple-100
-                      transition-all
-                      duration-300
-                      hover:bg-violet-50
-                      hover:border-purple-200
-                      hover:translate-x-1
+                      border
+                      border-purple-100
+                      p-8
+                      shadow-sm
                     "
+                    whileHover={{
+                      y: -8,
+                      scale: 1.015,
+                    }}
+                    transition={{
+                      type: "spring",
+                      stiffness: 250,
+                      damping: 20,
+                    }}
                   >
 
-                    <div className="
-                      w-10
-                      h-10
-                      rounded-xl
-                      bg-purple-900
-                      text-white
-                      flex
-                      items-center
-                      justify-center
-                      font-bold
-                      transition-transform
-                      duration-300
-                      group-hover/item:scale-110
-                    ">
-                      ✓
+                    <div
+                      className="
+                        absolute
+                        -right-16
+                        -top-16
+                        w-48
+                        h-48
+                        rounded-full
+                        bg-purple-200/40
+                        blur-3xl
+                        opacity-0
+                        group-hover:opacity-100
+                        transition-opacity
+                        duration-500
+                      "
+                    />
+
+                    <div className="relative flex gap-6">
+
+                      <div
+                        className="
+                          flex-shrink-0
+                          w-16
+                          h-16
+                          rounded-2xl
+                          bg-gradient-to-br
+                          from-purple-800
+                          to-violet-500
+                          flex
+                          items-center
+                          justify-center
+                          shadow-lg
+                          group-hover:rotate-6
+                          group-hover:scale-110
+                          transition-all
+                          duration-300
+                        "
+                        style={{
+                          color: "#ffffff",
+                          textShadow:
+                            "0 2px 6px rgba(0,0,0,0.35)",
+                        }}
+                      >
+                        <Icon className="text-xl" />
+                      </div>
+
+                      <div>
+
+                        <span
+                          className="
+                            text-xs
+                            uppercase
+                            tracking-[0.2em]
+                            font-bold
+                          "
+                          style={{ color: "#9333ea" }}
+                        >
+                          Etapa {etapa.numero}
+                        </span>
+
+                        <h3
+                          className="
+                            mt-2
+                            text-2xl
+                            font-bold
+                          "
+                          style={{ color: "#2e1065" }}
+                        >
+                          {etapa.titulo}
+                        </h3>
+
+                        <p
+                          className="
+                            mt-3
+                            leading-7
+                          "
+                          style={{ color: "#374151" }}
+                        >
+                          {etapa.texto}
+                        </p>
+
+                      </div>
+
                     </div>
 
-                    <span className="font-semibold text-purple-950">
-                      {product}
+                  </motion.article>
+
+                </Reveal>
+              );
+            })}
+
+          </div>
+        </div>
+      </section>
+
+      {/* =====================================================
+          MUESTRA Y CONTEXTO
+      ===================================================== */}
+
+      <section className="py-24 md:py-32 px-6 bg-white">
+
+        <div className="max-w-7xl mx-auto">
+
+          <Reveal>
+
+            <SectionTitle
+              subtitle="Trabajo de campo"
+              title="Obtención y preparación del fruto"
+              description="El proceso experimental contempló diferentes condiciones para la obtención, conservación y preparación del saúco."
+            />
+
+          </Reveal>
+
+          <div className="grid lg:grid-cols-3 gap-6">
+
+            <Reveal delay={0}>
+
+              <motion.article
+                className="
+                  rounded-[2rem]
+                  bg-purple-50
+                  border
+                  border-purple-100
+                  p-8
+                  h-full
+                "
+                whileHover={{
+                  y: -8,
+                  scale: 1.02,
+                }}
+              >
+
+                <FaMapMarkerAlt
+                  className="text-2xl"
+                  style={{ color: "#6b21a8" }}
+                />
+
+                <h3
+                  className="
+                    mt-6
+                    text-xl
+                    font-bold
+                  "
+                  style={{ color: "#2e1065" }}
+                >
+                  Ubicación
+                </h3>
+
+                <p
+                  className="
+                    mt-4
+                    leading-7
+                  "
+                  style={{ color: "#374151" }}
+                >
+                  Los frutos fueron recolectados en espacios
+                  públicos de Bogotá, en la localidad de
+                  Engativá, cerca de la zona de Titan Plaza.
+                </p>
+
+              </motion.article>
+
+            </Reveal>
+
+            <Reveal delay={0.1}>
+
+              <motion.article
+                className="
+                  rounded-[2rem]
+                  bg-purple-50
+                  border
+                  border-purple-100
+                  p-8
+                  h-full
+                "
+                whileHover={{
+                  y: -8,
+                  scale: 1.02,
+                }}
+              >
+
+                <FaClipboardCheck
+                  className="text-2xl"
+                  style={{ color: "#6b21a8" }}
+                />
+
+                <h3
+                  className="
+                    mt-6
+                    text-xl
+                    font-bold
+                  "
+                  style={{ color: "#2e1065" }}
+                >
+                  Características
+                </h3>
+
+                <p
+                  className="
+                    mt-4
+                    leading-7
+                  "
+                  style={{ color: "#374151" }}
+                >
+                  Se trabajó con frutos maduros, caracterizados
+                  por una coloración púrpura oscura y las
+                  características físicas observadas durante
+                  el proceso.
+                </p>
+
+              </motion.article>
+
+            </Reveal>
+
+            <Reveal delay={0.2}>
+
+              <motion.article
+                className="
+                  rounded-[2rem]
+                  bg-purple-50
+                  border
+                  border-purple-100
+                  p-8
+                  h-full
+                "
+                whileHover={{
+                  y: -8,
+                  scale: 1.02,
+                }}
+              >
+
+                <FaFlask
+                  className="text-2xl"
+                  style={{ color: "#6b21a8" }}
+                />
+
+                <h3
+                  className="
+                    mt-6
+                    text-xl
+                    font-bold
+                  "
+                  style={{ color: "#2e1065" }}
+                >
+                  Conservación
+                </h3>
+
+                <p
+                  className="
+                    mt-4
+                    leading-7
+                  "
+                  style={{ color: "#374151" }}
+                >
+                  Después de la recolección, los frutos fueron
+                  lavados, transportados y sometidos a
+                  condiciones de refrigeración o congelación
+                  según la etapa del proceso.
+                </p>
+
+              </motion.article>
+
+            </Reveal>
+
+          </div>
+        </div>
+      </section>
+
+      {/* =====================================================
+          CONCENTRACIONES
+      ===================================================== */}
+
+      <section
+        className="
+          relative
+          overflow-hidden
+          py-24
+          md:py-32
+          px-6
+          bg-purple-950
+          text-white
+        "
+      >
+
+        <FloatingBerry
+          size={16}
+          top="15%"
+          left="8%"
+          delay={0}
+          duration={7}
+          opacity={0.5}
+        />
+
+        <FloatingBerry
+          size={22}
+          top="75%"
+          left="92%"
+          delay={2}
+          duration={8}
+          opacity={0.4}
+        />
+
+        <div className="relative max-w-7xl mx-auto">
+
+          <Reveal>
+
+            <div className="max-w-3xl mx-auto text-center">
+
+              <span
+                className="
+                  text-xs
+                  uppercase
+                  tracking-[0.25em]
+                  font-bold
+                "
+                style={{
+                  color: "#d8b4fe",
+                  textShadow:
+                    "0 2px 6px rgba(0,0,0,0.4)",
+                }}
+              >
+                Diseño experimental
+              </span>
+
+              <h2
+                className="
+                  mt-5
+                  text-4xl
+                  md:text-5xl
+                  font-extrabold
+                "
+                style={{
+                  color: "#ffffff",
+                  textShadow:
+                    "0 3px 12px rgba(0,0,0,0.45)",
+                }}
+              >
+                Concentraciones estudiadas
+              </h2>
+
+              <p
+                className="
+                  mt-5
+                  leading-8
+                "
+                style={{
+                  color: "#f3e8ff",
+                  textShadow:
+                    "0 2px 7px rgba(0,0,0,0.35)",
+                }}
+              >
+                Las formulaciones utilizaron diferentes
+                relaciones entre fruto y agua para obtener
+                los niveles experimentales.
+              </p>
+
+            </div>
+
+          </Reveal>
+
+          <div className="mt-14 grid md:grid-cols-3 gap-6">
+
+            {concentraciones.map((item, index) => (
+
+              <Reveal
+                key={item.brix}
+                direction="up"
+                delay={index * 0.12}
+              >
+
+                <motion.article
+                  className="
+                    group
+                    relative
+                    overflow-hidden
+                    rounded-[2rem]
+                    bg-white/10
+                    border
+                    border-white/10
+                    backdrop-blur-md
+                    p-8
+                  "
+                  whileHover={{
+                    y: -12,
+                    scale: 1.04,
+                  }}
+                  transition={{
+                    type: "spring",
+                    stiffness: 230,
+                  }}
+                >
+
+                  <div
+                    className="
+                      absolute
+                      inset-0
+                      bg-gradient-to-br
+                      from-fuchsia-500/10
+                      to-transparent
+                      opacity-0
+                      group-hover:opacity-100
+                      transition-opacity
+                      duration-500
+                    "
+                  />
+
+                  <div className="relative">
+
+                    <span
+                      className="
+                        text-xs
+                        uppercase
+                        tracking-[0.2em]
+                        font-bold
+                      "
+                      style={{
+                        color: "#d8b4fe",
+                        textShadow:
+                          "0 2px 6px rgba(0,0,0,0.35)",
+                      }}
+                    >
+                      {item.nivel}
                     </span>
+
+                    <p
+                      className="
+                        mt-5
+                        text-6xl
+                        font-black
+                      "
+                      style={{
+                        color: "#ffffff",
+                        textShadow:
+                          "0 3px 12px rgba(0,0,0,0.45)",
+                      }}
+                    >
+                      {item.brix}
+                    </p>
+
+                    <p
+                      className="font-semibold"
+                      style={{ color: "#d8b4fe" }}
+                    >
+                      Brix
+                    </p>
+
+                    <div
+                      className="
+                        mt-7
+                        pt-6
+                        border-t
+                        border-white/10
+                      "
+                    >
+
+                      <p
+                        className="text-sm"
+                        style={{ color: "#d8b4fe" }}
+                      >
+                        Relación experimental
+                      </p>
+
+                      <p
+                        className="
+                          mt-3
+                          text-lg
+                          font-semibold
+                        "
+                        style={{
+                          color: "#ffffff",
+                          textShadow:
+                            "0 2px 6px rgba(0,0,0,0.35)",
+                        }}
+                      >
+                        {item.fruta} de fruto
+                      </p>
+
+                      <p
+                        style={{
+                          color: "#e9d5ff",
+                          textShadow:
+                            "0 2px 6px rgba(0,0,0,0.35)",
+                        }}
+                      >
+                        +
+                      </p>
+
+                      <p
+                        className="
+                          text-lg
+                          font-semibold
+                        "
+                        style={{
+                          color: "#ffffff",
+                          textShadow:
+                            "0 2px 6px rgba(0,0,0,0.35)",
+                        }}
+                      >
+                        {item.agua} de agua
+                      </p>
+
+                    </div>
 
                   </div>
 
-                ))}
+                </motion.article>
 
-              </div>
+              </Reveal>
 
-            </article>
-
-
-            <article
-              className="
-                group
-                rounded-[2rem]
-                bg-white
-                border border-purple-100
-                p-9
-                shadow-sm
-                transition-all
-                duration-300
-                hover:-translate-y-2
-                hover:scale-[1.015]
-                hover:bg-violet-50/50
-                hover:border-purple-200
-                hover:shadow-xl
-                hover:shadow-purple-900/10
-              "
-            >
-
-              <h3 className="text-3xl font-bold text-purple-950">
-                Atributos sensoriales
-              </h3>
-
-              <div className="mt-7 flex flex-wrap gap-3">
-
-                {[
-                  "Sabor",
-                  "Aroma",
-                  "Apariencia",
-                  "Textura",
-                  "Color",
-                  "Aceptación general",
-                ].map((attribute) => (
-
-                  <span
-                    key={attribute}
-                    className="
-                      px-4
-                      py-2.5
-                      rounded-full
-                      bg-purple-50
-                      border border-purple-100
-                      text-purple-800
-                      text-sm
-                      font-medium
-                      transition-all
-                      duration-300
-                      hover:bg-violet-100
-                      hover:border-purple-200
-                      hover:-translate-y-1
-                      hover:shadow-sm
-                    "
-                  >
-                    {attribute}
-                  </span>
-
-                ))}
-
-              </div>
-
-              <p className="mt-7 text-gray-600 leading-7">
-                La valoración se realizó utilizando una escala de 0 a 100,
-                donde los valores permitieron expresar la percepción de los
-                participantes frente a las características evaluadas.
-              </p>
-
-            </article>
+            ))}
 
           </div>
-
         </div>
-
       </section>
-
 
       {/* =====================================================
           MÉTODOS ESTADÍSTICOS
       ===================================================== */}
 
-      <section className="py-24 px-6 bg-gradient-to-br from-purple-50 to-violet-50">
+      <section className="py-24 md:py-32 px-6 bg-white">
 
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-6xl mx-auto">
 
-          <SectionTitle
-            subtitle="Análisis de datos"
-            title="Herramientas estadísticas"
-            description="La investigación contempla diferentes técnicas para estudiar los resultados obtenidos."
-          />
+          <Reveal>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <SectionTitle
+              subtitle="Análisis"
+              title="Herramientas estadísticas"
+              description="El proyecto contempla diferentes técnicas para analizar los datos obtenidos durante la evaluación."
+            />
 
-            {[
-              ["ANOVA", "Comparación de medias entre grupos."],
-              ["Tukey", "Análisis posterior para identificar diferencias entre grupos."],
-              ["Chi-cuadrado", "Análisis de asociación entre variables categóricas."],
-              ["Modelo multinomial", "Análisis de respuestas categóricas con múltiples alternativas."],
-              ["PCA", "Análisis de componentes principales para explorar relaciones multivariantes."],
-              ["Clustering / MCA", "Exploración de agrupaciones y relaciones entre variables categóricas."],
-            ].map(([title, text]) => (
+          </Reveal>
 
-              <article
-                key={title}
-                className="
-                  group
-                  bg-white
-                  rounded-3xl
-                  border border-purple-100
-                  p-7
-                  soft-shadow
-                  transition-all
-                  duration-300
-                  hover:-translate-y-2
-                  hover:scale-[1.02]
-                  hover:bg-violet-50
-                  hover:border-purple-200
-                  hover:shadow-xl
-                  hover:shadow-purple-900/10
-                "
+          <div className="flex flex-wrap justify-center gap-4">
+
+            {metodos.map((metodo, index) => (
+
+              <Reveal
+                key={metodo}
+                direction="zoom"
+                delay={index * 0.05}
               >
 
-                <h3 className="
-                  text-xl
-                  font-bold
-                  text-purple-900
-                  transition-transform
-                  duration-300
-                  group-hover:translate-x-1
-                ">
-                  {title}
-                </h3>
+                <motion.div
+                  className="
+                    rounded-2xl
+                    border
+                    border-purple-100
+                    bg-purple-50
+                    px-6
+                    py-4
+                    font-semibold
+                    shadow-sm
+                  "
+                  style={{ color: "#581c87" }}
+                  whileHover={{
+                    y: -6,
+                    scale: 1.06,
+                    rotate: index % 2 === 0 ? 2 : -2,
+                  }}
+                >
+                  {metodo}
+                </motion.div>
 
-                <p className="mt-3 text-gray-600 leading-7 text-sm">
-                  {text}
-                </p>
-
-              </article>
+              </Reveal>
 
             ))}
 
           </div>
 
-        </div>
+          <Reveal delay={0.2}>
 
-      </section>
+            <div className="mt-14 text-center">
 
+              <GlowButton
+                to="/resultados"
+                variant="primary"
+              >
+                Ver resultados
+              </GlowButton>
 
-      {/* =====================================================
-          CIERRE
-      ===================================================== */}
+            </div>
 
-      <section className="py-24 px-6 bg-white">
-
-        <div className="max-w-4xl mx-auto text-center">
-
-          <span className="text-xs uppercase tracking-[0.25em] text-purple-600 font-bold">
-            Síntesis metodológica
-          </span>
-
-          <h2 className="mt-5 text-4xl md:text-5xl font-extrabold text-purple-950">
-            Gastronomía + datos + investigación
-          </h2>
-
-          <p className="mt-6 text-gray-600 text-lg leading-8">
-            El proyecto integra procedimientos gastronómicos con evaluación
-            sensorial y herramientas estadísticas para estudiar el potencial
-            del saúco en productos tradicionales de pastelería.
-          </p>
+          </Reveal>
 
         </div>
-
       </section>
 
     </main>

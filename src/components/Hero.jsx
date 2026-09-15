@@ -1,190 +1,783 @@
+import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { FaArrowDown, FaFlask, FaLeaf } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
+import FloatingBerry from "./FloatingBerry";
+import GlowButton from "./GlowButton";
+
 export default function Hero() {
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  const smoothX = useSpring(mouseX, {
+    stiffness: 80,
+    damping: 20,
+  });
+
+  const smoothY = useSpring(mouseY, {
+    stiffness: 80,
+    damping: 20,
+  });
+
+  const rotateX = useTransform(
+    smoothY,
+    [-300, 300],
+    [5, -5]
+  );
+
+  const rotateY = useTransform(
+    smoothX,
+    [-300, 300],
+    [-5, 5]
+  );
+
+  const handleMouseMove = (event) => {
+    const rect =
+      event.currentTarget.getBoundingClientRect();
+
+    mouseX.set(
+      event.clientX -
+        (rect.left + rect.width / 2)
+    );
+
+    mouseY.set(
+      event.clientY -
+        (rect.top + rect.height / 2)
+    );
+  };
+
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-purple-950 via-violet-900 to-purple-700 text-white">
+    <section
+      className="
+        relative
+        min-h-[calc(100vh-76px)]
+        overflow-hidden
+        bg-gradient-to-br
+        from-purple-950
+        via-violet-900
+        to-purple-700
+        text-white
+      "
+      onMouseMove={handleMouseMove}
+    >
+      {/* =====================================================
+          FONDOS LUMINOSOS
+      ===================================================== */}
 
-      {/* Decoraciones de fondo */}
-      <div className="absolute -top-32 -right-32 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl" />
+      <motion.div
+        className="
+          absolute
+          -top-40
+          -left-40
+          w-[38rem]
+          h-[38rem]
+          rounded-full
+          bg-fuchsia-500/15
+          blur-[110px]
+        "
+        animate={{
+          x: [0, 70, -20, 0],
+          y: [0, 30, 80, 0],
+          scale: [1, 1.1, 0.95, 1],
+        }}
+        transition={{
+          duration: 16,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+      />
 
-      <div className="absolute -bottom-40 -left-32 w-[30rem] h-[30rem] bg-violet-400/10 rounded-full blur-3xl" />
+      <motion.div
+        className="
+          absolute
+          -right-40
+          top-20
+          w-[34rem]
+          h-[34rem]
+          rounded-full
+          bg-purple-400/15
+          blur-[120px]
+        "
+        animate={{
+          x: [0, -60, 20, 0],
+          y: [0, 70, -20, 0],
+          scale: [1, 0.9, 1.1, 1],
+        }}
+        transition={{
+          duration: 18,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+      />
 
-      <div className="relative max-w-7xl mx-auto px-6 py-24 md:py-32">
+      {/* =====================================================
+          PARTÍCULAS DECORATIVAS
+      ===================================================== */}
 
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+      <FloatingBerry
+        size={14}
+        top="18%"
+        left="8%"
+        delay={0}
+        duration={7}
+        opacity={0.65}
+      />
 
-          {/* CONTENIDO PRINCIPAL */}
+      <FloatingBerry
+        size={22}
+        top="25%"
+        left="87%"
+        delay={1.5}
+        duration={8}
+        opacity={0.45}
+      />
+
+      <FloatingBerry
+        size={10}
+        top="72%"
+        left="12%"
+        delay={2}
+        duration={6}
+        opacity={0.7}
+      />
+
+      <FloatingBerry
+        size={17}
+        top="80%"
+        left="82%"
+        delay={3}
+        duration={9}
+        opacity={0.5}
+      />
+
+      {/* =====================================================
+          CUADRÍCULA
+      ===================================================== */}
+
+      <div
+        className="
+          absolute
+          inset-0
+          opacity-[0.08]
+          pointer-events-none
+          bg-[linear-gradient(rgba(255,255,255,0.3)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.3)_1px,transparent_1px)]
+          bg-[size:60px_60px]
+        "
+      />
+
+      {/* =====================================================
+          CONTENIDO
+      ===================================================== */}
+
+      <div
+        className="
+          relative
+          z-20
+          max-w-7xl
+          mx-auto
+          px-6
+          py-20
+          md:py-28
+          min-h-[calc(100vh-76px)]
+          flex
+          items-center
+        "
+      >
+        <div className="grid lg:grid-cols-[1.05fr_0.95fr] gap-14 lg:gap-20 items-center w-full">
+
+          {/* =================================================
+              TEXTO
+          ================================================= */}
+
           <div>
-
-            <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white/10 border border-white/15 backdrop-blur-sm mb-7">
-              <span className="w-2 h-2 rounded-full bg-purple-300" />
-
-              <span className="text-xs md:text-sm uppercase tracking-[0.18em] font-semibold text-purple-100">
-                Proyecto de investigación gastronómica
-              </span>
-            </div>
-
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.05]">
-              Sambucus
-              <span className="text-purple-300">
-                Lab
-              </span>
-            </h1>
-
-            <div className="w-20 h-1 bg-gradient-to-r from-purple-300 to-fuchsia-300 rounded-full mt-7" />
-
-            <h2 className="mt-7 text-2xl md:text-3xl font-semibold leading-tight text-white">
-              Aplicación del saúco en productos tradicionales de pastelería
-            </h2>
-
-            <p className="mt-6 text-base md:text-lg text-purple-100 leading-8 max-w-2xl">
-              Investigación enfocada en analizar el comportamiento sensorial
-              y gastronómico de diferentes concentraciones de saúco
-              <span className="italic"> (Sambucus nigra)</span> aplicadas
-              en productos tradicionales como pavlova y mousse.
-            </p>
-
-            {/* BOTONES */}
-            <div className="mt-10 flex flex-wrap gap-4">
-
-              <Link
-                to="/investigacion"
+            <motion.div
+              initial={{
+                opacity: 0,
+                y: 30,
+              }}
+              animate={{
+                opacity: 1,
+                y: 0,
+              }}
+              transition={{
+                duration: 0.8,
+              }}
+            >
+              <span
                 className="
-                  inline-flex items-center justify-center
-                  px-6 py-3.5
-                  rounded-xl
-                  bg-white
-                  text-purple-900
-                  font-bold
-                  shadow-lg shadow-purple-950/20
-                  hover:bg-purple-50
-                  hover:-translate-y-0.5
-                  transition-all duration-300
-                "
-              >
-                Ver investigación
-              </Link>
-
-              <Link
-                to="/resultados"
-                className="
-                  inline-flex items-center justify-center
-                  px-6 py-3.5
-                  rounded-xl
-                  border border-white/30
-                  bg-white/5
-                  backdrop-blur-sm
-                  text-white
+                  inline-flex
+                  items-center
+                  gap-3
+                  rounded-full
+                  border
+                  border-white/15
+                  bg-white/10
+                  backdrop-blur-md
+                  px-4
+                  py-2
+                  text-xs
+                  uppercase
+                  tracking-[0.2em]
                   font-semibold
-                  hover:bg-white/15
-                  hover:-translate-y-0.5
-                  transition-all duration-300
+                  shadow-[0_0_25px_rgba(168,85,247,0.15)]
                 "
+                style={{
+                  color: "#ffffff",
+                  textShadow: "0 2px 7px rgba(255, 249, 249, 0.47)",
+                }}
               >
-                Explorar resultados
-              </Link>
-
-            </div>
-
-            {/* DATOS RÁPIDOS */}
-            <div className="mt-12 grid grid-cols-3 max-w-lg border-t border-white/15 pt-7">
-
-              <div>
-                <p className="text-2xl font-bold">
-                  3
-                </p>
-
-                <p className="text-xs text-purple-200 mt-1">
-                  concentraciones
-                </p>
-              </div>
-
-              <div className="border-l border-white/15 pl-5">
-                <p className="text-2xl font-bold">
-                  2
-                </p>
-
-                <p className="text-xs text-purple-200 mt-1">
-                  productos
-                </p>
-              </div>
-
-              <div className="border-l border-white/15 pl-5">
-                <p className="text-2xl font-bold">
-                  0–100
-                </p>
-
-                <p className="text-xs text-purple-200 mt-1">
-                  escala sensorial
-                </p>
-              </div>
-
-            </div>
-
-          </div>
-
-          {/* IMAGEN */}
-          <div className="flex justify-center lg:justify-end">
-
-            <div className="relative">
-
-              {/* Halo */}
-              <div className="absolute inset-0 bg-purple-400/20 blur-3xl rounded-full scale-110" />
-
-              {/* Contenedor de imagen */}
-              <div className="
-                relative
-                w-72 h-72
-                md:w-96 md:h-96
-                rounded-[2.5rem]
-                overflow-hidden
-                border
-                border-white/20
-                shadow-2xl
-                shadow-purple-950/40
-              ">
-
-                <img
-                  src="https://static.snoweb.io/images/sureau-_ArEBfW0.2e16d0ba.fill-600x600.format-jpeg.jpegquality-90.jpg"
-                  alt="Frutos de saúco"
-                  className="w-full h-full object-cover"
+                <span
+                  className="
+                    w-2
+                    h-2
+                    rounded-full
+                    bg-purple-300
+                    shadow-[0_0_10px_rgba(216,180,254,1)]
+                    animate-pulse
+                  "
                 />
 
-                <div className="absolute inset-0 bg-gradient-to-t from-purple-950/50 via-transparent to-purple-700/10" />
+                Proyecto de investigación gastronómica
+              </span>
+            </motion.div>
 
-              </div>
+            <motion.h1
+              className="
+                mt-8
+                text-5xl
+                sm:text-6xl
+                lg:text-7xl
+                font-extrabold
+                tracking-tight
+                leading-[0.98]
+              "
+              style={{
+                color: "#ffffff",
+                textShadow:
+                  "0 4px 16px rgba(255, 255, 255, 0.5), 0 1px 3px rgba(255, 255, 255, 0.6)",
+              }}
+              initial={{
+                opacity: 0,
+                y: 45,
+              }}
+              animate={{
+                opacity: 1,
+                y: 0,
+              }}
+              transition={{
+                duration: 0.9,
+                delay: 0.15,
+              }}
+            >
+              Sambucus
 
-              {/* Etiqueta flotante */}
-              <div className="
-                absolute
-                -bottom-5
-                -left-5
-                md:-left-8
-                bg-white
-                text-purple-950
-                rounded-2xl
-                px-5
-                py-4
-                shadow-xl
-              ">
+              <span
+                className="block text-glow"
+                style={{
+                  color: "#d8b4fe",
+                  textShadow:
+                    "0 3px 14px rgba(253, 251, 255, 0.45)",
+                }}
+              >
+                Lab
+              </span>
+            </motion.h1>
 
-                <p className="text-xs uppercase tracking-[0.18em] text-purple-500 font-bold">
-                  Especie estudiada
+            <motion.h2
+              className="
+                mt-7
+                text-2xl
+                md:text-3xl
+                font-bold
+                max-w-3xl
+                leading-tight
+              "
+              style={{
+                color: "#ffffff",
+                textShadow:
+                  "0 3px 12px rgba(255, 255, 255, 0.51)",
+              }}
+              initial={{
+                opacity: 0,
+                y: 35,
+              }}
+              animate={{
+                opacity: 1,
+                y: 0,
+              }}
+              transition={{
+                duration: 0.8,
+                delay: 0.3,
+              }}
+            >
+              Aplicación del saúco en productos
+              tradicionales de pastelería
+            </motion.h2>
+
+            <motion.p
+              className="
+                mt-6
+                max-w-2xl
+                text-base
+                md:text-lg
+                leading-8
+              "
+              style={{
+                color: "#f3e8ff",
+                textShadow:
+                  "0 2px 8px rgba(255, 255, 255, 0.51)",
+              }}
+              initial={{
+                opacity: 0,
+                y: 30,
+              }}
+              animate={{
+                opacity: 1,
+                y: 0,
+              }}
+              transition={{
+                duration: 0.8,
+                delay: 0.4,
+              }}
+            >
+              Investigación enfocada en analizar
+              el comportamiento sensorial y
+              gastronómico de diferentes
+              concentraciones de saúco
+              (<span className="italic">Sambucus nigra</span>)
+              aplicadas a productos como pavlova
+              y mousse.
+            </motion.p>
+
+            {/* =================================================
+                BOTONES
+            ================================================= */}
+
+            <motion.div
+              className="
+                mt-9
+                flex
+                flex-col
+                sm:flex-row
+                gap-4
+              "
+              initial={{
+                opacity: 0,
+                y: 30,
+              }}
+              animate={{
+                opacity: 1,
+                y: 0,
+              }}
+              transition={{
+                duration: 0.8,
+                delay: 0.55,
+              }}
+            >
+              <GlowButton
+                to="/investigacion"
+                variant="light"
+              >
+                Ver investigación
+              </GlowButton>
+
+              <GlowButton
+                to="/resultados"
+                variant="outline"
+              >
+                Explorar resultados
+              </GlowButton>
+            </motion.div>
+
+            {/* =================================================
+                MINI DATOS
+            ================================================= */}
+
+            <motion.div
+              className="
+                mt-12
+                grid
+                grid-cols-3
+                max-w-xl
+                border-t
+                border-white/10
+                pt-7
+              "
+              initial={{
+                opacity: 0,
+              }}
+              animate={{
+                opacity: 1,
+              }}
+              transition={{
+                delay: 0.8,
+                duration: 0.8,
+              }}
+            >
+              <div>
+                <p
+                  className="text-3xl font-extrabold"
+                  style={{
+                    color: "#ffffff",
+                    textShadow:
+                      "0 2px 8px rgba(255, 255, 255, 0.53)",
+                  }}
+                >
+                  4°
                 </p>
 
-                <p className="mt-1 font-bold">
-                  Sambucus nigra
+                <p
+                  className="mt-1 text-xs uppercase tracking-wider"
+                  style={{ color: "#d8b4fe" }}
+                >
+                  Brix
                 </p>
-
               </div>
 
-            </div>
+              <div className="border-l border-white/10 pl-5">
+                <p
+                  className="text-3xl font-extrabold"
+                  style={{
+                    color: "#ffffff",
+                    textShadow:
+                      "0 2px 8px rgba(255, 253, 253, 0.52)",
+                  }}
+                >
+                  7°
+                </p>
 
+                <p
+                  className="mt-1 text-xs uppercase tracking-wider"
+                  style={{ color: "#d8b4fe" }}
+                >
+                  Brix
+                </p>
+              </div>
+
+              <div className="border-l border-white/10 pl-5">
+                <p
+                  className="text-3xl font-extrabold"
+                  style={{
+                    color: "#ffffff",
+                    textShadow:
+                      "0 2px 8px rgba(255, 255, 255, 0.51)",
+                  }}
+                >
+                  10°
+                </p>
+
+                <p
+                  className="mt-1 text-xs uppercase tracking-wider"
+                  style={{ color: "#d8b4fe" }}
+                >
+                  Brix
+                </p>
+              </div>
+            </motion.div>
           </div>
 
-        </div>
+          {/* =================================================
+              ELEMENTO VISUAL 3D
+          ================================================= */}
 
+          <motion.div
+            className="
+              relative
+              hidden
+              md:flex
+              justify-center
+              items-center
+              min-h-[500px]
+            "
+            style={{
+              perspective: 1200,
+            }}
+          >
+            <motion.div
+              className="
+                relative
+                w-[360px]
+                h-[430px]
+                lg:w-[430px]
+                lg:h-[500px]
+              "
+              style={{
+                rotateX,
+                rotateY,
+              }}
+            >
+              {/* Halo */}
+
+              <motion.div
+                className="
+                  absolute
+                  inset-[-50px]
+                  rounded-full
+                  bg-purple-400/20
+                  blur-[80px]
+                "
+                animate={{
+                  scale: [1, 1.12, 1],
+                  opacity: [0.3, 0.5, 0.3],
+                }}
+                transition={{
+                  duration: 5,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+              />
+
+              {/* Tarjeta principal */}
+
+              <div
+                className="
+                  absolute
+                  inset-5
+                  rounded-[2.5rem]
+                  overflow-hidden
+                  border
+                  border-white/20
+                  bg-white/10
+                  backdrop-blur-xl
+                  shadow-[0_30px_80px_rgba(0,0,0,0.3)]
+                "
+              >
+                {/* Imagen */}
+
+                <img
+                  src="https://images.unsplash.com/photo-1595231776515-ddffb1f4eb73?auto=format&fit=crop&w=900&q=90"
+                  alt="Frutos de saúco"
+                  className="
+                    absolute
+                    inset-0
+                    w-full
+                    h-full
+                    object-cover
+                    opacity-80
+                    scale-105
+                  "
+                />
+
+                {/* Overlay */}
+
+                <div
+                  className="
+                    absolute
+                    inset-0
+                    bg-gradient-to-t
+                    from-purple-950
+                    via-purple-950/30
+                    to-purple-900/10
+                  "
+                />
+
+                {/* Información */}
+
+                <div
+                  className="
+                    absolute
+                    bottom-0
+                    left-0
+                    right-0
+                    p-8
+                  "
+                >
+                  <div
+                    className="
+                      flex
+                      items-center
+                      gap-3
+                    "
+                    style={{
+                      color: "#e9d5ff",
+                      textShadow:
+                        "0 2px 7px rgba(255, 253, 253, 0.51)",
+                    }}
+                  >
+                    <FaLeaf />
+
+                    <span className="text-xs uppercase tracking-[0.2em] font-bold">
+                      Sambucus nigra
+                    </span>
+                  </div>
+
+                  <h3
+                    className="mt-3 text-3xl font-extrabold"
+                    style={{
+                      color: "#ffffff",
+                      textShadow:
+                        "0 3px 10px rgba(255, 255, 255, 0.54)",
+                    }}
+                  >
+                    El fruto
+                  </h3>
+
+                  <p
+                    className="mt-3 text-sm leading-6"
+                    style={{
+                      color: "#f3e8ff",
+                      textShadow:
+                        "0 2px 7px rgba(255, 255, 255, 0.49)",
+                    }}
+                  >
+                    Color, aroma y sabor como
+                    variables de interés
+                    gastronómico.
+                  </p>
+                </div>
+              </div>
+
+              {/* =================================================
+                  BADGE SUPERIOR
+              ================================================= */}
+
+              <motion.div
+                className="
+                  absolute
+                  -top-2
+                  -right-4
+                  z-30
+                  rounded-2xl
+                  bg-white
+                  text-purple-950
+                  px-5
+                  py-4
+                  shadow-[0_15px_40px_rgba(0,0,0,0.25)]
+                  border
+                  border-purple-100
+                "
+                animate={{
+                  y: [0, -10, 0],
+                  rotate: [0, 2, 0],
+                }}
+                transition={{
+                  duration: 4,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+              >
+                <div className="flex items-center gap-3">
+                  <div
+                    className="
+                      w-10
+                      h-10
+                      rounded-xl
+                      bg-purple-100
+                      flex
+                      items-center
+                      justify-center
+                    "
+                  >
+                    <FaFlask className="text-purple-700" />
+                  </div>
+
+                  <div>
+                    <p
+                      className="text-xs font-bold uppercase"
+                      style={{ color: "#9333ea" }}
+                    >
+                      Investigación
+                    </p>
+
+                    <p
+                      className="text-sm font-extrabold"
+                      style={{ color: "#2e1065" }}
+                    >
+                      Análisis sensorial
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* =================================================
+                  BADGE INFERIOR
+              ================================================= */}
+
+              <motion.div
+                className="
+                  absolute
+                  -bottom-5
+                  -left-5
+                  z-30
+                  rounded-2xl
+                  bg-purple-950/80
+                  backdrop-blur-xl
+                  border
+                  border-white/15
+                  px-5
+                  py-4
+                  shadow-[0_15px_40px_rgba(0,0,0,0.25)]
+                "
+                animate={{
+                  y: [0, 8, 0],
+                  rotate: [0, -2, 0],
+                }}
+                transition={{
+                  duration: 5,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: 0.5,
+                }}
+              >
+                <p
+                  className="text-xs uppercase tracking-wider"
+                  style={{ color: "#d8b4fe" }}
+                >
+                  Productos
+                </p>
+
+                <p
+                  className="mt-1 font-bold"
+                  style={{
+                    color: "#ffffff",
+                    textShadow:
+                      "0 2px 7px rgba(243, 243, 243, 0.51)",
+                  }}
+                >
+                  Pavlova · Mousse
+                </p>
+              </motion.div>
+            </motion.div>
+          </motion.div>
+        </div>
       </div>
+
+      {/* =====================================================
+          SCROLL INDICATOR
+      ===================================================== */}
+
+      <motion.div
+        className="
+          absolute
+          bottom-7
+          left-1/2
+          -translate-x-1/2
+          z-30
+          hidden
+          md:flex
+          flex-col
+          items-center
+          gap-2
+        "
+        style={{
+          color: "#e9d5ff",
+          textShadow:
+            "0 2px 7px rgba(249, 247, 247, 0.51)",
+        }}
+        animate={{
+          y: [0, 8, 0],
+        }}
+        transition={{
+          duration: 2,
+          repeat: Infinity,
+        }}
+      >
+        <span className="text-[10px] uppercase tracking-[0.3em]">
+          Explorar
+        </span>
+
+        <FaArrowDown className="text-sm" />
+      </motion.div>
     </section>
   );
 }
