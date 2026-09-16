@@ -161,7 +161,7 @@ export default function Investigacion() {
               style={{
                 color: "#ffffff",
                 textShadow:
-                  "0 2px 7px rgba(0,0,0,0.35)",
+                  "0 2px 7px rgba(255, 255, 255, 0.51)",
               }}
             >
               Metodología científica
@@ -179,7 +179,7 @@ export default function Investigacion() {
               style={{
                 color: "#ffffff",
                 textShadow:
-                  "0 4px 15px rgba(0,0,0,0.45)",
+                  "0 4px 15px rgba(255, 255, 255, 0.5)",
               }}
             >
               Investigación
@@ -196,7 +196,7 @@ export default function Investigacion() {
               style={{
                 color: "#f3e8ff",
                 textShadow:
-                  "0 2px 8px rgba(0,0,0,0.4)",
+                  "0 2px 8px rgba(255, 255, 255, 0.52)",
               }}
             >
               Análisis del comportamiento del saúco
@@ -347,7 +347,7 @@ export default function Investigacion() {
                     style={{
                       color: "#d8b4fe",
                       textShadow:
-                        "0 2px 6px rgba(0,0,0,0.35)",
+                        "0 2px 6px rgba(255, 255, 255, 0.52)",
                     }}
                   >
                     Propósito
@@ -362,7 +362,7 @@ export default function Investigacion() {
                     style={{
                       color: "#ffffff",
                       textShadow:
-                        "0 3px 10px rgba(0,0,0,0.4)",
+                        "0 3px 10px rgba(255, 255, 255, 0.51)",
                     }}
                   >
                     Experimentar y comparar
@@ -376,7 +376,7 @@ export default function Investigacion() {
                     style={{
                       color: "#f3e8ff",
                       textShadow:
-                        "0 2px 7px rgba(0,0,0,0.35)",
+                        "0 2px 7px rgba(255, 255, 255, 0.51)",
                     }}
                   >
                     El estudio busca relacionar las
@@ -401,7 +401,7 @@ export default function Investigacion() {
                         style={{
                           color: "#ffffff",
                           textShadow:
-                            "0 2px 7px rgba(0,0,0,0.4)",
+                            "0 2px 7px rgba(255, 255, 255, 0.51)",
                         }}
                       >
                         3
@@ -433,7 +433,7 @@ export default function Investigacion() {
                         style={{
                           color: "#ffffff",
                           textShadow:
-                            "0 2px 7px rgba(0,0,0,0.4)",
+                            "0 2px 7px rgba(255, 255, 255, 0.53)",
                         }}
                       >
                         2
@@ -568,7 +568,7 @@ export default function Investigacion() {
                         style={{
                           color: "#ffffff",
                           textShadow:
-                            "0 2px 6px rgba(0,0,0,0.35)",
+                            "0 2px 6px rgba(255, 255, 255, 0.51)",
                         }}
                       >
                         <Icon className="text-xl" />
@@ -846,7 +846,7 @@ export default function Investigacion() {
                 style={{
                   color: "#d8b4fe",
                   textShadow:
-                    "0 2px 6px rgba(0,0,0,0.4)",
+                    "0 2px 6px rgba(255, 255, 255, 0.51)",
                 }}
               >
                 Diseño experimental
@@ -862,7 +862,7 @@ export default function Investigacion() {
                 style={{
                   color: "#ffffff",
                   textShadow:
-                    "0 3px 12px rgba(0,0,0,0.45)",
+                    "0 3px 12px rgba(255, 255, 255, 0.53)",
                 }}
               >
                 Concentraciones estudiadas
@@ -876,7 +876,7 @@ export default function Investigacion() {
                 style={{
                   color: "#f3e8ff",
                   textShadow:
-                    "0 2px 7px rgba(0,0,0,0.35)",
+                    "0 2px 7px rgba(255, 255, 255, 0.51)",
                 }}
               >
                 Las formulaciones utilizaron diferentes
@@ -946,7 +946,7 @@ export default function Investigacion() {
                       style={{
                         color: "#d8b4fe",
                         textShadow:
-                          "0 2px 6px rgba(0,0,0,0.35)",
+                          "0 2px 6px rgba(255, 254, 254, 0.51)",
                       }}
                     >
                       {item.nivel}
@@ -961,7 +961,7 @@ export default function Investigacion() {
                       style={{
                         color: "#ffffff",
                         textShadow:
-                          "0 3px 12px rgba(0,0,0,0.45)",
+                          "0 3px 12px rgba(255, 255, 255, 0.51)",
                       }}
                     >
                       {item.brix}
@@ -999,7 +999,7 @@ export default function Investigacion() {
                         style={{
                           color: "#ffffff",
                           textShadow:
-                            "0 2px 6px rgba(0,0,0,0.35)",
+                            "0 2px 6px rgba(255, 255, 255, 0.51)",
                         }}
                       >
                         {item.fruta} de fruto
@@ -1009,7 +1009,7 @@ export default function Investigacion() {
                         style={{
                           color: "#e9d5ff",
                           textShadow:
-                            "0 2px 6px rgba(0,0,0,0.35)",
+                            "0 2px 6px rgba(255, 255, 255, 0.5)",
                         }}
                       >
                         +
@@ -1023,7 +1023,7 @@ export default function Investigacion() {
                         style={{
                           color: "#ffffff",
                           textShadow:
-                            "0 2px 6px rgba(0,0,0,0.35)",
+                            "0 2px 6px rgba(255, 255, 255, 0.51)",
                         }}
                       >
                         {item.agua} de agua

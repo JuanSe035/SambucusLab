@@ -95,7 +95,7 @@ export default function Footer() {
               }}
             >
               Plataforma web del proyecto de investigación
-              sobre la aplicación del saúco (
+              sobre la aplicación del saúco en productos de pasteleria. (
               <span
                 className="italic font-semibold"
                 style={{
@@ -302,7 +302,7 @@ export default function Footer() {
 
           <p
             style={{
-              color: "#e9d5ff",
+              color: "#ffffff",
             }}
           >
             © 2026 SambucusLab
@@ -310,7 +310,7 @@ export default function Footer() {
 
           <p
             style={{
-              color: "#e9d5ff",
+              color: "#ffffff",
             }}
           >
             Proyecto académico de investigación

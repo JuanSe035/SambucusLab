@@ -78,7 +78,7 @@ export default function Contacto() {
               "
               style={{
                 color: "#ffffff",
-                textShadow: "0 2px 8px rgba(0,0,0,0.35)",
+                textShadow: "0 2px 8px rgba(255, 255, 255, 0.53)",
               }}
             >
               SambucusLab
@@ -98,7 +98,7 @@ export default function Contacto() {
               style={{
                 color: "#ffffff",
                 textShadow:
-                  "0 3px 12px rgba(0,0,0,0.45), 0 1px 2px rgba(0,0,0,0.5)",
+                  "0 3px 12px rgba(251, 247, 247, 0.5), 0 1px 2px rgba(255, 253, 253, 0.5)",
               }}
             >
               Contacto
@@ -117,11 +117,10 @@ export default function Contacto() {
               "
               style={{
                 color: "#f3e8ff",
-                textShadow: "0 2px 7px rgba(0,0,0,0.35)",
+                textShadow: "0 2px 7px rgba(255, 255, 255, 0.51)",
               }}
             >
-              Información de contacto y contexto académico
-              del proyecto de investigación.
+            Estudiantes de la Universidad Libre de Colombia, Facultad de Ingeniería, Programa de Ingeniería de Sistemas.
             </p>
 
           </Reveal>
@@ -199,10 +198,7 @@ export default function Contacto() {
                     color: "#374151",
                   }}
                 >
-                  SambucusLab es una plataforma desarrollada
-                  para presentar el proceso de investigación
-                  relacionado con la aplicación del saúco
-                  en productos tradicionales de pastelería.
+                  SambucusLab, una plataforma web que integra investigación, gastronomía y análisis sensorial, desarrollada por estudiantes de Ingeniería de Sistemas de la Universidad Libre de Colombia. El proyecto busca ofrecer una experiencia completa en el ámbito culinario y científico.
                 </p>
 
                 {/* TARJETAS DE INFORMACIÓN */}
@@ -337,7 +333,7 @@ export default function Contacto() {
                           color: "#7e22ce",
                         }}
                       >
-                        Contexto
+                        Ubicación
                       </p>
 
                       <p
@@ -460,7 +456,7 @@ export default function Contacto() {
                     style={{
                       color: "#ffffff",
                       textShadow:
-                        "0 3px 10px rgba(0,0,0,0.4)",
+                        "0 3px 10px rgba(255, 255, 255, 0.53)",
                     }}
                   >
                     Información del proyecto
@@ -478,7 +474,7 @@ export default function Contacto() {
                     style={{
                       color: "#f3e8ff",
                       textShadow:
-                        "0 2px 6px rgba(0,0,0,0.25)",
+                        "0 2px 6px rgba(255, 255, 255, 0.51)",
                     }}
                   >
                     Para consultar el código y la estructura
@@ -712,7 +708,7 @@ export default function Contacto() {
               style={{
                 color: "#ffffff",
                 textShadow:
-                  "0 3px 12px rgba(0,0,0,0.45)",
+                  "0 3px 12px rgba(255, 255, 255, 0.51)",
               }}
             >
               SambucusLab

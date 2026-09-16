@@ -323,7 +323,7 @@ function Recipe3DCard({ receta, index }) {
               style={{
                 color: dark ? "#ffffff" : "#2e1065",
                 textShadow: dark
-                  ? "0 3px 10px rgba(0,0,0,0.4)"
+                  ? "0 3px 10px rgba(255, 255, 255, 0.5)"
                   : "none",
               }}
             >
@@ -338,7 +338,7 @@ function Recipe3DCard({ receta, index }) {
               style={{
                 color: dark ? "#f3e8ff" : "#374151",
                 textShadow: dark
-                  ? "0 2px 7px rgba(0,0,0,0.35)"
+                  ? "0 2px 7px rgba(255, 255, 255, 0.52)"
                   : "none",
               }}
             >
@@ -412,7 +412,7 @@ function Recipe3DCard({ receta, index }) {
                   style={{
                     color: dark ? "#ffffff" : "#2e1065",
                     textShadow: dark
-                      ? "0 2px 7px rgba(0,0,0,0.35)"
+                      ? "0 2px 7px rgba(255, 255, 255, 0.51)"
                       : "none",
                   }}
                 >
@@ -515,7 +515,7 @@ export default function Recetas() {
               style={{
                 color: "#ffffff",
                 textShadow:
-                  "0 2px 7px rgba(0,0,0,0.35)",
+                  "0 2px 7px rgba(255, 255, 255, 0.51)",
               }}
             >
               Gastronomía experimental
@@ -531,7 +531,7 @@ export default function Recetas() {
               style={{
                 color: "#ffffff",
                 textShadow:
-                  "0 4px 15px rgba(0,0,0,0.45)",
+                  "0 4px 15px rgba(255, 255, 255, 0.53)",
               }}
             >
               Recetas
@@ -547,7 +547,7 @@ export default function Recetas() {
               style={{
                 color: "#f3e8ff",
                 textShadow:
-                  "0 2px 8px rgba(0,0,0,0.4)",
+                  "0 2px 8px rgba(255, 255, 255, 0.52)",
               }}
             >
               Preparaciones, concentraciones y registro
@@ -647,7 +647,7 @@ export default function Recetas() {
                 style={{
                   color: "#d8b4fe",
                   textShadow:
-                    "0 2px 6px rgba(0,0,0,0.4)",
+                    "0 2px 6px rgba(255, 255, 255, 0.51)",
                 }}
               >
                 Base experimental
@@ -663,7 +663,7 @@ export default function Recetas() {
                 style={{
                   color: "#ffffff",
                   textShadow:
-                    "0 3px 12px rgba(0,0,0,0.45)",
+                    "0 3px 12px rgba(255, 255, 255, 0.56)",
                 }}
               >
                 Concentraciones utilizadas
@@ -677,7 +677,7 @@ export default function Recetas() {
                 style={{
                   color: "#f3e8ff",
                   textShadow:
-                    "0 2px 7px rgba(0,0,0,0.35)",
+                    "0 2px 7px rgba(255, 255, 255, 0.51)",
                 }}
               >
                 Los niveles de concentración se expresan
@@ -739,7 +739,7 @@ export default function Recetas() {
                     style={{
                       color: "#d8b4fe",
                       textShadow:
-                        "0 2px 6px rgba(0,0,0,0.35)",
+                        "0 2px 6px rgba(255, 255, 255, 0.53)",
                     }}
                   >
                     Nivel 0{index + 1}
@@ -754,7 +754,7 @@ export default function Recetas() {
                     style={{
                       color: "#ffffff",
                       textShadow:
-                        "0 3px 12px rgba(0,0,0,0.45)",
+                        "0 3px 12px rgba(255, 255, 255, 0.51)",
                     }}
                   >
                     {brix}
@@ -794,7 +794,7 @@ export default function Recetas() {
                       style={{
                         color: "#f3e8ff",
                         textShadow:
-                          "0 2px 6px rgba(0,0,0,0.35)",
+                          "0 2px 6px rgba(255, 254, 254, 0.51)",
                       }}
                     >
                       {formula}
@@ -893,7 +893,7 @@ export default function Recetas() {
                         style={{
                           color: "#d8b4fe",
                           textShadow:
-                            "0 2px 6px rgba(0,0,0,0.45)",
+                            "0 2px 6px rgba(255, 255, 255, 0.51)",
                         }}
                       >
                         {imagen.categoria}
@@ -910,7 +910,7 @@ export default function Recetas() {
                       style={{
                         color: "#ffffff",
                         textShadow:
-                          "0 3px 10px rgba(0,0,0,0.5)",
+                          "0 3px 10px rgba(255, 255, 255, 0.52)",
                       }}
                     >
                       {imagen.titulo}
@@ -938,7 +938,7 @@ export default function Recetas() {
                     style={{
                       color: "#ffffff",
                       textShadow:
-                        "0 2px 6px rgba(0,0,0,0.4)",
+                        "0 2px 6px rgba(255, 255, 255, 0.51)",
                     }}
                   >
                     0{index + 1}
@@ -1091,7 +1091,7 @@ export default function Recetas() {
               style={{
                 color: "#ffffff",
                 textShadow:
-                  "0 3px 12px rgba(0,0,0,0.45)",
+                  "0 3px 12px rgba(255, 255, 255, 0.51)",
               }}
             >
               De la investigación a la preparación
@@ -1106,7 +1106,7 @@ export default function Recetas() {
               style={{
                 color: "#f3e8ff",
                 textShadow:
-                  "0 2px 7px rgba(0,0,0,0.4)",
+                  "0 2px 7px rgba(255, 255, 255, 0.52)",
               }}
             >
               Las recetas y el registro visual permiten

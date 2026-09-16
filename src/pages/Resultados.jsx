@@ -135,7 +135,7 @@ export default function Resultados() {
               "
               style={{
                 color: "#f3e8ff",
-                textShadow: "0 2px 6px rgba(0,0,0,0.35)",
+                textShadow: "0 2px 6px rgba(255, 255, 255, 0.51)",
               }}
             >
               Análisis de resultados
@@ -151,7 +151,7 @@ export default function Resultados() {
               style={{
                 color: "#ffffff",
                 textShadow:
-                  "0 3px 12px rgba(0,0,0,0.45)",
+                  "0 3px 12px rgba(255, 253, 253, 0.5)",
               }}
             >
               Resultados
@@ -166,7 +166,7 @@ export default function Resultados() {
               "
               style={{
                 color: "#f3e8ff",
-                textShadow: "0 2px 7px rgba(0,0,0,0.35)",
+                textShadow: "0 2px 7px rgba(255, 255, 255, 0.51)",
               }}
             >
               Explora la relación entre las concentraciones
@@ -344,7 +344,7 @@ export default function Resultados() {
                     "
                     style={{
                       color: "#ffffff",
-                      textShadow: "0 2px 8px rgba(0,0,0,0.4)",
+                      textShadow: "0 2px 8px rgba(255, 255, 255, 0.51)",
                     }}
                   >
                     Pavlova
@@ -561,7 +561,7 @@ export default function Resultados() {
                 style={{
                   color: "#ffffff",
                   textShadow:
-                    "0 3px 12px rgba(0,0,0,0.45)",
+                    "0 3px 12px rgba(255, 254, 254, 0.52)",
                 }}
               >
                 Escala sensorial
@@ -677,7 +677,7 @@ export default function Resultados() {
 
                   <p
                     className="text-xs"
-                    style={{ color: "#d8b4fe" }}
+                    style={{ color: "#ffffff" }}
                   >
                     punto medio
                   </p>
@@ -690,7 +690,7 @@ export default function Resultados() {
 
                   <p
                     className="text-xs"
-                    style={{ color: "#d8b4fe" }}
+                    style={{ color: "#ffffff" }}
                   >
                     máximo
                   </p>
@@ -888,7 +888,7 @@ export default function Resultados() {
               style={{
                 color: "#ffffff",
                 textShadow:
-                  "0 3px 12px rgba(0,0,0,0.45)",
+                  "0 3px 12px rgba(255, 254, 254, 0.52)",
               }}
             >
               Los datos cuentan la historia

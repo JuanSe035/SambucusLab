@@ -852,3 +852,41 @@ h3 {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* ===========================================
+   LOADER EFFECTS
+=========================================== */
+
+@keyframes loaderPulse {
+  0% {
+    transform: scale(.95);
+    opacity: .4;
+  }
+
+  50% {
+    transform: scale(1.15);
+    opacity: .8;
+  }
+
+  100% {
+    transform: scale(.95);
+    opacity: .4;
+  }
+}
+
+.loader-glow {
+  animation: loaderPulse 2s ease-in-out infinite;
+}
+
+body.loading {
+  overflow: hidden;
+}
+
+/* =========================================================
+   PAGE LOADER — TEXTO BLANCO PURO
+========================================================= */
+
+.loader-text-white {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}

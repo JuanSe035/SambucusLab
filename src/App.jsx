@@ -1,44 +1,36 @@
+import { useEffect, useState } from "react";
+
+import AppRouter from "./router/AppRouter";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import ScrollProgress from "./components/ScrollProgress";
-import ParticlesBackground from "./components/ParticlesBackground";
-import MouseTrail from "./components/MouseTrail";
-import AppRouter from "./router/AppRouter";
 
-function App() {
+import PageLoader from "./components/PageLoader";
+import MouseGlow from "./components/MouseGlow";
+
+export default function App() {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 2500);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (loading) {
+    return <PageLoader />;
+  }
+
   return (
-    <div className="min-h-screen flex flex-col bg-[#faf8ff] relative">
-      {/* =====================================================
-          EFECTOS GLOBALES
-      ===================================================== */}
-
-      <ScrollProgress />
-
-      <ParticlesBackground />
-
-      <MouseTrail />
-
-      {/* =====================================================
-          NAVEGACIÓN
-      ===================================================== */}
+    <>
+      <MouseGlow />
 
       <Navbar />
 
-      {/* =====================================================
-          CONTENIDO PRINCIPAL
-      ===================================================== */}
-
-      <main className="flex-grow relative z-10">
-        <AppRouter />
-      </main>
-
-      {/* =====================================================
-          FOOTER
-      ===================================================== */}
+      <AppRouter />
 
       <Footer />
-    </div>
+    </>
   );
 }
-
-export default App; 
