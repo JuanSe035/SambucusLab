@@ -1,4 +1,4 @@
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll } from "framer-motion";
 import { FaArrowRight, FaFlask, FaLeaf, FaChartLine } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
@@ -6,6 +6,7 @@ import frutoSauco from "../assets/icons/Fruto_Sauco2.png";
 import pavlovaImage from "../assets/icons/Pavlova.png";
 import mousseImage from "../assets/icons/Mousse.png";
 import almibarImage from "../assets/icons/Almibar.png";
+
 import Hero from "../components/Hero";
 import SectionTitle from "../components/SectionTitle";
 import Reveal from "../components/Reveal";
@@ -15,12 +16,6 @@ import SensorialLab from "../components/SensorialLab";
 
 export default function Home() {
   const { scrollYProgress } = useScroll();
-
-  const backgroundY = useTransform(
-    scrollYProgress,
-    [0, 1],
-    [0, -250]
-  );
 
   return (
     <main className="overflow-hidden bg-[#faf8ff]">
@@ -32,11 +27,17 @@ export default function Home() {
       <Hero />
 
       {/* =====================================================
-          BARRA DE PROGRESO
+          SENSORIALLAB
       ===================================================== */}
+
       <div className="mt-20">
         <SensorialLab />
       </div>
+
+      {/* =====================================================
+          BARRA DE PROGRESO
+      ===================================================== */}
+
       <motion.div
         className="
           fixed
@@ -80,10 +81,8 @@ export default function Home() {
           opacity={0.35}
         />
 
-        <motion.div
-          style={{
-            y: backgroundY,
-          }}
+        {/* Glow estático: no depende del scroll */}
+        <div
           className="
             absolute
             -top-40
@@ -91,8 +90,8 @@ export default function Home() {
             w-[35rem]
             h-[35rem]
             rounded-full
-            bg-purple-100/60
-            blur-[100px]
+            bg-purple-100/50
+            blur-[60px]
             pointer-events-none
           "
         />
@@ -109,15 +108,14 @@ export default function Home() {
 
           <div className="grid lg:grid-cols-2 gap-14 lg:gap-20 items-center">
 
-            {/* TEXTO */}
+            {/* =====================================================
+                TEXTO
+            ===================================================== */}
 
             <Reveal direction="left">
 
               <div
-                className="
-                  space-y-6
-                  leading-8
-                "
+                className="space-y-6 leading-8"
                 style={{
                   color: "#374151",
                 }}
@@ -193,8 +191,8 @@ export default function Home() {
                       duration: 0.6,
                     }}
                     whileHover={{
-                      y: -7,
-                      scale: 1.02,
+                      y: -4,
+                      scale: 1.01,
                     }}
                   >
 
@@ -206,8 +204,8 @@ export default function Home() {
                         w-24
                         h-24
                         rounded-full
-                        bg-purple-200/30
-                        blur-2xl
+                        bg-purple-200/25
+                        blur-xl
                         opacity-0
                         group-hover:opacity-100
                         transition-opacity
@@ -247,7 +245,9 @@ export default function Home() {
 
             </Reveal>
 
-            {/* IMAGEN */}
+            {/* =====================================================
+                IMAGEN
+            ===================================================== */}
 
             <Reveal direction="right">
 
@@ -259,51 +259,46 @@ export default function Home() {
                   w-full
                 "
                 whileHover={{
-                  scale: 1.02,
+                  scale: 1.01,
                 }}
                 transition={{
-                  duration: 0.5,
+                  duration: 0.35,
                 }}
               >
 
                 <div
                   className="
                     absolute
-                    inset-[-30px]
+                    inset-[-25px]
                     rounded-full
-                    bg-purple-300/20
-                    blur-[60px]
+                    bg-purple-300/15
+                    blur-[45px]
+                    pointer-events-none
                   "
                 />
 
-                <motion.div
+                <div
                   className="
                     relative
                     overflow-hidden
                     rounded-[2.5rem]
                     border
                     border-purple-100
-                    shadow-[0_30px_70px_rgba(76,29,149,0.18)]
+                    shadow-[0_25px_55px_rgba(76,29,149,0.15)]
                   "
-                  whileHover={{
-                    rotateX: 2,
-                    rotateY: -2,
-                  }}
-                  style={{
-                    perspective: 1000,
-                  }}
                 >
 
                   <img
-                  src={frutoSauco}
-                  alt="Fruto de saúco"
+                    src={frutoSauco}
+                    alt="Fruto de saúco"
+                    loading="lazy"
                     className="
                       w-full
                       h-[420px]
                       object-cover
                       transition-transform
-                      duration-700
-                      hover:scale-110
+                      duration-500
+                      hover:scale-105
                     "
                   />
 
@@ -315,6 +310,7 @@ export default function Home() {
                       from-purple-950/60
                       via-transparent
                       to-transparent
+                      pointer-events-none
                     "
                   />
 
@@ -342,7 +338,7 @@ export default function Home() {
                           bg-white/10
                           border
                           border-white/15
-                          backdrop-blur-md
+                          backdrop-blur-sm
                           flex
                           items-center
                           justify-center
@@ -378,7 +374,7 @@ export default function Home() {
 
                   </div>
 
-                </motion.div>
+                </div>
 
               </motion.div>
 
@@ -424,16 +420,19 @@ export default function Home() {
           opacity={0.5}
         />
 
-        <div className="
-          absolute
-          -left-40
-          top-20
-          w-96
-          h-96
-          rounded-full
-          bg-fuchsia-200/30
-          blur-[100px]
-        " />
+        <div
+          className="
+            absolute
+            -left-40
+            top-20
+            w-96
+            h-96
+            rounded-full
+            bg-fuchsia-200/20
+            blur-[60px]
+            pointer-events-none
+          "
+        />
 
         <div className="relative max-w-7xl mx-auto">
 
@@ -500,17 +499,15 @@ export default function Home() {
                     cursor-default
                   "
                   whileHover={{
-                    y: -8,
-                    scale: 1.015,
+                    y: -5,
+                    scale: 1.01,
                   }}
                   transition={{
                     type: "spring",
-                    stiffness: 260,
-                    damping: 20,
+                    stiffness: 300,
+                    damping: 24,
                   }}
                 >
-
-                  {/* Glow */}
 
                   <div
                     className="
@@ -520,12 +517,12 @@ export default function Home() {
                       w-52
                       h-52
                       rounded-full
-                      bg-purple-200/40
-                      blur-3xl
+                      bg-purple-200/25
+                      blur-2xl
                       opacity-0
                       group-hover:opacity-100
                       transition-opacity
-                      duration-500
+                      duration-300
                     "
                   />
 
@@ -547,10 +544,9 @@ export default function Home() {
                           justify-center
                           text-xl
                           font-extrabold
-                          shadow-lg
-                          group-hover:rotate-6
-                          group-hover:scale-110
-                          transition-all
+                          shadow-md
+                          group-hover:scale-105
+                          transition-transform
                           duration-300
                         "
                       >
@@ -601,9 +597,9 @@ export default function Home() {
                         bg-gradient-to-r
                         from-purple-700
                         to-fuchsia-400
-                        group-hover:w-24
+                        group-hover:w-20
                         transition-all
-                        duration-500
+                        duration-300
                       "
                     />
 
@@ -703,12 +699,13 @@ export default function Home() {
                       overflow-hidden
                     "
                     whileHover={{
-                      y: -10,
-                      scale: 1.025,
+                      y: -6,
+                      scale: 1.01,
                     }}
                     transition={{
                       type: "spring",
-                      stiffness: 250,
+                      stiffness: 280,
+                      damping: 22,
                     }}
                   >
 
@@ -723,7 +720,7 @@ export default function Home() {
                         opacity-0
                         group-hover:opacity-100
                         transition-opacity
-                        duration-500
+                        duration-300
                       "
                     />
 
@@ -740,10 +737,9 @@ export default function Home() {
                           flex
                           items-center
                           justify-center
-                          shadow-lg
-                          group-hover:rotate-6
-                          group-hover:scale-110
-                          transition-all
+                          shadow-md
+                          group-hover:scale-105
+                          transition-transform
                           duration-300
                         "
                       >
@@ -824,7 +820,8 @@ export default function Home() {
             h-[35rem]
             rounded-full
             bg-fuchsia-500/10
-            blur-[100px]
+            blur-[60px]
+            pointer-events-none
           "
         />
 
@@ -837,7 +834,8 @@ export default function Home() {
             h-[35rem]
             rounded-full
             bg-purple-400/10
-            blur-[100px]
+            blur-[60px]
+            pointer-events-none
           "
         />
 
@@ -894,10 +892,11 @@ export default function Home() {
                 "
                 style={{
                   color: "#ffffff",
-                  textShadow: "0 3px 12px rgba(0,0,0,0.35)",
+                  textShadow: "0 3px 10px rgba(0,0,0,0.3)",
                 }}
               >
                 Tres concentraciones
+
                 <span
                   className="block"
                   style={{ color: "#d8b4fe" }}
@@ -967,22 +966,17 @@ export default function Home() {
                     border
                     border-white/10
                     bg-white/10
-                    backdrop-blur-md
+                    backdrop-blur-sm
                     cursor-default
                   "
                   whileHover={{
-                    y: -12,
-                    scale: 1.035,
-                    rotateX: 3,
-                    rotateY: index === 1 ? 0 : index === 0 ? -2 : 2,
+                    y: -6,
+                    scale: 1.01,
                   }}
                   transition={{
                     type: "spring",
-                    stiffness: 220,
-                    damping: 18,
-                  }}
-                  style={{
-                    perspective: 1000,
+                    stiffness: 280,
+                    damping: 22,
                   }}
                 >
 
@@ -1068,21 +1062,12 @@ export default function Home() {
                       Concentración
                     </span>
 
-                    <motion.span
-                      className="
-                        text-xl
-                      "
+                    <span
+                      className="text-xl"
                       style={{ color: "#e9d5ff" }}
-                      animate={{
-                        x: [0, 5, 0],
-                      }}
-                      transition={{
-                        duration: 2,
-                        repeat: Infinity,
-                      }}
                     >
                       →
-                    </motion.span>
+                    </span>
 
                   </div>
 
@@ -1125,7 +1110,9 @@ export default function Home() {
 
           <div className="grid lg:grid-cols-3 gap-8">
 
-            {/* PAVLOVA */}
+            {/* =====================================================
+                PAVLOVA
+            ===================================================== */}
 
             <Reveal direction="left">
 
@@ -1141,7 +1128,7 @@ export default function Home() {
                   text-white
                   p-10
                   md:p-12
-                  shadow-[0_30px_80px_rgba(76,29,149,0.3)]
+                  shadow-[0_25px_60px_rgba(76,29,149,0.22)]
                   min-h-[420px]
                   bg-cover
                   bg-center
@@ -1149,23 +1136,19 @@ export default function Home() {
                 "
                 style={{
                   backgroundImage: `linear-gradient(135deg, rgba(15, 23, 42, 0.45), rgba(88, 28, 135, 0.38)), url(${pavlovaImage})`,
-                  backgroundSize: "cover",
-                  backgroundPosition: "center",
                 }}
                 whileHover={{
-                  y: -12,
-                  scale: 1.02,
-                  rotateX: 1.5,
-                  rotateY: -1.5,
+                  y: -6,
+                  scale: 1.01,
                 }}
                 transition={{
                   type: "spring",
-                  stiffness: 260,
-                  damping: 18,
+                  stiffness: 280,
+                  damping: 22,
                 }}
               >
 
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(244,114,182,0.35),transparent_32%),radial-gradient(circle_at_bottom_right,rgba(168,85,247,0.32),transparent_28%)]" />
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(244,114,182,0.28),transparent_32%),radial-gradient(circle_at_bottom_right,rgba(168,85,247,0.25),transparent_28%)]" />
 
                 <div className="absolute inset-0 bg-gradient-to-t from-[#12071d]/80 via-[#12071d]/20 to-transparent" />
 
@@ -1177,11 +1160,9 @@ export default function Home() {
                     w-72
                     h-72
                     rounded-full
-                    bg-fuchsia-400/20
-                    blur-[90px]
-                    group-hover:scale-125
-                    transition-transform
-                    duration-700
+                    bg-fuchsia-400/15
+                    blur-[60px]
+                    pointer-events-none
                   "
                 />
 
@@ -1205,7 +1186,7 @@ export default function Home() {
                       uppercase
                       tracking-[0.25em]
                       font-bold
-                      backdrop-blur-md
+                      backdrop-blur-sm
                     "
                     style={{ color: "#f5d0fe" }}
                   >
@@ -1223,7 +1204,7 @@ export default function Home() {
                     "
                     style={{
                       color: "#ffffff",
-                      textShadow: "0 3px 12px rgba(0,0,0,0.45)",
+                      textShadow: "0 3px 10px rgba(0,0,0,0.4)",
                     }}
                   >
                     Pavlova
@@ -1254,18 +1235,16 @@ export default function Home() {
                       gap-3
                       mt-8
                       rounded-2xl
-                      bg-white/85
+                      bg-white/90
                       text-purple-900
                       px-6
                       py-3.5
                       font-bold
-                      shadow-[0_15px_40px_rgba(255,255,255,0.2)]
+                      shadow-[0_12px_30px_rgba(255,255,255,0.15)]
                       hover:bg-white
-                      hover:shadow-[0_20px_50px_rgba(255,255,255,0.25)]
-                      transition-all
-                      duration-300
+                      transition-colors
+                      duration-200
                       w-fit
-                      backdrop-blur-sm
                     "
                   >
                     Ver preparación
@@ -1273,8 +1252,8 @@ export default function Home() {
                     <FaArrowRight
                       className="
                         transition-transform
-                        duration-300
-                        group-hover/button:translate-x-2
+                        duration-200
+                        group-hover/button:translate-x-1
                       "
                     />
                   </Link>
@@ -1285,7 +1264,9 @@ export default function Home() {
 
             </Reveal>
 
-            {/* MOUSSE */}
+            {/* =====================================================
+                MOUSSE
+            ===================================================== */}
 
             <Reveal direction="right">
 
@@ -1301,7 +1282,7 @@ export default function Home() {
                   text-white
                   p-10
                   md:p-12
-                  shadow-[0_30px_80px_rgba(109,40,217,0.25)]
+                  shadow-[0_25px_60px_rgba(109,40,217,0.2)]
                   min-h-[420px]
                   bg-cover
                   bg-center
@@ -1309,23 +1290,19 @@ export default function Home() {
                 "
                 style={{
                   backgroundImage: `linear-gradient(135deg, rgba(17, 24, 39, 0.32), rgba(109, 40, 217, 0.42)), url(${mousseImage})`,
-                  backgroundSize: "cover",
-                  backgroundPosition: "center",
                 }}
                 whileHover={{
-                  y: -12,
-                  scale: 1.02,
-                  rotateX: 1.5,
-                  rotateY: 1.5,
+                  y: -6,
+                  scale: 1.01,
                 }}
                 transition={{
                   type: "spring",
-                  stiffness: 260,
-                  damping: 18,
+                  stiffness: 280,
+                  damping: 22,
                 }}
               >
 
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(192,132,252,0.38),transparent_30%),radial-gradient(circle_at_bottom_left,rgba(147,51,234,0.24),transparent_32%)]" />
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(192,132,252,0.28),transparent_30%),radial-gradient(circle_at_bottom_left,rgba(147,51,234,0.2),transparent_32%)]" />
 
                 <div className="absolute inset-0 bg-gradient-to-t from-[#1a102d]/80 via-[#1a102d]/15 to-transparent" />
 
@@ -1337,11 +1314,9 @@ export default function Home() {
                     w-72
                     h-72
                     rounded-full
-                    bg-violet-300/20
-                    blur-[90px]
-                    group-hover:scale-125
-                    transition-transform
-                    duration-700
+                    bg-violet-300/15
+                    blur-[60px]
+                    pointer-events-none
                   "
                 />
 
@@ -1365,7 +1340,7 @@ export default function Home() {
                       uppercase
                       tracking-[0.25em]
                       font-bold
-                      backdrop-blur-md
+                      backdrop-blur-sm
                     "
                     style={{ color: "#f3e8ff" }}
                   >
@@ -1383,7 +1358,7 @@ export default function Home() {
                     "
                     style={{
                       color: "#ffffff",
-                      textShadow: "0 3px 12px rgba(0,0,0,0.45)",
+                      textShadow: "0 3px 10px rgba(0,0,0,0.4)",
                     }}
                   >
                     Mousse
@@ -1414,18 +1389,16 @@ export default function Home() {
                       gap-3
                       mt-8
                       rounded-2xl
-                      bg-white/85
+                      bg-white/90
                       text-purple-900
                       px-6
                       py-3.5
                       font-bold
-                      shadow-[0_15px_40px_rgba(255,255,255,0.2)]
+                      shadow-[0_12px_30px_rgba(255,255,255,0.15)]
                       hover:bg-white
-                      hover:shadow-[0_20px_50px_rgba(255,255,255,0.25)]
-                      transition-all
-                      duration-300
+                      transition-colors
+                      duration-200
                       w-fit
-                      backdrop-blur-sm
                     "
                   >
                     Ver preparación
@@ -1433,8 +1406,8 @@ export default function Home() {
                     <FaArrowRight
                       className="
                         transition-transform
-                        duration-300
-                        group-hover/button:translate-x-2
+                        duration-200
+                        group-hover/button:translate-x-1
                       "
                     />
                   </Link>
@@ -1445,7 +1418,9 @@ export default function Home() {
 
             </Reveal>
 
-            {/* ALMÍBAR */}
+            {/* =====================================================
+                ALMÍBAR
+            ===================================================== */}
 
             <Reveal direction="up">
 
@@ -1461,7 +1436,7 @@ export default function Home() {
                   text-white
                   p-10
                   md:p-12
-                  shadow-[0_30px_80px_rgba(88,28,135,0.3)]
+                  shadow-[0_25px_60px_rgba(88,28,135,0.22)]
                   min-h-[420px]
                   bg-cover
                   bg-center
@@ -1469,23 +1444,19 @@ export default function Home() {
                 "
                 style={{
                   backgroundImage: `linear-gradient(135deg, rgba(49, 46, 129, 0.58), rgba(168, 85, 247, 0.32)), url(${almibarImage})`,
-                  backgroundSize: "cover",
-                  backgroundPosition: "center",
                 }}
                 whileHover={{
-                  y: -12,
-                  scale: 1.02,
-                  rotateX: -1.5,
-                  rotateY: 1.5,
+                  y: -6,
+                  scale: 1.01,
                 }}
                 transition={{
                   type: "spring",
-                  stiffness: 260,
-                  damping: 18,
+                  stiffness: 280,
+                  damping: 22,
                 }}
               >
 
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(216,180,254,0.34),transparent_30%),radial-gradient(circle_at_bottom_left,rgba(168,85,247,0.28),transparent_30%)]" />
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(216,180,254,0.28),transparent_30%),radial-gradient(circle_at_bottom_left,rgba(168,85,247,0.22),transparent_30%)]" />
 
                 <div className="absolute inset-0 bg-gradient-to-t from-[#140d2c]/80 via-[#140d2c]/20 to-transparent" />
 
@@ -1497,11 +1468,9 @@ export default function Home() {
                     w-72
                     h-72
                     rounded-full
-                    bg-violet-300/20
-                    blur-[90px]
-                    group-hover:scale-125
-                    transition-transform
-                    duration-700
+                    bg-violet-300/15
+                    blur-[60px]
+                    pointer-events-none
                   "
                 />
 
@@ -1525,7 +1494,7 @@ export default function Home() {
                       uppercase
                       tracking-[0.25em]
                       font-bold
-                      backdrop-blur-md
+                      backdrop-blur-sm
                     "
                     style={{ color: "#ddd6fe" }}
                   >
@@ -1543,7 +1512,7 @@ export default function Home() {
                     "
                     style={{
                       color: "#ffffff",
-                      textShadow: "0 3px 12px rgba(0,0,0,0.45)",
+                      textShadow: "0 3px 10px rgba(0,0,0,0.4)",
                     }}
                   >
                     Almíbar
@@ -1574,18 +1543,16 @@ export default function Home() {
                       gap-3
                       mt-8
                       rounded-2xl
-                      bg-white/85
+                      bg-white/90
                       text-purple-900
                       px-6
                       py-3.5
                       font-bold
-                      shadow-[0_15px_40px_rgba(255,255,255,0.2)]
+                      shadow-[0_12px_30px_rgba(255,255,255,0.15)]
                       hover:bg-white
-                      hover:shadow-[0_20px_50px_rgba(255,255,255,0.25)]
-                      transition-all
-                      duration-300
+                      transition-colors
+                      duration-200
                       w-fit
-                      backdrop-blur-sm
                     "
                   >
                     Ver preparación
@@ -1593,8 +1560,8 @@ export default function Home() {
                     <FaArrowRight
                       className="
                         transition-transform
-                        duration-300
-                        group-hover/button:translate-x-2
+                        duration-200
+                        group-hover/button:translate-x-1
                       "
                     />
                   </Link>
@@ -1628,7 +1595,8 @@ export default function Home() {
         "
       >
 
-        <motion.div
+        {/* Glow estático en lugar de una animación infinita */}
+        <div
           className="
             absolute
             left-1/2
@@ -1639,17 +1607,9 @@ export default function Home() {
             h-[40rem]
             rounded-full
             bg-purple-500/10
-            blur-[120px]
+            blur-[70px]
+            pointer-events-none
           "
-          animate={{
-            scale: [1, 1.2, 1],
-            opacity: [0.3, 0.55, 0.3],
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
         />
 
         <FloatingBerry
@@ -1692,13 +1652,14 @@ export default function Home() {
               "
               style={{ color: "#d8b4fe" }}
             >
-              <span className="
-                w-2
-                h-2
-                rounded-full
-                bg-purple-300
-                animate-pulse
-              " />
+              <span
+                className="
+                  w-2
+                  h-2
+                  rounded-full
+                  bg-purple-300
+                "
+              />
               Resultados del estudio
             </span>
 
@@ -1712,10 +1673,11 @@ export default function Home() {
               "
               style={{
                 color: "#ffffff",
-                textShadow: "0 3px 12px rgba(0,0,0,0.4)",
+                textShadow: "0 3px 10px rgba(0,0,0,0.35)",
               }}
             >
               ¿Cómo influyó la concentración
+
               <span
                 className="block"
                 style={{ color: "#d8b4fe" }}
@@ -1755,6 +1717,7 @@ export default function Home() {
           </Reveal>
 
         </div>
+
       </section>
 
       {/* =====================================================
@@ -1792,7 +1755,8 @@ export default function Home() {
                   h-64
                   rounded-full
                   bg-purple-100
-                  blur-3xl
+                  blur-2xl
+                  pointer-events-none
                 "
               />
 

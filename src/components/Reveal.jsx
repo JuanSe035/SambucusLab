@@ -4,20 +4,18 @@ const variants = {
   up: {
     hidden: {
       opacity: 0,
-      y: 70,
-      scale: 0.96,
+      y: 24,
     },
     visible: {
       opacity: 1,
       y: 0,
-      scale: 1,
     },
   },
 
   left: {
     hidden: {
       opacity: 0,
-      x: -80,
+      x: -24,
     },
     visible: {
       opacity: 1,
@@ -28,7 +26,7 @@ const variants = {
   right: {
     hidden: {
       opacity: 0,
-      x: 80,
+      x: 24,
     },
     visible: {
       opacity: 1,
@@ -39,7 +37,7 @@ const variants = {
   zoom: {
     hidden: {
       opacity: 0,
-      scale: 0.75,
+      scale: 0.97,
     },
     visible: {
       opacity: 1,
@@ -50,15 +48,13 @@ const variants = {
   rotate: {
     hidden: {
       opacity: 0,
-      y: 50,
-      rotate: -4,
-      scale: 0.95,
+      y: 20,
+      rotate: -1,
     },
     visible: {
       opacity: 1,
       y: 0,
       rotate: 0,
-      scale: 1,
     },
   },
 };
@@ -67,13 +63,12 @@ export default function Reveal({
   children,
   direction = "up",
   delay = 0,
-  duration = 0.7,
+  duration = 0.45,
   once = true,
-  amount = 0.2,
+  amount = 0.15,
   className = "",
 }) {
-  const selectedVariant =
-    variants[direction] || variants.up;
+  const selectedVariant = variants[direction] || variants.up;
 
   return (
     <motion.div
@@ -88,7 +83,7 @@ export default function Reveal({
       transition={{
         duration,
         delay,
-        ease: [0.22, 1, 0.36, 1],
+        ease: "easeOut",
       }}
     >
       {children}

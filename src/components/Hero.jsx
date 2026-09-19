@@ -1,52 +1,11 @@
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import { FaArrowDown, FaFlask, FaLeaf } from "react-icons/fa";
-import { Link } from "react-router-dom";
 
 import frutoSauco from "../assets/icons/Fruto_Sauco.png";
 import FloatingBerry from "./FloatingBerry";
 import GlowButton from "./GlowButton";
 
 export default function Hero() {
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-
-  const smoothX = useSpring(mouseX, {
-    stiffness: 80,
-    damping: 20,
-  });
-
-  const smoothY = useSpring(mouseY, {
-    stiffness: 80,
-    damping: 20,
-  });
-
-  const rotateX = useTransform(
-    smoothY,
-    [-300, 300],
-    [5, -5]
-  );
-
-  const rotateY = useTransform(
-    smoothX,
-    [-300, 300],
-    [-5, 5]
-  );
-
-  const handleMouseMove = (event) => {
-    const rect =
-      event.currentTarget.getBoundingClientRect();
-
-    mouseX.set(
-      event.clientX -
-        (rect.left + rect.width / 2)
-    );
-
-    mouseY.set(
-      event.clientY -
-        (rect.top + rect.height / 2)
-    );
-  };
-
   return (
     <section
       className="
@@ -59,69 +18,48 @@ export default function Hero() {
         to-purple-700
         text-white
       "
-      onMouseMove={handleMouseMove}
     >
       {/* =====================================================
-          FONDOS LUMINOSOS
-      ===================================================== */}
+          FONDOS DECORATIVOS ESTÁTICOS
+          ===================================================== */}
 
-      <motion.div
+      <div
         className="
+          pointer-events-none
           absolute
-          -top-40
           -left-40
-          w-[38rem]
+          -top-40
           h-[38rem]
+          w-[38rem]
           rounded-full
-          bg-fuchsia-500/15
-          blur-[110px]
+          bg-fuchsia-500/10
         "
-        animate={{
-          x: [0, 70, -20, 0],
-          y: [0, 30, 80, 0],
-          scale: [1, 1.1, 0.95, 1],
-        }}
-        transition={{
-          duration: 16,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
       />
 
-      <motion.div
+      <div
         className="
+          pointer-events-none
           absolute
           -right-40
           top-20
-          w-[34rem]
           h-[34rem]
+          w-[34rem]
           rounded-full
-          bg-purple-400/15
-          blur-[120px]
+          bg-purple-300/10
         "
-        animate={{
-          x: [0, -60, 20, 0],
-          y: [0, 70, -20, 0],
-          scale: [1, 0.9, 1.1, 1],
-        }}
-        transition={{
-          duration: 18,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
       />
 
       {/* =====================================================
-          PARTÍCULAS DECORATIVAS
-      ===================================================== */}
+          PARTÍCULAS
+          ===================================================== */}
 
       <FloatingBerry
         size={14}
         top="18%"
         left="8%"
         delay={0}
-        duration={7}
-        opacity={0.65}
+        duration={8}
+        opacity={0.6}
       />
 
       <FloatingBerry
@@ -129,79 +67,66 @@ export default function Hero() {
         top="25%"
         left="87%"
         delay={1.5}
-        duration={8}
-        opacity={0.45}
-      />
-
-      <FloatingBerry
-        size={10}
-        top="72%"
-        left="12%"
-        delay={2}
-        duration={6}
-        opacity={0.7}
-      />
-
-      <FloatingBerry
-        size={17}
-        top="80%"
-        left="82%"
-        delay={3}
         duration={9}
-        opacity={0.5}
+        opacity={0.4}
       />
 
       {/* =====================================================
           CUADRÍCULA
-      ===================================================== */}
+          ===================================================== */}
 
       <div
         className="
+          pointer-events-none
           absolute
           inset-0
-          opacity-[0.08]
-          pointer-events-none
           bg-[linear-gradient(rgba(255,255,255,0.3)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.3)_1px,transparent_1px)]
           bg-[size:60px_60px]
+          opacity-[0.06]
         "
       />
 
       {/* =====================================================
           CONTENIDO
-      ===================================================== */}
+          ===================================================== */}
 
       <div
         className="
           relative
           z-20
-          max-w-7xl
           mx-auto
+          flex
+          min-h-[calc(100vh-76px)]
+          max-w-7xl
+          items-center
           px-6
           py-20
           md:py-28
-          min-h-[calc(100vh-76px)]
-          flex
-          items-center
         "
       >
-        <div className="grid lg:grid-cols-[1.05fr_0.95fr] gap-14 lg:gap-20 items-center w-full">
-
+        <div
+          className="
+            grid
+            w-full
+            items-center
+            gap-14
+            lg:grid-cols-[1.05fr_0.95fr]
+            lg:gap-20
+          "
+        >
           {/* =================================================
               TEXTO
-          ================================================= */}
+              ================================================= */}
 
           <div>
+            {/* ETIQUETA */}
+
             <motion.div
-              initial={{
-                opacity: 0,
-                y: 30,
-              }}
-              animate={{
-                opacity: 1,
-                y: 0,
-              }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{
-                duration: 0.8,
+                duration: 0.45,
+                ease: "easeOut",
               }}
             >
               <span
@@ -213,28 +138,25 @@ export default function Hero() {
                   border
                   border-white/15
                   bg-white/10
-                  backdrop-blur-md
                   px-4
                   py-2
                   text-xs
+                  font-semibold
                   uppercase
                   tracking-[0.2em]
-                  font-semibold
-                  shadow-[0_0_25px_rgba(168,85,247,0.15)]
                 "
                 style={{
                   color: "#ffffff",
-                  textShadow: "0 2px 7px rgba(255, 249, 249, 0.47)",
+                  textShadow:
+                    "0 2px 7px rgba(255, 249, 249, 0.47)",
                 }}
               >
                 <span
                   className="
-                    w-2
                     h-2
+                    w-2
                     rounded-full
                     bg-purple-300
-                    shadow-[0_0_10px_rgba(216,180,254,1)]
-                    animate-pulse
                   "
                 />
 
@@ -242,38 +164,35 @@ export default function Hero() {
               </span>
             </motion.div>
 
+            {/* TÍTULO */}
+
             <motion.h1
               className="
                 mt-8
                 text-5xl
+                font-extrabold
+                leading-[0.98]
+                tracking-tight
                 sm:text-6xl
                 lg:text-7xl
-                font-extrabold
-                tracking-tight
-                leading-[0.98]
               "
               style={{
                 color: "#ffffff",
                 textShadow:
                   "0 4px 16px rgba(255, 255, 255, 0.5), 0 1px 3px rgba(255, 255, 255, 0.6)",
               }}
-              initial={{
-                opacity: 0,
-                y: 45,
-              }}
-              animate={{
-                opacity: 1,
-                y: 0,
-              }}
+              initial={{ opacity: 0, y: 25 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{
-                duration: 0.9,
-                delay: 0.15,
+                duration: 0.5,
+                delay: 0.08,
+                ease: "easeOut",
               }}
             >
               Sambucus
 
               <span
-                className="block text-glow"
+                className="block"
                 style={{
                   color: "#d8b4fe",
                   textShadow:
@@ -284,61 +203,55 @@ export default function Hero() {
               </span>
             </motion.h1>
 
+            {/* SUBTÍTULO */}
+
             <motion.h2
               className="
                 mt-7
-                text-2xl
-                md:text-3xl
-                font-bold
                 max-w-3xl
+                text-2xl
+                font-bold
                 leading-tight
+                md:text-3xl
               "
               style={{
                 color: "#ffffff",
                 textShadow:
                   "0 3px 12px rgba(255, 255, 255, 0.51)",
               }}
-              initial={{
-                opacity: 0,
-                y: 35,
-              }}
-              animate={{
-                opacity: 1,
-                y: 0,
-              }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{
-                duration: 0.8,
-                delay: 0.3,
+                duration: 0.5,
+                delay: 0.16,
+                ease: "easeOut",
               }}
             >
               Aplicación del saúco en productos
               tradicionales de pastelería
             </motion.h2>
 
+            {/* DESCRIPCIÓN */}
+
             <motion.p
               className="
                 mt-6
                 max-w-2xl
                 text-base
-                md:text-lg
                 leading-8
+                md:text-lg
               "
               style={{
                 color: "#f3e8ff",
                 textShadow:
                   "0 2px 8px rgba(255, 255, 255, 0.51)",
               }}
-              initial={{
-                opacity: 0,
-                y: 30,
-              }}
-              animate={{
-                opacity: 1,
-                y: 0,
-              }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{
-                duration: 0.8,
-                delay: 0.4,
+                duration: 0.5,
+                delay: 0.24,
+                ease: "easeOut",
               }}
             >
               Investigación enfocada en analizar
@@ -350,29 +263,22 @@ export default function Hero() {
               y mousse.
             </motion.p>
 
-            {/* =================================================
-                BOTONES
-            ================================================= */}
+            {/* BOTONES */}
 
             <motion.div
               className="
                 mt-9
                 flex
                 flex-col
-                sm:flex-row
                 gap-4
+                sm:flex-row
               "
-              initial={{
-                opacity: 0,
-                y: 30,
-              }}
-              animate={{
-                opacity: 1,
-                y: 0,
-              }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{
-                duration: 0.8,
-                delay: 0.55,
+                duration: 0.5,
+                delay: 0.32,
+                ease: "easeOut",
               }}
             >
               <GlowButton
@@ -390,29 +296,24 @@ export default function Hero() {
               </GlowButton>
             </motion.div>
 
-            {/* =================================================
-                MINI DATOS
-            ================================================= */}
+            {/* MINI DATOS */}
 
             <motion.div
               className="
                 mt-12
                 grid
-                grid-cols-3
                 max-w-xl
+                grid-cols-3
                 border-t
                 border-white/10
                 pt-7
               "
-              initial={{
-                opacity: 0,
-              }}
-              animate={{
-                opacity: 1,
-              }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
               transition={{
-                delay: 0.8,
-                duration: 0.8,
+                duration: 0.5,
+                delay: 0.42,
+                ease: "easeOut",
               }}
             >
               <div>
@@ -429,7 +330,9 @@ export default function Hero() {
 
                 <p
                   className="mt-1 text-xs uppercase tracking-wider"
-                  style={{ color: "#d8b4fe" }}
+                  style={{
+                    color: "#d8b4fe",
+                  }}
                 >
                   Brix
                 </p>
@@ -449,7 +352,9 @@ export default function Hero() {
 
                 <p
                   className="mt-1 text-xs uppercase tracking-wider"
-                  style={{ color: "#d8b4fe" }}
+                  style={{
+                    color: "#d8b4fe",
+                  }}
                 >
                   Brix
                 </p>
@@ -469,7 +374,9 @@ export default function Hero() {
 
                 <p
                   className="mt-1 text-xs uppercase tracking-wider"
-                  style={{ color: "#d8b4fe" }}
+                  style={{
+                    color: "#d8b4fe",
+                  }}
                 >
                   Brix
                 </p>
@@ -478,88 +385,74 @@ export default function Hero() {
           </div>
 
           {/* =================================================
-              ELEMENTO VISUAL 3D
-          ================================================= */}
+              ELEMENTO VISUAL
+              ================================================= */}
 
-          <motion.div
+          <div
             className="
               relative
               hidden
-              md:flex
-              justify-center
-              items-center
               min-h-[500px]
+              items-center
+              justify-center
+              md:flex
             "
-            style={{
-              perspective: 1200,
-            }}
           >
-            <motion.div
+            <div
               className="
                 relative
-                w-[360px]
                 h-[430px]
-                lg:w-[430px]
+                w-[360px]
                 lg:h-[500px]
+                lg:w-[430px]
               "
-              style={{
-                rotateX,
-                rotateY,
-              }}
             >
-              {/* Halo */}
+              {/* HALO ESTÁTICO */}
 
-              <motion.div
+              <div
                 className="
+                  pointer-events-none
                   absolute
-                  inset-[-50px]
+                  inset-[-30px]
                   rounded-full
-                  bg-purple-400/20
-                  blur-[80px]
+                  bg-purple-400/10
                 "
-                animate={{
-                  scale: [1, 1.12, 1],
-                  opacity: [0.3, 0.5, 0.3],
-                }}
-                transition={{
-                  duration: 5,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
               />
 
-              {/* Tarjeta principal */}
+              {/* TARJETA */}
 
               <div
                 className="
                   absolute
                   inset-5
-                  rounded-[2.5rem]
                   overflow-hidden
+                  rounded-[2.5rem]
                   border
                   border-white/20
                   bg-white/10
-                  backdrop-blur-xl
-                  shadow-[0_30px_80px_rgba(0,0,0,0.3)]
+                  shadow-[0_25px_60px_rgba(0,0,0,0.25)]
                 "
               >
-                {/* Imagen */}
+                {/* IMAGEN */}
 
                 <img
                   src={frutoSauco}
                   alt="Fruto de saúco"
+                  loading="eager"
+                  decoding="async"
+                  fetchPriority="high"
                   className="
                     absolute
                     inset-0
-                    w-full
                     h-full
+                    w-full
+                    scale-105
                     object-cover
                     opacity-80
-                    scale-105
                   "
                 />
 
-                {/* Overlay */}
+                {/* OVERLAY */}
 
                 <div
                   className="
@@ -572,7 +465,7 @@ export default function Hero() {
                   "
                 />
 
-                {/* Información */}
+                {/* INFORMACIÓN */}
 
                 <div
                   className="
@@ -597,7 +490,7 @@ export default function Hero() {
                   >
                     <FaLeaf />
 
-                    <span className="text-xs uppercase tracking-[0.2em] font-bold">
+                    <span className="text-xs font-bold uppercase tracking-[0.2em]">
                       Sambucus nigra
                     </span>
                   </div>
@@ -630,43 +523,34 @@ export default function Hero() {
 
               {/* =================================================
                   BADGE SUPERIOR
-              ================================================= */}
+                  ================================================= */}
 
-              <motion.div
+              <div
                 className="
                   absolute
-                  -top-2
                   -right-4
+                  -top-2
                   z-30
                   rounded-2xl
-                  bg-white
-                  text-purple-950
-                  px-5
-                  py-4
-                  shadow-[0_15px_40px_rgba(0,0,0,0.25)]
                   border
                   border-purple-100
+                  bg-white
+                  px-5
+                  py-4
+                  text-purple-950
+                  shadow-[0_12px_30px_rgba(0,0,0,0.22)]
                 "
-                animate={{
-                  y: [0, -10, 0],
-                  rotate: [0, 2, 0],
-                }}
-                transition={{
-                  duration: 4,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
               >
                 <div className="flex items-center gap-3">
                   <div
                     className="
-                      w-10
-                      h-10
-                      rounded-xl
-                      bg-purple-100
                       flex
+                      h-10
+                      w-10
                       items-center
                       justify-center
+                      rounded-xl
+                      bg-purple-100
                     "
                   >
                     <FaFlask className="text-purple-700" />
@@ -675,54 +559,49 @@ export default function Hero() {
                   <div>
                     <p
                       className="text-xs font-bold uppercase"
-                      style={{ color: "#9333ea" }}
+                      style={{
+                        color: "#9333ea",
+                      }}
                     >
                       Investigación
                     </p>
 
                     <p
                       className="text-sm font-extrabold"
-                      style={{ color: "#2e1065" }}
+                      style={{
+                        color: "#2e1065",
+                      }}
                     >
                       Análisis sensorial
                     </p>
                   </div>
                 </div>
-              </motion.div>
+              </div>
 
               {/* =================================================
                   BADGE INFERIOR
-              ================================================= */}
+                  ================================================= */}
 
-              <motion.div
+              <div
                 className="
                   absolute
                   -bottom-5
                   -left-5
                   z-30
                   rounded-2xl
-                  bg-purple-950/80
-                  backdrop-blur-xl
                   border
                   border-white/15
+                  bg-purple-950/90
                   px-5
                   py-4
-                  shadow-[0_15px_40px_rgba(0,0,0,0.25)]
+                  shadow-[0_12px_30px_rgba(0,0,0,0.22)]
                 "
-                animate={{
-                  y: [0, 8, 0],
-                  rotate: [0, -2, 0],
-                }}
-                transition={{
-                  duration: 5,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                  delay: 0.5,
-                }}
               >
                 <p
                   className="text-xs uppercase tracking-wider"
-                  style={{ color: "#d8b4fe" }}
+                  style={{
+                    color: "#d8b4fe",
+                  }}
                 >
                   Productos
                 </p>
@@ -737,40 +616,33 @@ export default function Hero() {
                 >
                   Pavlova · Mousse
                 </p>
-              </motion.div>
-            </motion.div>
-          </motion.div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
       {/* =====================================================
-          SCROLL INDICATOR
-      ===================================================== */}
+          INDICADOR DE SCROLL
+          ===================================================== */}
 
-      <motion.div
+      <div
         className="
           absolute
           bottom-7
           left-1/2
-          -translate-x-1/2
           z-30
           hidden
-          md:flex
+          -translate-x-1/2
           flex-col
           items-center
           gap-2
+          md:flex
         "
         style={{
           color: "#e9d5ff",
           textShadow:
             "0 2px 7px rgba(249, 247, 247, 0.51)",
-        }}
-        animate={{
-          y: [0, 8, 0],
-        }}
-        transition={{
-          duration: 2,
-          repeat: Infinity,
         }}
       >
         <span className="text-[10px] uppercase tracking-[0.3em]">
@@ -778,7 +650,7 @@ export default function Hero() {
         </span>
 
         <FaArrowDown className="text-sm" />
-      </motion.div>
+      </div>
     </section>
   );
 }

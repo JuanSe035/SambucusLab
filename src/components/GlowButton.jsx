@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
 export default function GlowButton({
@@ -21,8 +20,9 @@ export default function GlowButton({
     px-6
     py-3.5
     font-semibold
-    transition-all
-    duration-300
+    transition-[transform,background-color,border-color,box-shadow]
+    duration-200
+    ease-out
     focus:outline-none
     focus-visible:ring-2
     focus-visible:ring-purple-400
@@ -37,16 +37,20 @@ export default function GlowButton({
       from-purple-700
       via-violet-600
       to-fuchsia-500
-      shadow-[0_12px_35px_rgba(109,40,217,0.35)]
-      hover:shadow-[0_18px_45px_rgba(109,40,217,0.5)]
+      shadow-[0_8px_24px_rgba(109,40,217,0.28)]
+      hover:-translate-y-0.5
+      hover:shadow-[0_12px_30px_rgba(109,40,217,0.38)]
+      active:translate-y-0
     `,
 
     light: `
       text-purple-900
       bg-white
-      shadow-[0_12px_35px_rgba(255,255,255,0.18)]
+      shadow-[0_8px_24px_rgba(255,255,255,0.15)]
+      hover:-translate-y-0.5
       hover:bg-purple-50
-      hover:shadow-[0_18px_45px_rgba(255,255,255,0.28)]
+      hover:shadow-[0_12px_30px_rgba(255,255,255,0.22)]
+      active:translate-y-0
     `,
 
     outline: `
@@ -54,51 +58,46 @@ export default function GlowButton({
       bg-white/5
       border
       border-white/20
-      backdrop-blur-md
+      hover:-translate-y-0.5
       hover:bg-white/10
-      hover:border-white/40
+      hover:border-white/35
+      active:translate-y-0
     `,
   };
 
   const content = (
     <>
-      {/* Brillo que atraviesa el botón */}
+      {/* Brillo sutil */}
+
       <span
+        aria-hidden="true"
         className="
+          pointer-events-none
           absolute
           inset-y-0
-          -left-24
-          w-20
+          -left-16
+          w-12
           rotate-[25deg]
-          bg-white/30
-          blur-md
-          transition-all
-          duration-700
-          group-hover:left-[110%]
-        "
-      />
-
-      {/* Halo exterior */}
-      <span
-        className="
-          absolute
-          inset-0
-          rounded-2xl
+          bg-white/20
           opacity-0
-          blur-xl
-          bg-purple-400/40
-          transition-opacity
-          duration-300
+          transition-[left,opacity]
+          duration-500
+          group-hover:left-[110%]
           group-hover:opacity-100
         "
       />
+
+      {/* Texto */}
 
       <span className="relative z-10">
         {children}
       </span>
 
+      {/* Icono */}
+
       {icon && (
-        <motion.span
+        <span
+          aria-hidden="true"
           className="
             relative
             z-10
@@ -106,59 +105,36 @@ export default function GlowButton({
             items-center
             justify-center
             text-lg
+            transition-transform
+            duration-200
+            group-hover:-translate-y-0.5
+            group-hover:translate-x-1
           "
-          whileHover={{
-            x: 5,
-            y: -5,
-            rotate: 8,
-          }}
-          transition={{
-            type: "spring",
-            stiffness: 300,
-            damping: 15,
-          }}
         >
           ↗
-        </motion.span>
+        </span>
       )}
     </>
   );
 
   if (to) {
     return (
-      <motion.div
-        whileHover={{
-          scale: 1.04,
-          y: -3,
-        }}
-        whileTap={{
-          scale: 0.97,
-        }}
+      <Link
+        to={to}
+        className={`${baseClasses} ${variants[variant] || variants.primary}`}
       >
-        <Link
-          to={to}
-          className={`${baseClasses} ${variants[variant]}`}
-        >
-          {content}
-        </Link>
-      </motion.div>
+        {content}
+      </Link>
     );
   }
 
   return (
-    <motion.button
+    <button
       type="button"
       onClick={onClick}
-      className={`${baseClasses} ${variants[variant]}`}
-      whileHover={{
-        scale: 1.04,
-        y: -3,
-      }}
-      whileTap={{
-        scale: 0.97,
-      }}
+      className={`${baseClasses} ${variants[variant] || variants.primary}`}
     >
       {content}
-    </motion.button>
+    </button>
   );
 }

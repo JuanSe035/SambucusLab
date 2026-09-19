@@ -1,5 +1,4 @@
 import { useMemo, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import { FaFlask, FaLeaf, FaCheckCircle } from "react-icons/fa";
 
 import IngredientChip from "./IngredientChip";
@@ -7,8 +6,14 @@ import BrixSelector from "./BrixSelector";
 import { recetasLab, ingredientes } from "../data/laboratorio";
 
 export default function SensorialLab() {
-  const [recetaSeleccionada, setRecetaSeleccionada] = useState(recetasLab[0]);
-  const [ingredientesSeleccionados, setIngredientesSeleccionados] = useState([]);
+  const [recetaSeleccionada, setRecetaSeleccionada] = useState(
+    recetasLab[0]
+  );
+
+  const [ingredientesSeleccionados, setIngredientesSeleccionados] = useState(
+    []
+  );
+
   const [brixSeleccionado, setBrixSeleccionado] = useState("");
   const [resultado, setResultado] = useState(null);
 
@@ -24,37 +29,42 @@ export default function SensorialLab() {
   }
 
   function toggleIngrediente(nombre) {
-    if (ingredientesSeleccionados.includes(nombre)) {
-      setIngredientesSeleccionados(
-        ingredientesSeleccionados.filter((i) => i !== nombre)
-      );
-    } else {
-      setIngredientesSeleccionados([
-        ...ingredientesSeleccionados,
-        nombre,
-      ]);
-    }
+    setIngredientesSeleccionados((actuales) => {
+      if (actuales.includes(nombre)) {
+        return actuales.filter((ingrediente) => ingrediente !== nombre);
+      }
+
+      return [...actuales, nombre];
+    });
   }
 
   const progreso = useMemo(() => {
-    const correctos = recetaSeleccionada.ingredientesCorrectos.filter((i) =>
-      ingredientesSeleccionados.includes(i)
+    const ingredientesCorrectos =
+      recetaSeleccionada.ingredientesCorrectos;
+
+    const correctos = ingredientesCorrectos.filter((ingrediente) =>
+      ingredientesSeleccionados.includes(ingrediente)
     ).length;
 
+    if (ingredientesCorrectos.length === 0) {
+      return 0;
+    }
+
     return Math.round(
-      (correctos / recetaSeleccionada.ingredientesCorrectos.length) * 100
+      (correctos / ingredientesCorrectos.length) * 100
     );
   }, [ingredientesSeleccionados, recetaSeleccionada]);
 
   function prepararReceta() {
     const ingredientesOK =
-      recetaSeleccionada.ingredientesCorrectos.every((i) =>
-        ingredientesSeleccionados.includes(i)
+      recetaSeleccionada.ingredientesCorrectos.every((ingrediente) =>
+        ingredientesSeleccionados.includes(ingrediente)
       ) &&
       ingredientesSeleccionados.length ===
         recetaSeleccionada.ingredientesCorrectos.length;
 
-    const brixOK = recetaSeleccionada.brix === brixSeleccionado;
+    const brixOK =
+      recetaSeleccionada.brix === brixSeleccionado;
 
     setResultado({
       success: ingredientesOK && brixOK,
@@ -64,20 +74,21 @@ export default function SensorialLab() {
   }
 
   return (
-    <section className="relative py-28 px-6 bg-gradient-to-br from-purple-950 via-violet-900 to-purple-800 overflow-hidden">
+    <section className="relative overflow-hidden bg-gradient-to-br from-purple-950 via-violet-900 to-purple-800 px-6 py-28">
+      <div className="mx-auto w-full max-w-7xl rounded-3xl bg-white p-6 text-gray-900 shadow-xl md:p-10">
 
-      <div className="w-full rounded-3xl bg-white p-6 text-gray-900 shadow-xl md:p-10">
+        {/* ENCABEZADO */}
 
         <div className="text-center">
           <span className="text-3xl font-bold text-purple-950">
             Laboratorio Sensorial
           </span>
 
-          <h2 className="mt-6 text-5xl md:text-6xl font-black text-white">
+          <h2 className="mt-6 text-5xl font-black text-white md:text-6xl">
             Crea tu receta de saúco
           </h2>
 
-          <p className="mt-6 max-w-3xl mx-auto text-purple-100 leading-8">
+          <p className="mx-auto mt-6 max-w-3xl leading-8 text-purple-100">
             Ponte en el papel de un investigador gastronómico.
             Escoge una preparación, selecciona los ingredientes
             correctos y descubre cuál concentración de °Brix pertenece
@@ -88,82 +99,101 @@ export default function SensorialLab() {
         {/* PASO 1 */}
 
         <div className="mt-16">
-          <p className="text-purple-200 uppercase tracking-[.25em] text-sm font-bold mb-6">
+          <p className="mb-6 text-sm font-bold uppercase tracking-[.25em] text-purple-200">
             Paso 1 · Escoge una receta
           </p>
 
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid gap-6 md:grid-cols-3">
+            {recetasLab.map((receta) => {
+              const seleccionada =
+                recetaSeleccionada.id === receta.id;
 
-            {recetasLab.map((receta) => (
-              <motion.button
-                key={receta.id}
-                whileHover={{ y: -10, scale: 1.02 }}
-                whileTap={{ scale: .98 }}
-                onClick={() => cambiarReceta(receta)}
-                className={`
-                  overflow-hidden rounded-[2rem]
-                  border transition-all duration-300 text-left
-                  ${
-                    recetaSeleccionada.id === receta.id
-                      ? "border-fuchsia-400 ring-2 ring-fuchsia-400 shadow-[0_0_40px_rgba(192,132,252,.35)]"
-                      : "border-white/10"
-                  }
-                `}
-              >
-                <img
-                  src={receta.imagen}
-                  alt={receta.nombre}
-                  className="w-full h-52 object-cover"
-                />
+              return (
+                <button
+                  key={receta.id}
+                  type="button"
+                  onClick={() => cambiarReceta(receta)}
+                  className={`
+                    group overflow-hidden rounded-[2rem]
+                    border text-left
+                    transition-[transform,box-shadow,border-color]
+                    duration-300 ease-out
+                    hover:-translate-y-1
+                    ${
+                      seleccionada
+                        ? "border-fuchsia-400 shadow-[0_0_30px_rgba(192,132,252,.25)] ring-2 ring-fuchsia-400"
+                        : "border-purple-100 hover:border-fuchsia-300 hover:shadow-lg"
+                    }
+                  `}
+                >
+                  <img
+                    src={receta.imagen}
+                    alt={receta.nombre}
+                    loading="lazy"
+                    decoding="async"
+                    className="
+                      h-52 w-full object-cover
+                      transition-transform duration-500
+                      group-hover:scale-[1.02]
+                    "
+                  />
 
-                <div className="bg-white p-5">
-                  <p className="uppercase text-xs tracking-widest text-purple-600 font-bold">
-                    Preparación
-                  </p>
+                  <div className="bg-white p-5">
+                    <p className="text-xs font-bold uppercase tracking-widest text-purple-600">
+                      Preparación
+                    </p>
 
-                  <h3 className="mt-2 text-2xl font-black text-purple-950">
-                    {receta.nombre}
-                  </h3>
+                    <h3 className="mt-2 text-2xl font-black text-purple-950">
+                      {receta.nombre}
+                    </h3>
 
-                  <p className="mt-3 text-gray-600 leading-7">
-                    {receta.descripcion}
-                  </p>
-                </div>
-
-              </motion.button>
-            ))}
-
+                    <p className="mt-3 leading-7 text-gray-600">
+                      {receta.descripcion}
+                    </p>
+                  </div>
+                </button>
+              );
+            })}
           </div>
         </div>
 
-        {/* PANEL */}
+        {/* PANEL PRINCIPAL */}
 
-        <div className="mt-20 grid lg:grid-cols-2 gap-10">
+        <div className="mt-20 grid gap-10 lg:grid-cols-2">
 
-          {/* FOTO */}
+          {/* IMAGEN */}
 
-          <motion.div
-            layout
-            className="overflow-hidden rounded-[2.5rem] shadow-2xl border border-white/10 bg-white"
-          >
-            <motion.img
-              key={recetaSeleccionada.id}
+          <div className="overflow-hidden rounded-[2.5rem] border border-white/10 bg-white shadow-2xl">
+            <img
               src={recetaSeleccionada.imagen}
               alt={recetaSeleccionada.nombre}
-              initial={{ scale: 1.15, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ duration: .5 }}
-              className="w-full h-full min-h-[620px] object-cover"
+              loading="lazy"
+              decoding="async"
+              className="
+                min-h-[620px]
+                h-full
+                w-full
+                object-cover
+              "
             />
-          </motion.div>
+          </div>
 
           {/* CONTROLES */}
 
-          <div className="rounded-[2.5rem] bg-white/10 backdrop-blur-xl border border-white/10 p-8 text-white">
-
+          <div
+            className="
+              rounded-[2.5rem]
+              border border-white/10
+              bg-white/10
+              p-8
+              text-white
+              backdrop-blur-md
+            "
+          >
             <div className="flex items-center gap-3">
-              <FaFlask className="text-fuchsia-300 text-xl"/>
-              <span className="uppercase tracking-[.2em] text-sm text-purple-200 font-bold">
+              <FaFlask className="text-xl text-fuchsia-300" />
+
+              <span className="text-sm font-bold uppercase tracking-[.2em] text-purple-200">
                 Preparación seleccionada
               </span>
             </div>
@@ -172,7 +202,7 @@ export default function SensorialLab() {
               {recetaSeleccionada.nombre}
             </h3>
 
-            {/* Barra */}
+            {/* PROGRESO */}
 
             <div className="mt-8">
               <div className="flex justify-between text-sm text-purple-200">
@@ -180,11 +210,21 @@ export default function SensorialLab() {
                 <span>{progreso}%</span>
               </div>
 
-              <div className="mt-3 h-3 rounded-full bg-white/10 overflow-hidden">
-                <motion.div
-                  className="h-full rounded-full bg-gradient-to-r from-fuchsia-400 to-violet-300"
-                  animate={{ width: `${progreso}%` }}
-                  transition={{ duration: .4 }}
+              <div className="mt-3 h-3 overflow-hidden rounded-full bg-white/10">
+                <div
+                  className="
+                    h-full
+                    rounded-full
+                    bg-gradient-to-r
+                    from-fuchsia-400
+                    to-violet-300
+                    transition-[width]
+                    duration-300
+                    ease-out
+                  "
+                  style={{
+                    width: `${progreso}%`,
+                  }}
                 />
               </div>
             </div>
@@ -192,12 +232,11 @@ export default function SensorialLab() {
             {/* PASO 2 */}
 
             <div className="mt-10">
-              <p className="uppercase tracking-[.2em] text-sm text-purple-200 font-bold">
+              <p className="text-sm font-bold uppercase tracking-[.2em] text-purple-200">
                 Paso 2 · Selecciona los ingredientes
               </p>
 
               <div className="mt-6 flex flex-wrap gap-3">
-
                 {ingredientes.map((item) => (
                   <IngredientChip
                     key={item}
@@ -206,14 +245,13 @@ export default function SensorialLab() {
                     onClick={() => toggleIngrediente(item)}
                   />
                 ))}
-
               </div>
             </div>
 
             {/* PASO 3 */}
 
             <div className="mt-12">
-              <p className="uppercase tracking-[.2em] text-sm text-purple-200 font-bold">
+              <p className="text-sm font-bold uppercase tracking-[.2em] text-purple-200">
                 Paso 3 · Elige la concentración correcta
               </p>
 
@@ -228,105 +266,115 @@ export default function SensorialLab() {
             {/* BOTONES */}
 
             <div className="mt-12 flex flex-wrap gap-4">
-
-              <motion.button
-                whileHover={{ scale:1.04 }}
-                whileTap={{ scale:.97 }}
+              <button
+                type="button"
                 onClick={prepararReceta}
-                className="px-8 py-4 rounded-2xl bg-gradient-to-r from-fuchsia-500 to-violet-500 font-bold shadow-lg"
+                className="
+                  rounded-2xl
+                  bg-gradient-to-r
+                  from-fuchsia-500
+                  to-violet-500
+                  px-8
+                  py-4
+                  font-bold
+                  shadow-lg
+                  transition-[transform,box-shadow]
+                  duration-200
+                  hover:-translate-y-0.5
+                  hover:shadow-xl
+                  active:translate-y-0
+                "
               >
                 Preparar receta
-              </motion.button>
+              </button>
 
-              <motion.button
-                whileHover={{ scale:1.03 }}
-                whileTap={{ scale:.97 }}
+              <button
+                type="button"
                 onClick={reiniciarJuego}
-                className="px-8 py-4 rounded-2xl border border-white/20 hover:bg-white/10"
+                className="
+                  rounded-2xl
+                  border
+                  border-white/20
+                  px-8
+                  py-4
+                  transition-[background-color,transform]
+                  duration-200
+                  hover:-translate-y-0.5
+                  hover:bg-white/10
+                  active:translate-y-0
+                "
               >
                 Reiniciar
-              </motion.button>
-
+              </button>
             </div>
 
             {/* RESULTADO */}
 
-            <AnimatePresence>
+            {resultado && (
+              <div
+                className={`
+                  mt-10
+                  rounded-[2rem]
+                  border
+                  p-6
+                  ${
+                    resultado.success
+                      ? "border-green-400/30 bg-green-500/15"
+                      : "border-red-400/30 bg-red-500/15"
+                  }
+                `}
+              >
+                {resultado.success ? (
+                  <>
+                    <FaCheckCircle className="text-5xl text-green-300" />
 
-              {resultado && (
-                <motion.div
-                  initial={{ opacity:0, y:25 }}
-                  animate={{ opacity:1, y:0 }}
-                  exit={{ opacity:0 }}
-                  className={`
-                    mt-10 rounded-[2rem] p-6 border
-                    ${
-                      resultado.success
-                        ? "bg-green-500/15 border-green-400/30"
-                        : "bg-red-500/15 border-red-400/30"
-                    }
-                  `}
-                >
+                    <h4 className="mt-4 text-3xl font-black">
+                      ¡Excelente!
+                    </h4>
 
-                  {resultado.success ? (
-                    <>
-                      <FaCheckCircle className="text-5xl text-green-300"/>
+                    <p className="mt-3 leading-7 text-green-100">
+                      Has preparado correctamente la receta utilizando
+                      la concentración experimental adecuada.
+                    </p>
+                  </>
+                ) : (
+                  <>
+                    <h4 className="text-3xl font-black">
+                      La receta necesita ajustes
+                    </h4>
 
-                      <h4 className="mt-4 text-3xl font-black">
-                        ¡Excelente!
-                      </h4>
+                    <p className="mt-4 text-purple-100">
+                      Ingredientes correctos:
+                      <strong className="ml-2">
+                        {resultado.ingredientesOK ? "Sí" : "No"}
+                      </strong>
+                    </p>
 
-                      <p className="mt-3 text-green-100 leading-7">
-                        Has preparado correctamente la receta utilizando
-                        la concentración experimental adecuada.
-                      </p>
-                    </>
-                  ) : (
-                    <>
-                      <h4 className="text-3xl font-black">
-                        La receta necesita ajustes
-                      </h4>
+                    <p className="mt-2 text-purple-100">
+                      Concentración correcta:
+                      <strong className="ml-2">
+                        {resultado.brixOK ? "Sí" : "No"}
+                      </strong>
+                    </p>
 
-                      <p className="mt-4 text-purple-100">
-                        Ingredientes correctos:
-                        <strong className="ml-2">
-                          {resultado.ingredientesOK ? "Sí" : "No"}
-                        </strong>
-                      </p>
-
-                      <p className="mt-2 text-purple-100">
-                        Concentración correcta:
-                        <strong className="ml-2">
-                          {resultado.brixOK ? "Sí" : "No"}
-                        </strong>
-                      </p>
-
-                      <p className="mt-5 text-purple-200 text-sm leading-7">
-                        Intenta nuevamente comparando los ingredientes
-                        utilizados en la preparación seleccionada.
-                      </p>
-                    </>
-                  )}
-
-                </motion.div>
-              )}
-
-            </AnimatePresence>
-
+                    <p className="mt-5 text-sm leading-7 text-purple-200">
+                      Intenta nuevamente comparando los ingredientes
+                      utilizados en la preparación seleccionada.
+                    </p>
+                  </>
+                )}
+              </div>
+            )}
           </div>
-
         </div>
 
         {/* INGREDIENTES ESPERADOS */}
 
-        <motion.div
-          className="mt-16 rounded-[2rem] bg-white/5 border border-white/10 p-8"
-          initial={{ opacity:0 }}
-          whileInView={{ opacity:1 }}
-        >
-          <div className="flex items-center gap-3 text-purple-400 mb-5">
-            <FaLeaf/>
-            <span className="uppercase tracking-[.2em] text-sm font-bold">
+        <div className="mt-16 rounded-[2rem] border border-white/10 bg-white/5 p-8">
+          <div className="mb-5 flex items-center gap-3 text-purple-400">
+            <FaLeaf />
+
+            <span className="text-sm font-bold uppercase tracking-[.2em]">
               Ingredientes esperados para esta receta
             </span>
           </div>
@@ -335,16 +383,24 @@ export default function SensorialLab() {
             {recetaSeleccionada.ingredientesCorrectos.map((item) => (
               <span
                 key={item}
-                className="px-4 py-2 rounded-full bg-purple-500/20 border border-purple-300/20 text-purple-400 font-semibold text-sm"
+                className="
+                  rounded-full
+                  border
+                  border-purple-300/20
+                  bg-purple-500/20
+                  px-4
+                  py-2
+                  text-sm
+                  font-semibold
+                  text-purple-400
+                "
               >
                 {item}
               </span>
             ))}
           </div>
-        </motion.div>
-
+        </div>
       </div>
-
     </section>
   );
 }
