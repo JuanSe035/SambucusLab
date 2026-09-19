@@ -66,10 +66,10 @@ export default function SensorialLab() {
   return (
     <section className="relative py-28 px-6 bg-gradient-to-br from-purple-950 via-violet-900 to-purple-800 overflow-hidden">
 
-      <div className="max-w-7xl mx-auto">
+      <div className="w-full rounded-3xl bg-white p-6 text-gray-900 shadow-xl md:p-10">
 
         <div className="text-center">
-          <span className="inline-block px-4 py-2 rounded-full bg-white/10 border border-white/10 text-xs uppercase tracking-[.25em] font-bold text-purple-200">
+          <span className="text-3xl font-bold text-purple-950">
             Laboratorio Sensorial
           </span>
 
@@ -324,7 +324,7 @@ export default function SensorialLab() {
           initial={{ opacity:0 }}
           whileInView={{ opacity:1 }}
         >
-          <div className="flex items-center gap-3 text-purple-200 mb-5">
+          <div className="flex items-center gap-3 text-purple-400 mb-5">
             <FaLeaf/>
             <span className="uppercase tracking-[.2em] text-sm font-bold">
               Ingredientes esperados para esta receta
@@ -335,7 +335,7 @@ export default function SensorialLab() {
             {recetaSeleccionada.ingredientesCorrectos.map((item) => (
               <span
                 key={item}
-                className="px-4 py-2 rounded-full bg-purple-500/20 border border-purple-300/20 text-purple-100 font-semibold text-sm"
+                className="px-4 py-2 rounded-full bg-purple-500/20 border border-purple-300/20 text-purple-400 font-semibold text-sm"
               >
                 {item}
               </span>

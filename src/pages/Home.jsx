@@ -34,7 +34,9 @@ export default function Home() {
       {/* =====================================================
           BARRA DE PROGRESO
       ===================================================== */}
-
+      <div className="mt-20">
+        <SensorialLab />
+      </div>
       <motion.div
         className="
           fixed
