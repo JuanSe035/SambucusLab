@@ -2,11 +2,16 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { FaArrowRight, FaFlask, FaLeaf, FaChartLine } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
+import frutoSauco from "../assets/icons/Fruto_Sauco2.png";
+import pavlovaImage from "../assets/icons/Pavlova.png";
+import mousseImage from "../assets/icons/Mousse.png";
+import almibarImage from "../assets/icons/Almibar.png";
 import Hero from "../components/Hero";
 import SectionTitle from "../components/SectionTitle";
 import Reveal from "../components/Reveal";
 import FloatingBerry from "../components/FloatingBerry";
 import GlowButton from "../components/GlowButton";
+import SensorialLab from "../components/SensorialLab";
 
 export default function Home() {
   const { scrollYProgress } = useScroll();
@@ -288,8 +293,8 @@ export default function Home() {
                 >
 
                   <img
-                    src="https://images.unsplash.com/photo-1595231776515-ddffb1f4eb73?auto=format&fit=crop&w=1000&q=90"
-                    alt="Frutos de saúco"
+                  src={frutoSauco}
+                  alt="Fruto de saúco"
                     className="
                       w-full
                       h-[420px]
@@ -1116,7 +1121,7 @@ export default function Home() {
 
           </Reveal>
 
-          <div className="grid lg:grid-cols-2 gap-8">
+          <div className="grid lg:grid-cols-3 gap-8">
 
             {/* PAVLOVA */}
 
@@ -1126,26 +1131,41 @@ export default function Home() {
                 className="
                   group
                   relative
+                  isolate
                   overflow-hidden
                   rounded-[2.5rem]
-                  bg-gradient-to-br
-                  from-purple-950
-                  via-purple-900
-                  to-violet-800
+                  border
+                  border-white/15
                   text-white
                   p-10
                   md:p-12
-                  shadow-[0_25px_60px_rgba(76,29,149,0.2)]
+                  shadow-[0_30px_80px_rgba(76,29,149,0.3)]
+                  min-h-[420px]
+                  bg-cover
+                  bg-center
+                  bg-no-repeat
                 "
+                style={{
+                  backgroundImage: `linear-gradient(135deg, rgba(15, 23, 42, 0.45), rgba(88, 28, 135, 0.38)), url(${pavlovaImage})`,
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                }}
                 whileHover={{
-                  y: -10,
-                  scale: 1.015,
+                  y: -12,
+                  scale: 1.02,
+                  rotateX: 1.5,
+                  rotateY: -1.5,
                 }}
                 transition={{
                   type: "spring",
-                  stiffness: 220,
+                  stiffness: 260,
+                  damping: 18,
                 }}
               >
+
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(244,114,182,0.35),transparent_32%),radial-gradient(circle_at_bottom_right,rgba(168,85,247,0.32),transparent_28%)]" />
+
+                <div className="absolute inset-0 bg-gradient-to-t from-[#12071d]/80 via-[#12071d]/20 to-transparent" />
 
                 <div
                   className="
@@ -1155,25 +1175,39 @@ export default function Home() {
                     w-72
                     h-72
                     rounded-full
-                    bg-fuchsia-500/10
-                    blur-3xl
+                    bg-fuchsia-400/20
+                    blur-[90px]
                     group-hover:scale-125
                     transition-transform
                     duration-700
                   "
                 />
 
-                <div className="relative">
+                <div className="absolute inset-x-5 top-5 h-px bg-white/25" />
+
+                <div className="relative flex h-full flex-col justify-end z-10">
 
                   <span
                     className="
-                      text-xs
+                      inline-flex
+                      w-fit
+                      items-center
+                      gap-2
+                      rounded-full
+                      border
+                      border-white/20
+                      bg-white/10
+                      px-3
+                      py-1.5
+                      text-[10px]
                       uppercase
-                      tracking-[0.2em]
+                      tracking-[0.25em]
                       font-bold
+                      backdrop-blur-md
                     "
-                    style={{ color: "#d8b4fe" }}
+                    style={{ color: "#f5d0fe" }}
                   >
+                    <span className="h-2 w-2 rounded-full bg-fuchsia-300" />
                     Producto 01
                   </span>
 
@@ -1183,10 +1217,11 @@ export default function Home() {
                       text-4xl
                       md:text-5xl
                       font-extrabold
+                      leading-none
                     "
                     style={{
                       color: "#ffffff",
-                      textShadow: "0 3px 10px rgba(0,0,0,0.3)",
+                      textShadow: "0 3px 12px rgba(0,0,0,0.45)",
                     }}
                   >
                     Pavlova
@@ -1197,8 +1232,10 @@ export default function Home() {
                       mt-5
                       leading-8
                       max-w-xl
+                      text-sm
+                      md:text-base
                     "
-                    style={{ color: "#f3e8ff" }}
+                    style={{ color: "#fdf2f8" }}
                   >
                     Preparación basada en merengue horneado,
                     utilizada para analizar el efecto de las
@@ -1215,16 +1252,18 @@ export default function Home() {
                       gap-3
                       mt-8
                       rounded-2xl
-                      bg-white
+                      bg-white/85
                       text-purple-900
                       px-6
                       py-3.5
                       font-bold
-                      shadow-lg
-                      hover:bg-purple-50
-                      hover:shadow-2xl
+                      shadow-[0_15px_40px_rgba(255,255,255,0.2)]
+                      hover:bg-white
+                      hover:shadow-[0_20px_50px_rgba(255,255,255,0.25)]
                       transition-all
                       duration-300
+                      w-fit
+                      backdrop-blur-sm
                     "
                   >
                     Ver preparación
@@ -1252,26 +1291,41 @@ export default function Home() {
                 className="
                   group
                   relative
+                  isolate
                   overflow-hidden
                   rounded-[2.5rem]
-                  bg-gradient-to-br
-                  from-purple-50
-                  to-violet-100
                   border
-                  border-purple-100
+                  border-white/15
+                  text-white
                   p-10
                   md:p-12
-                  shadow-lg
+                  shadow-[0_30px_80px_rgba(109,40,217,0.25)]
+                  min-h-[420px]
+                  bg-cover
+                  bg-center
+                  bg-no-repeat
                 "
+                style={{
+                  backgroundImage: `linear-gradient(135deg, rgba(17, 24, 39, 0.32), rgba(109, 40, 217, 0.42)), url(${mousseImage})`,
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                }}
                 whileHover={{
-                  y: -10,
-                  scale: 1.015,
+                  y: -12,
+                  scale: 1.02,
+                  rotateX: 1.5,
+                  rotateY: 1.5,
                 }}
                 transition={{
                   type: "spring",
-                  stiffness: 220,
+                  stiffness: 260,
+                  damping: 18,
                 }}
               >
+
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(192,132,252,0.38),transparent_30%),radial-gradient(circle_at_bottom_left,rgba(147,51,234,0.24),transparent_32%)]" />
+
+                <div className="absolute inset-0 bg-gradient-to-t from-[#1a102d]/80 via-[#1a102d]/15 to-transparent" />
 
                 <div
                   className="
@@ -1281,25 +1335,39 @@ export default function Home() {
                     w-72
                     h-72
                     rounded-full
-                    bg-purple-300/20
-                    blur-3xl
+                    bg-violet-300/20
+                    blur-[90px]
                     group-hover:scale-125
                     transition-transform
                     duration-700
                   "
                 />
 
-                <div className="relative">
+                <div className="absolute inset-x-5 top-5 h-px bg-white/25" />
+
+                <div className="relative flex h-full flex-col justify-end z-10">
 
                   <span
                     className="
-                      text-xs
+                      inline-flex
+                      w-fit
+                      items-center
+                      gap-2
+                      rounded-full
+                      border
+                      border-white/20
+                      bg-white/10
+                      px-3
+                      py-1.5
+                      text-[10px]
                       uppercase
-                      tracking-[0.2em]
+                      tracking-[0.25em]
                       font-bold
+                      backdrop-blur-md
                     "
-                    style={{ color: "#7e22ce" }}
+                    style={{ color: "#f3e8ff" }}
                   >
+                    <span className="h-2 w-2 rounded-full bg-violet-300" />
                     Producto 02
                   </span>
 
@@ -1309,8 +1377,12 @@ export default function Home() {
                       text-4xl
                       md:text-5xl
                       font-extrabold
+                      leading-none
                     "
-                    style={{ color: "#2e1065" }}
+                    style={{
+                      color: "#ffffff",
+                      textShadow: "0 3px 12px rgba(0,0,0,0.45)",
+                    }}
                   >
                     Mousse
                   </h3>
@@ -1320,8 +1392,10 @@ export default function Home() {
                       mt-5
                       leading-8
                       max-w-xl
+                      text-sm
+                      md:text-base
                     "
-                    style={{ color: "#374151" }}
+                    style={{ color: "#f5f3ff" }}
                   >
                     Preparación de textura aireada empleada
                     para estudiar la influencia del saúco
@@ -1338,16 +1412,178 @@ export default function Home() {
                       gap-3
                       mt-8
                       rounded-2xl
-                      bg-purple-900
-                      text-white
+                      bg-white/85
+                      text-purple-900
                       px-6
                       py-3.5
                       font-bold
-                      shadow-lg
-                      hover:bg-purple-800
-                      hover:shadow-xl
+                      shadow-[0_15px_40px_rgba(255,255,255,0.2)]
+                      hover:bg-white
+                      hover:shadow-[0_20px_50px_rgba(255,255,255,0.25)]
                       transition-all
                       duration-300
+                      w-fit
+                      backdrop-blur-sm
+                    "
+                  >
+                    Ver preparación
+
+                    <FaArrowRight
+                      className="
+                        transition-transform
+                        duration-300
+                        group-hover/button:translate-x-2
+                      "
+                    />
+                  </Link>
+
+                </div>
+
+              </motion.article>
+
+            </Reveal>
+
+            {/* ALMÍBAR */}
+
+            <Reveal direction="up">
+
+              <motion.article
+                className="
+                  group
+                  relative
+                  isolate
+                  overflow-hidden
+                  rounded-[2.5rem]
+                  border
+                  border-white/15
+                  text-white
+                  p-10
+                  md:p-12
+                  shadow-[0_30px_80px_rgba(88,28,135,0.3)]
+                  min-h-[420px]
+                  bg-cover
+                  bg-center
+                  bg-no-repeat
+                "
+                style={{
+                  backgroundImage: `linear-gradient(135deg, rgba(49, 46, 129, 0.58), rgba(168, 85, 247, 0.32)), url(${almibarImage})`,
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                }}
+                whileHover={{
+                  y: -12,
+                  scale: 1.02,
+                  rotateX: -1.5,
+                  rotateY: 1.5,
+                }}
+                transition={{
+                  type: "spring",
+                  stiffness: 260,
+                  damping: 18,
+                }}
+              >
+
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(216,180,254,0.34),transparent_30%),radial-gradient(circle_at_bottom_left,rgba(168,85,247,0.28),transparent_30%)]" />
+
+                <div className="absolute inset-0 bg-gradient-to-t from-[#140d2c]/80 via-[#140d2c]/20 to-transparent" />
+
+                <div
+                  className="
+                    absolute
+                    -right-20
+                    -bottom-20
+                    w-72
+                    h-72
+                    rounded-full
+                    bg-violet-300/20
+                    blur-[90px]
+                    group-hover:scale-125
+                    transition-transform
+                    duration-700
+                  "
+                />
+
+                <div className="absolute inset-x-5 top-5 h-px bg-white/25" />
+
+                <div className="relative flex h-full flex-col justify-end z-10">
+
+                  <span
+                    className="
+                      inline-flex
+                      w-fit
+                      items-center
+                      gap-2
+                      rounded-full
+                      border
+                      border-white/20
+                      bg-white/10
+                      px-3
+                      py-1.5
+                      text-[10px]
+                      uppercase
+                      tracking-[0.25em]
+                      font-bold
+                      backdrop-blur-md
+                    "
+                    style={{ color: "#ddd6fe" }}
+                  >
+                    <span className="h-2 w-2 rounded-full bg-violet-200" />
+                    Producto 03
+                  </span>
+
+                  <h3
+                    className="
+                      mt-5
+                      text-4xl
+                      md:text-5xl
+                      font-extrabold
+                      leading-none
+                    "
+                    style={{
+                      color: "#ffffff",
+                      textShadow: "0 3px 12px rgba(0,0,0,0.45)",
+                    }}
+                  >
+                    Almíbar
+                  </h3>
+
+                  <p
+                    className="
+                      mt-5
+                      leading-8
+                      max-w-xl
+                      text-sm
+                      md:text-base
+                    "
+                    style={{ color: "#f5f3ff" }}
+                  >
+                    Base líquida utilizada para aportar
+                    dulzor, brillo y un perfil aromático
+                    característico del saúco en aplicaciones
+                    de pastelería y postres.
+                  </p>
+
+                  <Link
+                    to="/recetas"
+                    className="
+                      group/button
+                      inline-flex
+                      items-center
+                      gap-3
+                      mt-8
+                      rounded-2xl
+                      bg-white/85
+                      text-purple-900
+                      px-6
+                      py-3.5
+                      font-bold
+                      shadow-[0_15px_40px_rgba(255,255,255,0.2)]
+                      hover:bg-white
+                      hover:shadow-[0_20px_50px_rgba(255,255,255,0.25)]
+                      transition-all
+                      duration-300
+                      w-fit
+                      backdrop-blur-sm
                     "
                   >
                     Ver preparación

@@ -2,6 +2,7 @@ import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { FaArrowDown, FaFlask, FaLeaf } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
+import frutoSauco from "../assets/icons/Fruto_Sauco.png";
 import FloatingBerry from "./FloatingBerry";
 import GlowButton from "./GlowButton";
 
@@ -545,8 +546,8 @@ export default function Hero() {
                 {/* Imagen */}
 
                 <img
-                  src="https://images.unsplash.com/photo-1595231776515-ddffb1f4eb73?auto=format&fit=crop&w=900&q=90"
-                  alt="Frutos de saúco"
+                  src={frutoSauco}
+                  alt="Fruto de saúco"
                   className="
                     absolute
                     inset-0
