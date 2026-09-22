@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom";
+// Importamos el logo tal como lo hicimos en el PageLoader
+import logo from "../assets/icons/logo.png";
 
 export default function Footer() {
   return (
@@ -24,10 +26,11 @@ export default function Footer() {
 
             <div className="flex items-center gap-3 mb-6">
 
+              {/* Contenedor del Logo actualizado */}
               <div
                 className="
-                  w-11
-                  h-11
+                  w-14
+                  h-14
                   rounded-xl
                   bg-white/10
                   border
@@ -36,16 +39,14 @@ export default function Footer() {
                   items-center
                   justify-center
                   shadow-lg
+                  overflow-hidden
                 "
               >
-                <span
-                  className="text-xl font-black"
-                  style={{
-                    color: "#ffffff",
-                  }}
-                >
-                  S
-                </span>
+                <img 
+                  src={logo} 
+                  alt="Logo Sambucus Lab" 
+                  className="w-full h-full object-cover scale-110 drop-shadow-md"
+                />
               </div>
 
               <div>

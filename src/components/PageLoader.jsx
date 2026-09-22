@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import logo from "../assets/icons/logo.png";
 
 export default function PageLoader() {
   return (
@@ -45,27 +46,29 @@ export default function PageLoader() {
 
       {/* Contenido */}
       <div className="relative text-center px-6">
-        {/* Logo */}
+        
+        {/* Logo Actualizado */}
         <motion.div
           className="mx-auto mb-8 flex items-center justify-center"
-          animate={{ rotate: 360 }}
+          animate={{ 
+            y: [0, -12, 0]
+          }}
           transition={{
-            duration: 18,
+            duration: 4,
             repeat: Infinity,
-            ease: "linear",
+            ease: "easeInOut",
           }}
         >
-          <div className="w-28 h-28 rounded-full border-4 border-fuchsia-400/40 flex items-center justify-center backdrop-blur-md bg-white/5 shadow-[0_0_60px_rgba(236,72,153,0.45)]">
-            <motion.div
-              className="w-14 h-14 rounded-full bg-gradient-to-br from-fuchsia-400 via-purple-300 to-violet-200"
-              animate={{
-                scale: [1, 1.2, 1],
-              }}
-              transition={{
-                duration: 2,
-                repeat: Infinity,
-              }}
+          {/* Contenedor del logo: Aumenté tamaño, quité 'p-4' y agregué 'overflow-hidden' */}
+          <div className="w-40 h-40 md:w-52 md:h-52 rounded-full flex items-center justify-center backdrop-blur-sm bg-white/5 shadow-[0_0_60px_rgba(236,72,153,0.35)] border border-white/10 overflow-hidden">
+            
+            {/* Imagen: Cambié a object-cover y agregué scale-110 para asegurar que llene el círculo */}
+            <img 
+              src={logo} 
+              alt="Logo Sambucus Lab" 
+              className="w-full h-full object-cover scale-110 drop-shadow-[0_0_15px_rgba(255,255,255,0.4)]"
             />
+            
           </div>
         </motion.div>
 
@@ -96,7 +99,7 @@ export default function PageLoader() {
           </span>
         </motion.h1>
 
-        {/* Subtítulo MUCHO MÁS VISIBLE */}
+        {/* Subtítulo */}
         <motion.p
           className="
             mt-7

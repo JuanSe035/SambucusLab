@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
+import logo from "../assets/icons/logo.png";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   FaBars,
@@ -137,102 +138,102 @@ export default function Navbar() {
             "
           >
             {/* =================================================
-                LOGO
-            ================================================= */}
+                    LOGO SAMBUCUSLAB
+                ================================================= */}
 
-            <NavLink
-              to="/"
-              onClick={() => setMobileOpen(false)}
-              className="group flex items-center gap-3"
-            >
-              <motion.div
-                className="
-                  relative
-                  w-11
-                  h-11
-                  rounded-xl
-                  flex
-                  items-center
-                  justify-center
-                  bg-white/10
-                  border
-                  border-white/15
-                  overflow-hidden
-                "
-                whileHover={{
-                  rotate: 8,
-                  scale: 1.08,
-                }}
-                transition={{
-                  type: "spring",
-                  stiffness: 300,
-                }}
-              >
-                <div
-                  className="
-                    absolute
-                    inset-0
-                    bg-gradient-to-br
-                    from-purple-400/30
-                    to-fuchsia-400/10
-                  "
-                />
-
-                <FaFlask
-                  className="
-                    relative
-                    text-purple-200
-                    text-lg
-                  "
-                />
-
-                <motion.div
-                  className="
-                    absolute
-                    inset-0
-                    border
-                    border-purple-300/20
-                    rounded-xl
-                  "
-                  animate={{
-                    scale: [1, 1.15, 1],
-                    opacity: [0.4, 0, 0.4],
-                  }}
-                  transition={{
-                    duration: 2.5,
-                    repeat: Infinity,
-                  }}
-                />
-              </motion.div>
-
-              <div className="leading-none">
-                <span
-                  className="
-                    block
-                    text-xl
-                    font-extrabold
-                    tracking-tight
-                    text-white
-                  "
+                <NavLink
+                  to="/"
+                  onClick={() => setMobileOpen(false)}
+                  className="group flex items-center gap-3 select-none"
                 >
-                  Sambucus
-                </span>
+                  {/* Logo PNG */}
 
-                <span
-                  className="
-                    block
-                    text-[10px]
-                    font-bold
-                    uppercase
-                    tracking-[0.35em]
-                    text-purple-300
-                    mt-1
-                  "
-                >
-                  Lab
-                </span>
-              </div>
-            </NavLink>
+                  <motion.div
+                    whileHover={{
+                      scale: 1.15,
+                      rotate: -4,
+                    }}
+                    whileTap={{
+                      scale: 0.95,
+                    }}
+                    transition={{
+                      type: "spring",
+                      stiffness: 260,
+                      damping: 15,
+                    }}
+                    className="relative flex items-center justify-center"
+                  >
+                    {/* Halo morado al pasar el mouse */}
+
+                    <div
+                      className="
+                        absolute
+                        inset-0
+                        rounded-full
+                        bg-purple-400/20
+                        blur-lg
+                        opacity-0
+                        group-hover:opacity-100
+                        transition-opacity
+                        duration-300
+                        scale-125
+                      "
+                    />
+
+                    <img
+                      src={logo}
+                      alt="Logo SambucusLab"
+                      className="
+                        relative
+                        h-28
+                        w-28
+                        md:h-32
+                        md:w-32
+                        object-contain
+                        drop-shadow-[0_10px_24px_rgba(168,85,247,0.35)]
+                        transition-transform
+                        duration-300
+                      "
+                      draggable={false}
+                    />
+                  </motion.div>
+
+                  {/* Texto */}
+
+                  <div className="leading-none">
+                    <span
+                      className="
+                        block
+                        text-xl
+                        font-extrabold
+                        tracking-tight
+                        text-white
+                        transition-colors
+                        duration-300
+                        group-hover:text-purple-200
+                      "
+                    >
+                      Sambucus
+                    </span>
+
+                    <span
+                      className="
+                        block
+                        mt-1
+                        text-[10px]
+                        font-bold
+                        uppercase
+                        tracking-[0.35em]
+                        text-purple-300
+                        transition-colors
+                        duration-300
+                        group-hover:text-fuchsia-300
+                      "
+                    >
+                      Lab
+                    </span>
+                  </div>
+                </NavLink>
 
             {/* =================================================
                 DESKTOP NAVIGATION
